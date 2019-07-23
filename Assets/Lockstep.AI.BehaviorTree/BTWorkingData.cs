@@ -22,7 +22,7 @@ namespace Lockstep.AI {
         }
 
         public void Init(int[] offsets, int totalMemSize){
-            _pDatas = (byte*) (NativeHelper.Alloc(totalMemSize).ToPointer());
+            _pDatas = NativeHelper.AllocAndZero(totalMemSize);
             _dataOffset = offsets;
             _dataLen = totalMemSize;
         }

@@ -1,11 +1,14 @@
 using System;
 using System.Runtime.InteropServices;
+
 namespace Lockstep.AI {
-    public class NativeHelper {
+    public unsafe class NativeHelper {
         public const int STRUCT_PACK = 4;
+
         public static void Free(IntPtr ptr){
-            Marshal.FreeHGlobal(ptr);  
+            Marshal.FreeHGlobal(ptr);
         }
+
         public static IntPtr Alloc(int bytes){
             return Marshal.AllocHGlobal(bytes);
         }
@@ -19,13 +22,18 @@ namespace Lockstep.AI {
             for (int index = size - 1; index >= 0; --index)
                 dstptr[index] = srcptr[index];
         }
-        public static void NullPointer()
-        {
+
+        public static byte* AllocAndZero(int bytes){
+            var ptr = (byte*) (Marshal.AllocHGlobal(bytes).ToPointer());
+            Zero(ptr, bytes);
+            return ptr;
+        }
+
+        public static void NullPointer(){
             throw new NullReferenceException("Method invoked on null pointer.");
         }
 
-        public static void ArrayOutOfRange()
-        {
+        public static void ArrayOutOfRange(){
             throw new ArgumentOutOfRangeException("Array index out of range");
         }
     }
