@@ -1,159 +1,422 @@
 fileFormatVersion: 2
 guid: 021518e4ce3f7b94397948596e1e5512
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Bip01
-    100002: Bip01 Footsteps
-    100004: Bip01 Head
-    100006: Bip01 HeadNub
-    100008: Bip01 L Calf
-    100010: Bip01 L Clavicle
-    100012: Bip01 L Foot
-    100014: Bip01 L Forearm
-    100016: Bip01 L Hand
-    100018: Bip01 L Thigh
-    100020: Bip01 L Toe0
-    100022: Bip01 L Toe0Nub
-    100024: Bip01 L UpperArm
-    100026: Bip01 Neck
-    100028: Bip01 Pelvis
-    100030: Bip01 R Calf
-    100032: Bip01 R Clavicle
-    100034: Bip01 R Foot
-    100036: Bip01 R Forearm
-    100038: Bip01 R Hand
-    100040: Bip01 R Thigh
-    100042: Bip01 R Toe0
-    100044: Bip01 R Toe0Nub
-    100046: Bip01 R UpperArm
-    100048: Bip01 Spine
-    100050: Bip01 Spine1
-    100052: Bone01
-    100054: mesh_Head
-    100056: mesh_L_Calf
-    100058: mesh_L_Forearm
-    100060: mesh_L_Hand
-    100062: mesh_L_Pelvis
-    100064: mesh_L_Spine
-    100066: mesh_L_Spine1
-    100068: mesh_L_Thigh
-    100070: mesh_L_UpperArm
-    100072: mesh_R _Calf
-    100074: mesh_R_Forearm
-    100076: mesh_R_Hand
-    100078: mesh_R_Pelvis
-    100080: mesh_R_Spine
-    100082: mesh_R_Spine1
-    100084: mesh_R_Thigh
-    100086: mesh_R_UpperArm
-    100088: //RootNode
-    400000: Bip01
-    400002: Bip01 Footsteps
-    400004: Bip01 Head
-    400006: Bip01 HeadNub
-    400008: Bip01 L Calf
-    400010: Bip01 L Clavicle
-    400012: Bip01 L Foot
-    400014: Bip01 L Forearm
-    400016: Bip01 L Hand
-    400018: Bip01 L Thigh
-    400020: Bip01 L Toe0
-    400022: Bip01 L Toe0Nub
-    400024: Bip01 L UpperArm
-    400026: Bip01 Neck
-    400028: Bip01 Pelvis
-    400030: Bip01 R Calf
-    400032: Bip01 R Clavicle
-    400034: Bip01 R Foot
-    400036: Bip01 R Forearm
-    400038: Bip01 R Hand
-    400040: Bip01 R Thigh
-    400042: Bip01 R Toe0
-    400044: Bip01 R Toe0Nub
-    400046: Bip01 R UpperArm
-    400048: Bip01 Spine
-    400050: Bip01 Spine1
-    400052: Bone01
-    400054: mesh_Head
-    400056: mesh_L_Calf
-    400058: mesh_L_Forearm
-    400060: mesh_L_Hand
-    400062: mesh_L_Pelvis
-    400064: mesh_L_Spine
-    400066: mesh_L_Spine1
-    400068: mesh_L_Thigh
-    400070: mesh_L_UpperArm
-    400072: mesh_R _Calf
-    400074: mesh_R_Forearm
-    400076: mesh_R_Hand
-    400078: mesh_R_Pelvis
-    400080: mesh_R_Spine
-    400082: mesh_R_Spine1
-    400084: mesh_R_Thigh
-    400086: mesh_R_UpperArm
-    400088: //RootNode
-    4300000: mesh_L_Forearm
-    4300002: mesh_L_UpperArm
-    4300004: mesh_Head
-    4300006: mesh_L_Hand
-    4300008: mesh_L_Calf
-    4300010: mesh_L_Spine
-    4300012: mesh_L_Spine1
-    4300014: mesh_R_Pelvis
-    4300016: mesh_L_Thigh
-    4300018: mesh_R_Thigh
-    4300020: mesh_R _Calf
-    4300022: mesh_L_Pelvis
-    4300024: mesh_R_Spine
-    4300026: mesh_R_Spine1
-    4300028: mesh_R_UpperArm
-    4300030: mesh_R_Forearm
-    4300032: mesh_R_Hand
-    7400000: walk
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: mesh_Head
-    13700002: mesh_L_Calf
-    13700004: mesh_L_Forearm
-    13700006: mesh_L_Hand
-    13700008: mesh_L_Pelvis
-    13700010: mesh_L_Spine
-    13700012: mesh_L_Spine1
-    13700014: mesh_L_Thigh
-    13700016: mesh_L_UpperArm
-    13700018: mesh_R _Calf
-    13700020: mesh_R_Forearm
-    13700022: mesh_R_Hand
-    13700024: mesh_R_Pelvis
-    13700026: mesh_R_Spine
-    13700028: mesh_R_Spine1
-    13700030: mesh_R_Thigh
-    13700032: mesh_R_UpperArm
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip01
+  - first:
+      1: 100002
+    second: Bip01 Footsteps
+  - first:
+      1: 100004
+    second: Bip01 Head
+  - first:
+      1: 100006
+    second: Bip01 HeadNub
+  - first:
+      1: 100008
+    second: Bip01 L Calf
+  - first:
+      1: 100010
+    second: Bip01 L Clavicle
+  - first:
+      1: 100012
+    second: Bip01 L Foot
+  - first:
+      1: 100014
+    second: Bip01 L Forearm
+  - first:
+      1: 100016
+    second: Bip01 L Hand
+  - first:
+      1: 100018
+    second: Bip01 L Thigh
+  - first:
+      1: 100020
+    second: Bip01 L Toe0
+  - first:
+      1: 100022
+    second: Bip01 L Toe0Nub
+  - first:
+      1: 100024
+    second: Bip01 L UpperArm
+  - first:
+      1: 100026
+    second: Bip01 Neck
+  - first:
+      1: 100028
+    second: Bip01 Pelvis
+  - first:
+      1: 100030
+    second: Bip01 R Calf
+  - first:
+      1: 100032
+    second: Bip01 R Clavicle
+  - first:
+      1: 100034
+    second: Bip01 R Foot
+  - first:
+      1: 100036
+    second: Bip01 R Forearm
+  - first:
+      1: 100038
+    second: Bip01 R Hand
+  - first:
+      1: 100040
+    second: Bip01 R Thigh
+  - first:
+      1: 100042
+    second: Bip01 R Toe0
+  - first:
+      1: 100044
+    second: Bip01 R Toe0Nub
+  - first:
+      1: 100046
+    second: Bip01 R UpperArm
+  - first:
+      1: 100048
+    second: Bip01 Spine
+  - first:
+      1: 100050
+    second: Bip01 Spine1
+  - first:
+      1: 100052
+    second: Bone01
+  - first:
+      1: 100054
+    second: mesh_Head
+  - first:
+      1: 100056
+    second: mesh_L_Calf
+  - first:
+      1: 100058
+    second: mesh_L_Forearm
+  - first:
+      1: 100060
+    second: mesh_L_Hand
+  - first:
+      1: 100062
+    second: mesh_L_Pelvis
+  - first:
+      1: 100064
+    second: mesh_L_Spine
+  - first:
+      1: 100066
+    second: mesh_L_Spine1
+  - first:
+      1: 100068
+    second: mesh_L_Thigh
+  - first:
+      1: 100070
+    second: mesh_L_UpperArm
+  - first:
+      1: 100072
+    second: mesh_R _Calf
+  - first:
+      1: 100074
+    second: mesh_R_Forearm
+  - first:
+      1: 100076
+    second: mesh_R_Hand
+  - first:
+      1: 100078
+    second: mesh_R_Pelvis
+  - first:
+      1: 100080
+    second: mesh_R_Spine
+  - first:
+      1: 100082
+    second: mesh_R_Spine1
+  - first:
+      1: 100084
+    second: mesh_R_Thigh
+  - first:
+      1: 100086
+    second: mesh_R_UpperArm
+  - first:
+      1: 100088
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Bip01
+  - first:
+      4: 400002
+    second: Bip01 Footsteps
+  - first:
+      4: 400004
+    second: Bip01 Head
+  - first:
+      4: 400006
+    second: Bip01 HeadNub
+  - first:
+      4: 400008
+    second: Bip01 L Calf
+  - first:
+      4: 400010
+    second: Bip01 L Clavicle
+  - first:
+      4: 400012
+    second: Bip01 L Foot
+  - first:
+      4: 400014
+    second: Bip01 L Forearm
+  - first:
+      4: 400016
+    second: Bip01 L Hand
+  - first:
+      4: 400018
+    second: Bip01 L Thigh
+  - first:
+      4: 400020
+    second: Bip01 L Toe0
+  - first:
+      4: 400022
+    second: Bip01 L Toe0Nub
+  - first:
+      4: 400024
+    second: Bip01 L UpperArm
+  - first:
+      4: 400026
+    second: Bip01 Neck
+  - first:
+      4: 400028
+    second: Bip01 Pelvis
+  - first:
+      4: 400030
+    second: Bip01 R Calf
+  - first:
+      4: 400032
+    second: Bip01 R Clavicle
+  - first:
+      4: 400034
+    second: Bip01 R Foot
+  - first:
+      4: 400036
+    second: Bip01 R Forearm
+  - first:
+      4: 400038
+    second: Bip01 R Hand
+  - first:
+      4: 400040
+    second: Bip01 R Thigh
+  - first:
+      4: 400042
+    second: Bip01 R Toe0
+  - first:
+      4: 400044
+    second: Bip01 R Toe0Nub
+  - first:
+      4: 400046
+    second: Bip01 R UpperArm
+  - first:
+      4: 400048
+    second: Bip01 Spine
+  - first:
+      4: 400050
+    second: Bip01 Spine1
+  - first:
+      4: 400052
+    second: Bone01
+  - first:
+      4: 400054
+    second: mesh_Head
+  - first:
+      4: 400056
+    second: mesh_L_Calf
+  - first:
+      4: 400058
+    second: mesh_L_Forearm
+  - first:
+      4: 400060
+    second: mesh_L_Hand
+  - first:
+      4: 400062
+    second: mesh_L_Pelvis
+  - first:
+      4: 400064
+    second: mesh_L_Spine
+  - first:
+      4: 400066
+    second: mesh_L_Spine1
+  - first:
+      4: 400068
+    second: mesh_L_Thigh
+  - first:
+      4: 400070
+    second: mesh_L_UpperArm
+  - first:
+      4: 400072
+    second: mesh_R _Calf
+  - first:
+      4: 400074
+    second: mesh_R_Forearm
+  - first:
+      4: 400076
+    second: mesh_R_Hand
+  - first:
+      4: 400078
+    second: mesh_R_Pelvis
+  - first:
+      4: 400080
+    second: mesh_R_Spine
+  - first:
+      4: 400082
+    second: mesh_R_Spine1
+  - first:
+      4: 400084
+    second: mesh_R_Thigh
+  - first:
+      4: 400086
+    second: mesh_R_UpperArm
+  - first:
+      4: 400088
+    second: //RootNode
+  - first:
+      43: 4300000
+    second: mesh_L_Forearm
+  - first:
+      43: 4300002
+    second: mesh_L_UpperArm
+  - first:
+      43: 4300004
+    second: mesh_Head
+  - first:
+      43: 4300006
+    second: mesh_L_Hand
+  - first:
+      43: 4300008
+    second: mesh_L_Calf
+  - first:
+      43: 4300010
+    second: mesh_L_Spine
+  - first:
+      43: 4300012
+    second: mesh_L_Spine1
+  - first:
+      43: 4300014
+    second: mesh_R_Pelvis
+  - first:
+      43: 4300016
+    second: mesh_L_Thigh
+  - first:
+      43: 4300018
+    second: mesh_R_Thigh
+  - first:
+      43: 4300020
+    second: mesh_R _Calf
+  - first:
+      43: 4300022
+    second: mesh_L_Pelvis
+  - first:
+      43: 4300024
+    second: mesh_R_Spine
+  - first:
+      43: 4300026
+    second: mesh_R_Spine1
+  - first:
+      43: 4300028
+    second: mesh_R_UpperArm
+  - first:
+      43: 4300030
+    second: mesh_R_Forearm
+  - first:
+      43: 4300032
+    second: mesh_R_Hand
+  - first:
+      74: 7400000
+    second: walk
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: mesh_Head
+  - first:
+      137: 13700002
+    second: mesh_L_Calf
+  - first:
+      137: 13700004
+    second: mesh_L_Forearm
+  - first:
+      137: 13700006
+    second: mesh_L_Hand
+  - first:
+      137: 13700008
+    second: mesh_L_Pelvis
+  - first:
+      137: 13700010
+    second: mesh_L_Spine
+  - first:
+      137: 13700012
+    second: mesh_L_Spine1
+  - first:
+      137: 13700014
+    second: mesh_L_Thigh
+  - first:
+      137: 13700016
+    second: mesh_L_UpperArm
+  - first:
+      137: 13700018
+    second: mesh_R _Calf
+  - first:
+      137: 13700020
+    second: mesh_R_Forearm
+  - first:
+      137: 13700022
+    second: mesh_R_Hand
+  - first:
+      137: 13700024
+    second: mesh_R_Pelvis
+  - first:
+      137: 13700026
+    second: mesh_R_Spine
+  - first:
+      137: 13700028
+    second: mesh_R_Spine1
+  - first:
+      137: 13700030
+    second: mesh_R_Thigh
+  - first:
+      137: 13700032
+    second: mesh_R_UpperArm
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: walk
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 2
@@ -286,25 +549,52 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 680aa8d4593c33b45842a78661c6b71e
+  - 1edfb954a3c0d354a939593f4695236b
+  - 434c8b130d103834ba75e014f2bb4a8e
+  - 2e610b7f8534e0747b08d34566723dc2
+  - 8141a1e3f5562ba4d910d6c02d5d213c
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -314,11 +604,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
