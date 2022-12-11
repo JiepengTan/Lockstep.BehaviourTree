@@ -90,7 +90,7 @@ namespace TheKiwiCoder {
         public void CreateGUI() {
             Instance = this; 
             settings = BehaviourTreeProjectSettings.GetOrCreateSettings();
-
+ 
             // Each editor window contains a root VisualElement object
             VisualElement root = rootVisualElement;
 
