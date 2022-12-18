@@ -30,7 +30,7 @@ namespace AIToolkitDemo {
             var bt = Create<BTActionSelector>();
             bt
                 .AddChild(Create<BTActionSequence>()
-                    .AddChild(Create<BTConditionComposite>().AddChild(Create<CON_HasReachedTarget>(a=>a.IsInvert = true)))
+                    .AddChild(Create<CON_HasReachedTarget>(a=>a.IsInvert = true))
                     .AddChild(Create<NOD_TurnTo>())
                     .AddChild(Create<NOD_MoveTo>()))
                 .AddChild(Create<BTActionSequence>()

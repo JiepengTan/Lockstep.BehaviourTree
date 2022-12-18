@@ -16,10 +16,12 @@ namespace Lockstep.AI {
             var thisContext = (BTCActionSelector*) wData.GetContext(_uniqueKey);
             int childCount = GetChildCount();
             var curIdx = thisContext->CurrentSelectedIndex;
-            if (!IsPriority)
+            if (IsPriority)
             {
-                curIdx= thisContext->CurrentSelectedIndex = -1;
+                thisContext->CurrentSelectedIndex = -1;
+                curIdx = 0;
             }
+
             for (int i = 0; i < childCount; ++i)
             {
                 var realIdx =(curIdx+ i)%childCount;

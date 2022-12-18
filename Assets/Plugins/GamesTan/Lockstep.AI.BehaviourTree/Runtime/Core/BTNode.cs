@@ -26,7 +26,7 @@ namespace Lockstep.AI
         public BTNode(int maxChildCount = -1)
         {
             if(maxChildCount != 0) _children = new List<BTNode>();
-            if (maxChildCount >= 0) {
+            if (maxChildCount > 0) {
                 _children.Capacity = maxChildCount;
             }
             _maxChildCount = maxChildCount;
@@ -76,16 +76,17 @@ namespace Lockstep.AI
         }
         public int GetChildCount()
         {
+            if (_children == null) return 0;
             return _children.Count;
         }
         public bool IsIndexValid(int index)
         {
-            return index >= 0 && index < _children.Count;
+            return index >= 0 && _children!= null&&  index < _children.Count;
         }
 
         public BTNode GetChild(int index) 
         {
-            if (index < 0 || index >= _children.Count) {
+            if (index < 0 ||_children == null||  index >= _children.Count) {
                 return null;
             }
             return _children[index];
@@ -93,15 +94,23 @@ namespace Lockstep.AI
 
         public int GetTotalNodeCount(){
             int sum = 0;
-            foreach (var child in _children) {
-                sum += child.GetTotalNodeCount();
+            if (_children != null)
+            {
+                foreach (var child in _children)
+                {
+                    sum += child.GetTotalNodeCount();
+                }
             }
+
             return sum + 1;
         }
         public int GetTotalMemSize(){
             int sum = 0;
-            foreach (var child in _children) {
-                sum += child.GetTotalMemSize();
+            if (_children != null)
+            {
+                foreach (var child in _children) {
+                    sum += child.GetTotalMemSize();
+                }
             }
             return sum + MemSize;
         }
@@ -122,8 +131,11 @@ namespace Lockstep.AI
 
         protected virtual void Flatten(List<BTNode> nodes){
             nodes.Add(this);
-            foreach (var child in _children) {
-                child.Flatten(nodes);
+            if (_children != null)
+            {
+                foreach (var child in _children) {
+                    child.Flatten(nodes);
+                }
             }
         }
     }
