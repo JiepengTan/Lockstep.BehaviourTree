@@ -4,8 +4,9 @@ using System.Collections.Generic;
 namespace Lockstep.AI {
     
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/PrioritizedSelector")]
-    public unsafe partial class BTActionSelector : BTActionComposite {   
-  
+    public unsafe partial class BTActionSelector : BTActionComposite
+    {
+        public bool IsPriority = true;
         public BTCActionSelector __content;
         protected override int MemSize => sizeof(BTCActionSelector);
         public BTActionSelector()
@@ -13,16 +14,21 @@ namespace Lockstep.AI {
 
         protected override bool OnEvaluate( /*in*/ BTWorkingData wData){
             var thisContext = (BTCActionSelector*) wData.GetContext(_uniqueKey);
-            thisContext->CurrentSelectedIndex = -1;
             int childCount = GetChildCount();
-            for (int i = 0; i < childCount; ++i) {
-                var node = GetChild(i);
+            var curIdx = thisContext->CurrentSelectedIndex;
+            if (!IsPriority)
+            {
+                curIdx= thisContext->CurrentSelectedIndex = -1;
+            }
+            for (int i = 0; i < childCount; ++i)
+            {
+                var realIdx =(curIdx+ i)%childCount;
+                var node = GetChild(realIdx);
                 if (node.Evaluate(wData)) {
-                    thisContext->CurrentSelectedIndex = i;
+                    thisContext->CurrentSelectedIndex = realIdx;
                     return true;
                 }
             }
-
             return false;
         }
 
