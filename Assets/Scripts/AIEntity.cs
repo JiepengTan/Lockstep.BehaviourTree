@@ -107,6 +107,10 @@ namespace AIToolkitDemo
 
             //test bb usage
             _blackboard.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
+            if (IsDebugBehaviourTree)
+            {
+                BTNode.__DebugStartRecordInfo();
+            }
 
             if (_behaviorTree.Evaluate(_behaviorWorkingData))
             {
@@ -115,8 +119,14 @@ namespace AIToolkitDemo
             else
             {
                 _behaviorTree.Transition(_behaviorWorkingData);
+            }    
+            if (IsDebugBehaviourTree)
+            {
+                BTNode.__DebugStopRecordInfo();
             }
             return 0;
         }
+
+        public bool IsDebugBehaviourTree;
     }
 }

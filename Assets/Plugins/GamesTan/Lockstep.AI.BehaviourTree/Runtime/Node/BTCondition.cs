@@ -8,7 +8,9 @@
 
         public override bool Evaluate( /*in*/ BTWorkingData wData)
         {
-            return  IsInvert ^OnEvaluate(wData);
+            var result= IsInvert ^OnEvaluate(wData);
+            __DebugSetEvaluateState( result);
+            return result;
         }
     }
 }

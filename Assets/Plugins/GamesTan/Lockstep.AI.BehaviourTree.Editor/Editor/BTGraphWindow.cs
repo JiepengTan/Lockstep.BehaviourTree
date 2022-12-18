@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -38,12 +39,18 @@ namespace Lockstep.AI
 
 			if (graphView == null)
 			{
-				graphView = new BTGraphView(this);
+				graphView = new BTGraphView(this,graph);
 				graphView.Add(new MiniMapView(graphView));
 				graphView.Add(new BTToolbarView(graphView));
 			}
 
 			rootView.Add(graphView);
+		}
+
+		private void OnInspectorUpdate()
+		{
+			var view =graphView as BTGraphView;
+			view?.OnStep();
 		}
 
 		protected override void InitializeGraphView(BaseGraphView view)

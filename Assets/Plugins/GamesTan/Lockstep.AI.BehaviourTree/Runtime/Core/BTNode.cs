@@ -7,14 +7,6 @@ namespace Lockstep.AI
 {
     public unsafe partial class BTNode
     {
-#if DEBUG
-        protected string _name;
-        public string name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-#endif
 
         protected virtual int MemSize => 0;
 
@@ -37,7 +29,9 @@ namespace Lockstep.AI
 
         public int Update(BTWorkingData wData)
         {
-            return OnUpdate(wData);
+            var state= OnUpdate(wData);
+            __DebugSetUpdateState(state);
+            return state;
         }
 
         public void Transition(BTWorkingData wData)
@@ -63,7 +57,9 @@ namespace Lockstep.AI
 
         public virtual bool Evaluate( /*in*/ BTWorkingData wData)
         {
-            return OnEvaluate(wData);
+            var result= OnEvaluate(wData);
+            __DebugSetEvaluateState(result);
+            return result;
         }
 
         protected virtual bool OnEvaluate( /*in*/ BTWorkingData wData)

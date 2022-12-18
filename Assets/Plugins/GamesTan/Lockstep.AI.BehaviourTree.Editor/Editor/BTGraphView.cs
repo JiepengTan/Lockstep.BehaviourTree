@@ -9,9 +9,11 @@ namespace Lockstep.AI
 {
 	public class BTGraphView : BaseGraphView
 	{
+		private BaseGraph graph;
 		// Nothing special to add for now
-		public BTGraphView(EditorWindow window) : base(window)
+		public BTGraphView(EditorWindow window,BaseGraph graph) : base(window)
 		{
+			this.graph = graph;
 		}
 
 		public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
@@ -54,7 +56,23 @@ namespace Lockstep.AI
 				);
 			}
 		}
+		
+		public void OnStep()
+		{
+			var states = BaseNode.__DebugRecordNodesUpdateState;
+			foreach (var view in nodeViews)
+			{
+				if (states.TryGetValue(view.nodeTarget.GUID, out var state))
+				{
+					view.Highlight();
+				}
+				else
+				{
+					view.UnHighlight();
+				}
+			}
 
+		}
 		void CreateNodeOfType(Type type, Vector2 position)
 		{
 			RegisterCompleteObjectUndo("Added " + type + " node");
