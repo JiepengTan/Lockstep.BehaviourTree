@@ -13,44 +13,6 @@ namespace AIToolkitDemo {
         public float deltaTime { get; set; }
     }
 
-    public  class AIEntityBehaviorTreeFactory {
-        private static BTInfo _bevTreeDemo1;
-
-        public static BTInfo GetBehaviorTreeDemo1(){
-            return _bevTreeDemo1 ?? (_bevTreeDemo1 = CreateBtInfo());
-        }
-
-        static BTInfo CreateBtInfo(){
-            var bt = LoadBehaviorTree();
-            return BTFactory.CreateBtInfo(bt);
-        }
-
-        static BTAction LoadBehaviorTree(){
-            BTFactory.BeforeCreateNode();
-            var bt = Create<BTActionSelector>();
-            bt
-                .AddChild(Create<BTActionSequence>()
-                    .AddChild(Create<CON_HasReachedTarget>(a=>a.IsInvert = true))
-                    .AddChild(Create<NOD_TurnTo>())
-                    .AddChild(Create<NOD_MoveTo>()))
-                .AddChild(Create<BTActionSequence>()
-                    .AddChild(Create<NOD_TurnTo>())
-                    .AddChild(Create<NOD_Attack>()));
-            return bt;
-        }
-
-        public static T Create<T>(Action<T> func = null) where T : BTNode, new(){
-            var val= BTFactory.CreateNode<T>();
-            if (func != null)
-            {
-                func(val);
-            }
-
-            return val;
-        }
-
-    }
-
     [Serializable,GraphProcessor.NodeMenuItem("Condition/HasReachedTarget")]
     partial class CON_HasReachedTarget : BTConditionLeaf {
         protected override bool OnEvaluate (BTWorkingData wData){
@@ -124,7 +86,7 @@ namespace AIToolkitDemo {
             else {
                 int ret = BTRunningStatus.EXECUTING;
                 Vector3 toTarget = TMathUtils.GetDirection2D(targetPos, currentPos);
-                float movingStep = 0.5f * thisData.deltaTime;
+                float movingStep = 1f * thisData.deltaTime;
                 if (movingStep > distToTarget) {
                     movingStep = distToTarget;
                     ret = BTRunningStatus.FINISHED;

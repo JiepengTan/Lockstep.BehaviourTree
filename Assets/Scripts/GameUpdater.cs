@@ -24,6 +24,7 @@ namespace AIToolkitDemo
                 {
                     return entity.UpdateBehavior(gameTime, deltaTime);
                 };
+            CreateGameEntity();
         }
         void Update()
         {
@@ -47,14 +48,20 @@ namespace AIToolkitDemo
         void OnGUI()
         {
             //speed up/slow down
-            Time.timeScale = GUILayout.HorizontalSlider(Time.timeScale, 0, 2);
+            Time.timeScale = GUILayout.HorizontalSlider(Time.timeScale, 0, 10);
             //add unity
             if (GUILayout.Button("Add Entity"))
             {
-                GameObject go = GameResourceManager.instance.LoadResource("Zombie");
-                if(go != null){
-                    AIEnityManager.instance.AddEntity(go.AddComponent<AIEntity>().Init());
-                }
+                CreateGameEntity();
+            }
+        }
+
+        private static void CreateGameEntity()
+        {
+            GameObject go = GameResourceManager.instance.LoadResource("Zombie");
+            if (go != null)
+            {
+                AIEnityManager.instance.AddEntity(go.GetComponent<AIEntity>().Init());
             }
         }
     }

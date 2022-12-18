@@ -8,7 +8,7 @@ namespace AIToolkitDemo
         //-----------------------------------------------
         public const string BBKEY_NEXTMOVINGPOSITION = "NextMovingPosition";
         //-----------------------------------------------
-        private BTAction _behaviorTree;
+        private BTNode _behaviorTree;
         private AIEntityWorkingData _behaviorWorkingData;
         private BlackBoard _blackboard;
 
@@ -32,8 +32,10 @@ namespace AIToolkitDemo
                 _isDead = value;
             }
         }
+
+        public BTGraph BTConfig;
         public AIEntity Init(){
-            var btInfo = AIEntityBehaviorTreeFactory.GetBehaviorTreeDemo1();
+            var btInfo = AIEntityBehaviorTreeFactory.GetBehaviorTreeDemo1(BTConfig);
             _behaviorTree = btInfo.RootNode;
             
             _behaviorWorkingData = new AIEntityWorkingData();

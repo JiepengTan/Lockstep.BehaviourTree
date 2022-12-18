@@ -3,7 +3,7 @@ using Lockstep.AI;
 namespace AIToolkitDemo {
     public class BTFactory {
         private static int _curIdx = 0;
-        public static BTInfo CreateBtInfo(BTAction bt){
+        public static BTInfo CreateBtInfo(BTNode bt){
             var offsets = bt.GetTotalOffsets();
             var memSize = bt.GetTotalMemSize();
             return new BTInfo() {
@@ -12,11 +12,8 @@ namespace AIToolkitDemo {
                 RootNode = bt,
             };
         }
-        public static void BeforeCreateNode(){
-            _curIdx = 0;
-        }
         public static T CreateNode<T>() where T : BTNode, new(){
-            return new T() {UniqueKey = _curIdx++};
+            return new T();
         }
     }
 }
