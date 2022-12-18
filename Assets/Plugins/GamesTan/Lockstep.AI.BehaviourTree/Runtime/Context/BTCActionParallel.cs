@@ -2,12 +2,14 @@ using System;
 using System.Runtime.InteropServices;
 
 namespace Lockstep.AI {
+    [System.Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
     public unsafe partial struct BTCActionParallel {
+        [System.Serializable]
         public struct BTCParallelStatusEval
         {
             public const int Size = 16;
-            private fixed bool status[Size] ;
+            public fixed bool status[Size] ;
             public bool this[int index] {
                 get => status[index];
                 set => status[index] = value;
@@ -19,10 +21,11 @@ namespace Lockstep.AI {
             }
         }
 
+        [System.Serializable]
         public struct BTCParallelStatusRunning {
 
             public const int Size = 16;
-            private fixed byte status[Size] ;
+            public fixed byte status[Size] ;
             public byte this[int index] {
                 get => status[index];
                 set => status[index] = value;
@@ -34,7 +37,7 @@ namespace Lockstep.AI {
             }
         }
 
-        internal BTCParallelStatusEval evaluationStatus;
-        internal BTCParallelStatusRunning StatusRunning;
+        public BTCParallelStatusEval evaluationStatus;
+        public BTCParallelStatusRunning StatusRunning;
     }
 }

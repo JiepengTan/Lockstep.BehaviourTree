@@ -13,7 +13,7 @@ namespace Lockstep.AI
         [Output, Vertical] public bool __output;
     }
 
-    public abstract unsafe partial class BTPrecondition
+    public abstract unsafe partial class BTCondition
     {
         [Input, Vertical] public bool __input;
     }

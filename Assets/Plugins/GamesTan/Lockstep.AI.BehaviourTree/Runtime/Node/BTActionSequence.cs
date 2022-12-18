@@ -5,6 +5,7 @@ namespace Lockstep.AI
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Sequence")]
     public unsafe partial class BTActionSequence : BTActionComposite
     {
+        public BTCActionSequence __content;
         protected override int MemSize => sizeof(BTCActionSequence);
         //-------------------------------------------------------
         private bool _continueIfErrorOccors;
@@ -24,15 +25,15 @@ namespace Lockstep.AI
         {
             var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
             int checkedNodeIndex = -1;
-            if (IsIndexValid(thisContext->currentSelectedIndex)) {
-                checkedNodeIndex = thisContext->currentSelectedIndex;
+            if (IsIndexValid(thisContext->CurrentSelectedIndex)) {
+                checkedNodeIndex = thisContext->CurrentSelectedIndex;
             } else {
                 checkedNodeIndex = 0;
             }
             if (IsIndexValid(checkedNodeIndex)) {
-                BTAction node = GetChild<BTAction>(checkedNodeIndex);
+                var node = GetChild(checkedNodeIndex);
                 if (node.Evaluate(wData)) {
-                    thisContext->currentSelectedIndex = checkedNodeIndex;
+                    thisContext->CurrentSelectedIndex = checkedNodeIndex;
                     return true;
                 }
             }
@@ -42,18 +43,18 @@ namespace Lockstep.AI
         {
             var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
             int runningStatus = BTRunningStatus.FINISHED;
-            BTAction node = GetChild<BTAction>(thisContext->currentSelectedIndex);
+            var node = GetChild(thisContext->CurrentSelectedIndex);
             runningStatus = node.Update(wData);
             if (_continueIfErrorOccors == false && BTRunningStatus.IsError(runningStatus)) {
-                thisContext->currentSelectedIndex = -1;
+                thisContext->CurrentSelectedIndex = -1;
                 return runningStatus;
             }
             if (BTRunningStatus.IsFinished(runningStatus)) {
-                thisContext->currentSelectedIndex++;
-                if (IsIndexValid(thisContext->currentSelectedIndex)) {
+                thisContext->CurrentSelectedIndex++;
+                if (IsIndexValid(thisContext->CurrentSelectedIndex)) {
                     runningStatus = BTRunningStatus.EXECUTING;
                 } else {
-                    thisContext->currentSelectedIndex = -1;
+                    thisContext->CurrentSelectedIndex = -1;
                 }
             }
             return runningStatus;
@@ -61,11 +62,11 @@ namespace Lockstep.AI
         protected override void OnTransition(BTWorkingData wData)
         {
             var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
-            BTAction node = GetChild<BTAction>(thisContext->currentSelectedIndex);
+            var node = GetChild(thisContext->CurrentSelectedIndex);
             if (node != null) {
                 node.Transition(wData);
             }
-            thisContext->currentSelectedIndex = -1;
+            thisContext->CurrentSelectedIndex = -1;
         }
     }
 }

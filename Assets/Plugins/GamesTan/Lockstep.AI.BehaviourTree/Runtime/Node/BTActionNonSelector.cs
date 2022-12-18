@@ -3,19 +3,17 @@ using System.Collections.Generic;
 
 namespace Lockstep.AI
 {
-    public unsafe partial class BTActionNonPrioritizedSelector : BTActionPrioritizedSelector
+    [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Selector")]
+    public unsafe partial class BTActionNonSelector : BTActionSelector
     {
+        public BTCActionNonPrioritizedSelector __content;
         protected override int MemSize => sizeof(BTCActionNonPrioritizedSelector);
-        public BTActionNonPrioritizedSelector()
-            : base()
-        {
-        }
         protected override bool OnEvaluate(/*in*/BTWorkingData wData)
         {
             var thisContext = (BTCActionNonPrioritizedSelector*) wData.GetContext(_uniqueKey);
             //check last node first
-            if (IsIndexValid(thisContext->currentSelectedIndex)) {
-                BTAction node = GetChild<BTAction>(thisContext->currentSelectedIndex);
+            if (IsIndexValid(thisContext->CurrentSelectedIndex)) {
+                var node = GetChild(thisContext->CurrentSelectedIndex);
                 if (node.Evaluate(wData)) {
                     return true;
                 }

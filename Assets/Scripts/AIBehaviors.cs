@@ -27,11 +27,10 @@ namespace AIToolkitDemo {
 
         static BTAction LoadBehaviorTree(){
             BTFactory.BeforeCreateNode();
-            var bt = Create<BTActionPrioritizedSelector>();
+            var bt = Create<BTActionSelector>();
             bt
                 .AddChild(Create<BTActionSequence>()
-                    .SetPrecondition((BTPreconditionNot) Create<BTPreconditionNot>()
-                        .AddChild(Create<CON_HasReachedTarget>()))
+                    .AddChild(Create<BTConditionComposite>().AddChild(Create<CON_HasReachedTarget>(a=>a.IsInvert = true)))
                     .AddChild(Create<NOD_TurnTo>())
                     .AddChild(Create<NOD_MoveTo>()))
                 .AddChild(Create<BTActionSequence>()
@@ -40,15 +39,21 @@ namespace AIToolkitDemo {
             return bt;
         }
 
-        public static T Create<T>() where T : BTNode, new(){
-            return BTFactory.CreateNode<T>();
+        public static T Create<T>(Action<T> func = null) where T : BTNode, new(){
+            var val= BTFactory.CreateNode<T>();
+            if (func != null)
+            {
+                func(val);
+            }
+
+            return val;
         }
 
     }
 
     [Serializable,GraphProcessor.NodeMenuItem("Condition/HasReachedTarget")]
-    partial class CON_HasReachedTarget : BtPreconditionLeaf {
-        public override bool IsTrue(BTWorkingData wData){
+    partial class CON_HasReachedTarget : BTConditionLeaf {
+        protected override bool OnEvaluate (BTWorkingData wData){
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             Vector3 targetPos =
                 TMathUtils.Vector3ZeroY(
@@ -59,7 +64,9 @@ namespace AIToolkitDemo {
     }
 
     [Serializable,GraphProcessor.NodeMenuItem("Action/Attack")]
-    unsafe partial class NOD_Attack : BTActionLeaf {
+    unsafe partial class NOD_Attack : BTActionLeaf
+    {
+        public UserContextData __content;
         private const float DEFAULT_WAITING_TIME = 5f;
         protected override int MemSize => sizeof(UserContextData) + base.MemSize;
 

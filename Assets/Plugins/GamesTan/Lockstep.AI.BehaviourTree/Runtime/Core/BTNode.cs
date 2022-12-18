@@ -6,6 +6,14 @@ using UnityEngine;
 namespace Lockstep.AI
 {
     public unsafe partial class BTNode {
+#if DEBUG
+        protected string _name;
+        public string name {
+            get { return _name; }
+            set { _name = value; }
+        }
+#endif
+        
         protected virtual int MemSize => 0;
         public int UniqueKey {
             set => _uniqueKey = value;
@@ -13,16 +21,41 @@ namespace Lockstep.AI
         protected int _uniqueKey;
         
         private const int defaultChildCount = -1; 
-        protected BTPrecondition _precondition;
-        private List<BTNode> _children;
-        private int _maxChildCount;
+        protected List<BTNode> _children;
+        protected int _maxChildCount;
         public BTNode(int maxChildCount = -1)
         {
-            _children = new List<BTNode>();
+            if(maxChildCount != 0) _children = new List<BTNode>();
             if (maxChildCount >= 0) {
                 _children.Capacity = maxChildCount;
             }
             _maxChildCount = maxChildCount;
+        }
+        public int Update(BTWorkingData wData){
+            return OnUpdate(wData);
+        }
+
+        public void Transition(BTWorkingData wData){
+            OnTransition(wData);
+        }
+
+
+        public override int GetHashCode(){
+            return _uniqueKey;
+        }
+
+
+        protected virtual int OnUpdate(BTWorkingData wData){
+            return BTRunningStatus.FINISHED;
+        }
+
+        protected virtual void OnTransition(BTWorkingData wData){ }
+        
+        public virtual bool Evaluate( /*in*/ BTWorkingData wData){
+            return OnEvaluate(wData);
+        }        
+        protected virtual bool OnEvaluate( /*in*/ BTWorkingData wData){
+            return true;
         }
         public BTNode()
             : this(defaultChildCount)
@@ -49,12 +82,13 @@ namespace Lockstep.AI
         {
             return index >= 0 && index < _children.Count;
         }
-        public T GetChild<T>(int index) where T : BTNode 
+
+        public BTNode GetChild(int index) 
         {
             if (index < 0 || index >= _children.Count) {
                 return null;
             }
-            return (T)_children[index];
+            return _children[index];
         }
 
         public int GetTotalNodeCount(){
@@ -88,7 +122,6 @@ namespace Lockstep.AI
 
         protected virtual void Flatten(List<BTNode> nodes){
             nodes.Add(this);
-            _precondition?.Flatten(nodes);
             foreach (var child in _children) {
                 child.Flatten(nodes);
             }

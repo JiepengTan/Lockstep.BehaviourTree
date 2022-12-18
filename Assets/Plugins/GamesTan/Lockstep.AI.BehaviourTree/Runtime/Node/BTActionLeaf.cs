@@ -14,26 +14,26 @@ namespace Lockstep.AI {
         protected sealed override int OnUpdate(BTWorkingData wData){
             int runningState = BTRunningStatus.FINISHED;
             var thisContext = (BTCActionLeaf*)wData.GetContext(_uniqueKey);
-            if (thisContext->status == ACTION_READY) {
+            if (thisContext->Status == ACTION_READY) {
                 OnEnter(wData);
-                thisContext->needExit = true;
-                thisContext->status = ACTION_RUNNING;
+                thisContext->NeedExit = true;
+                thisContext->Status = ACTION_RUNNING;
             }
 
-            if (thisContext->status == ACTION_RUNNING) {
+            if (thisContext->Status == ACTION_RUNNING) {
                 runningState = OnExecute(wData);
                 if (BTRunningStatus.IsFinished(runningState)) {
-                    thisContext->status = ACTION_FINISHED;
+                    thisContext->Status = ACTION_FINISHED;
                 }
             }
 
-            if (thisContext->status == ACTION_FINISHED) {
-                if (thisContext->needExit) {
+            if (thisContext->Status == ACTION_FINISHED) {
+                if (thisContext->NeedExit) {
                     OnExit(wData, runningState);
                 }
 
-                thisContext->status = ACTION_READY;
-                thisContext->needExit = false;
+                thisContext->Status = ACTION_READY;
+                thisContext->NeedExit = false;
             }
 
             return runningState;
@@ -41,12 +41,12 @@ namespace Lockstep.AI {
 
         protected sealed override void OnTransition(BTWorkingData wData){
             var thisContext = (BTCActionLeaf*)wData.GetContext(_uniqueKey);
-            if (thisContext->needExit) {
+            if (thisContext->NeedExit) {
                 OnExit(wData, BTRunningStatus.TRANSITION);
             }
 
-            thisContext->status = ACTION_READY;
-            thisContext->needExit = false;
+            thisContext->Status = ACTION_READY;
+            thisContext->NeedExit = false;
         }
 
         protected void* GetUserContextData(BTWorkingData wData){

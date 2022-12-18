@@ -17,9 +17,6 @@ MonoBehaviour:
   - rid: 239897359165161474
   - rid: 239897359165161475
   - rid: 239897359165161476
-  - rid: 239897359165161477
-  - rid: 239897359165161478
-  - rid: 239897359165161479
   - rid: 239897359165161480
   - rid: 239897359165161481
   edges:
@@ -72,7 +69,7 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 46, y: 110, z: 0}
+  position: {x: 348, y: 216, z: 0}
   scale: {x: 1, y: 1, z: 1}
   references:
     version: 2
@@ -111,6 +108,9 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         __output: 0
+        __content:
+          currentSelectedIndex: 0
+          lastSelectedIndex: 0
     - rid: 239897359165161476
       type: {class: BTActionSequence, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
       data:
@@ -119,8 +119,8 @@ MonoBehaviour:
         computeOrder: 2
         position:
           serializedVersion: 2
-          x: 847
-          y: 357
+          x: 869
+          y: 330
           width: 151
           height: 54
         expanded: 0
@@ -128,54 +128,6 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         __output: 0
-    - rid: 239897359165161477
-      type: {class: BtPreconditionTrue, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: 781dfb8c-4bf3-4891-afcc-94ce1dd79325
-        computeOrder: 3
-        position:
-          serializedVersion: 2
-          x: 1243
-          y: 475
-          width: 152
-          height: 48
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-    - rid: 239897359165161478
-      type: {class: BtPreconditionFalse, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: a6a5e6a4-e87d-45a0-a393-74d7a5dda14b
-        computeOrder: 4
-        position:
-          serializedVersion: 2
-          x: 1341
-          y: 547
-          width: 156
-          height: 48
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-    - rid: 239897359165161479
-      type: {class: BTPreconditionNot, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: 356b2dcc-b930-46b2-87e2-5dc23a72545e
-        computeOrder: 5
-        position:
-          serializedVersion: 2
-          x: 1141
-          y: 547
-          width: 150
-          height: 48
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
     - rid: 239897359165161480
       type: {class: CON_HasReachedTarget, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -184,7 +136,7 @@ MonoBehaviour:
         computeOrder: 6
         position:
           serializedVersion: 2
-          x: 323
+          x: 344
           y: 499
           width: 184
           height: 48

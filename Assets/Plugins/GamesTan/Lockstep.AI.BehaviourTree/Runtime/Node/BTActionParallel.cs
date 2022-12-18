@@ -7,12 +7,13 @@ namespace Lockstep.AI {
     [Serializable, NodeMenuItem("BTComposite/Parallel")]
     public unsafe partial class BTActionParallel : BTActionComposite
     {
+        public BTCActionParallel __content;
+        protected override int MemSize => sizeof(BTCActionParallel);
         public enum ECHILDREN_RELATIONSHIP {
             AND,
             OR
         }
 
-        protected override int MemSize => sizeof(BTCActionParallel);
 
         //-------------------------------------------------------
         private ECHILDREN_RELATIONSHIP _evaluationRelationship;
@@ -42,7 +43,7 @@ namespace Lockstep.AI {
             thisContext->evaluationStatus.Init(false);
             bool finalResult = false;
             for (int i = 0; i < GetChildCount(); ++i) {
-                BTAction node = GetChild<BTAction>(i);
+                var node = GetChild(i);
                 bool ret = node.Evaluate(wData);
                 //early break
                 if (_evaluationRelationship == ECHILDREN_RELATIONSHIP.AND && ret == false) {
@@ -76,7 +77,7 @@ namespace Lockstep.AI {
                     continue;
                 }
 
-                BTAction node = GetChild<BTAction>(i);
+                var node = GetChild(i);
                 int runningStatus = node.Update(wData);
                 if (BTRunningStatus.IsFinished(runningStatus)) {
                     hasFinished = true;
@@ -100,7 +101,7 @@ namespace Lockstep.AI {
         protected override void OnTransition(BTWorkingData wData){
             var thisContext = (BTCActionParallel*) wData.GetContext(_uniqueKey);
             for (int i = 0; i < GetChildCount(); ++i) {
-                BTAction node = GetChild<BTAction>(i);
+                var node = GetChild(i);
                 node.Transition(wData);
             }
 
