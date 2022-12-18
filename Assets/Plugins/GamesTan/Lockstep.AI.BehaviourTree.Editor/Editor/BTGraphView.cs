@@ -40,10 +40,14 @@ namespace Lockstep.AI
 
 			foreach (var nodeMenuItem in NodeProvider.GetNodeMenuEntries())
 			{
+				var isBTNode = typeof(BTNode).IsAssignableFrom(nodeMenuItem.type);
+				if (!isBTNode) continue;
+				
 				var mousePos =
 					(evt.currentTarget as VisualElement).ChangeCoordinatesTo(contentViewContainer,
 						evt.localMousePosition);
 				Vector2 nodePosition = mousePos;
+
 				evt.menu.AppendAction("Create/" + nodeMenuItem.path,
 					(e) => CreateNodeOfType(nodeMenuItem.type, nodePosition),
 					DropdownMenuAction.AlwaysEnabled

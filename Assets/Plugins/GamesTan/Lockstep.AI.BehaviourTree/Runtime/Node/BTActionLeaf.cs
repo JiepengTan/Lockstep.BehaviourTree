@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Lockstep.AI {
-    public abstract unsafe class BTActionLeaf : BTAction {
+    public abstract unsafe partial class BTActionLeaf : BTAction {
         private const int ACTION_READY = 0;
         private const int ACTION_RUNNING = 1;
         private const int ACTION_FINISHED = 2;

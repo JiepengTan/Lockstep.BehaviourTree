@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Lockstep.AI
 {
-    public unsafe partial class BTActionSequence : BTAction
+    [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Sequence")]
+    public unsafe partial class BTActionSequence : BTActionComposite
     {
         protected override int MemSize => sizeof(BTCActionSequence);
         //-------------------------------------------------------

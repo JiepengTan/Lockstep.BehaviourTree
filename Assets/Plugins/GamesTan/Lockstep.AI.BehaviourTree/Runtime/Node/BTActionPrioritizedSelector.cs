@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 
 namespace Lockstep.AI {
-    public unsafe partial class BTActionPrioritizedSelector : BTAction {   
+    
+    [Serializable, GraphProcessor.NodeMenuItem("BTComposite/PrioritizedSelector")]
+    public unsafe partial class BTActionPrioritizedSelector : BTActionComposite {   
   
         protected override int MemSize => sizeof(BTCActionPrioritizedSelector);
         public BTActionPrioritizedSelector()

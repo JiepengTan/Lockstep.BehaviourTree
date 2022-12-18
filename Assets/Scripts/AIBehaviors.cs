@@ -13,7 +13,7 @@ namespace AIToolkitDemo {
         public float deltaTime { get; set; }
     }
 
-    public class AIEntityBehaviorTreeFactory {
+    public  class AIEntityBehaviorTreeFactory {
         private static BTInfo _bevTreeDemo1;
 
         public static BTInfo GetBehaviorTreeDemo1(){
@@ -46,7 +46,8 @@ namespace AIToolkitDemo {
 
     }
 
-    class CON_HasReachedTarget : BtPreconditionLeaf {
+    [Serializable,GraphProcessor.NodeMenuItem("Condition/HasReachedTarget")]
+    partial class CON_HasReachedTarget : BtPreconditionLeaf {
         public override bool IsTrue(BTWorkingData wData){
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             Vector3 targetPos =
@@ -57,7 +58,8 @@ namespace AIToolkitDemo {
         }
     }
 
-    unsafe class NOD_Attack : BTActionLeaf {
+    [Serializable,GraphProcessor.NodeMenuItem("Action/Attack")]
+    unsafe partial class NOD_Attack : BTActionLeaf {
         private const float DEFAULT_WAITING_TIME = 5f;
         protected override int MemSize => sizeof(UserContextData) + base.MemSize;
 
@@ -89,6 +91,7 @@ namespace AIToolkitDemo {
         }
     }
 
+    [Serializable,GraphProcessor.NodeMenuItem("Action/MoveTo")]
     class NOD_MoveTo : BTActionLeaf {
         protected override void OnEnter(BTWorkingData wData){
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
@@ -126,7 +129,8 @@ namespace AIToolkitDemo {
         }
     }
 
-    class NOD_TurnTo : BTActionLeaf {
+    [Serializable,GraphProcessor.NodeMenuItem("Action/TurnTo")]
+    partial class NOD_TurnTo : BTActionLeaf {
         protected override void OnEnter(BTWorkingData wData){
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             if (thisData.entity.IsDead) {

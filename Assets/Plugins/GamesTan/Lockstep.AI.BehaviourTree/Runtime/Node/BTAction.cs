@@ -4,7 +4,9 @@ using System.Collections.Generic;
 namespace Lockstep.AI {
     public class BTActionContext { }
 
-    public abstract unsafe class BTAction : BTNode {
+
+
+    public abstract unsafe partial class BTAction : BTNode {
 #if DEBUG
         protected string _name;
         public string name {

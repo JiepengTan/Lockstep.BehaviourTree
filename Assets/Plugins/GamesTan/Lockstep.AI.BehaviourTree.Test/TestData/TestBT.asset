@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b479034dc8b5495d8270db7451704859, type: 3}
+  m_Name: TestBT
+  m_EditorClassIdentifier: 
+  serializedNodes: []
+  nodes:
+  - rid: 239897359165161474
+  - rid: 239897359165161475
+  - rid: 239897359165161476
+  - rid: 239897359165161477
+  - rid: 239897359165161478
+  - rid: 239897359165161479
+  - rid: 239897359165161480
+  - rid: 239897359165161481
+  edges:
+  - GUID: 2237bb17-6313-40d5-b1c3-85dff4b8703e
+    owner: {fileID: 11400000}
+    inputNodeGUID: 1237585b-c2b0-424a-8114-a09f9545cde3
+    outputNodeGUID: a7944eb4-9e10-4b76-956c-d8192d2365ee
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: d8cea7d4-bf2c-46c2-a567-f15c12941f9b
+    owner: {fileID: 11400000}
+    inputNodeGUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
+    outputNodeGUID: a7944eb4-9e10-4b76-956c-d8192d2365ee
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 71ae24c7-2ea2-43ee-afa0-59aecc744e7e
+    owner: {fileID: 11400000}
+    inputNodeGUID: f502122a-3a2b-4e65-8bbf-2382950d34ce
+    outputNodeGUID: 1237585b-c2b0-424a-8114-a09f9545cde3
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 26df2941-9c9f-4e41-abf3-e76a4c95eec7
+    owner: {fileID: 11400000}
+    inputNodeGUID: bf3e6f69-b9f8-457d-ae72-c7647c4eadbe
+    outputNodeGUID: 1237585b-c2b0-424a-8114-a09f9545cde3
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  groups: []
+  stackNodes: []
+  pinnedElements:
+  - position:
+      serializedVersion: 2
+      x: 0
+      y: 317
+      width: 250
+      height: 396
+    opened: 1
+    editorType:
+      serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  exposedParameters: []
+  serializedParameterList: []
+  stickyNotes: []
+  nodeInspectorReference: {fileID: 0}
+  position: {x: 46, y: 110, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 239897359165161474
+      type: {class: BTActionParallel, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: a7944eb4-9e10-4b76-956c-d8192d2365ee
+        computeOrder: 0
+        position:
+          serializedVersion: 2
+          x: 668
+          y: 186
+          width: 135
+          height: 54
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0
+    - rid: 239897359165161475
+      type: {class: BTActionPrioritizedSelector, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: 1237585b-c2b0-424a-8114-a09f9545cde3
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 459
+          y: 330
+          width: 199
+          height: 54
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0
+    - rid: 239897359165161476
+      type: {class: BTActionSequence, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
+        computeOrder: 2
+        position:
+          serializedVersion: 2
+          x: 847
+          y: 357
+          width: 151
+          height: 54
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0
+    - rid: 239897359165161477
+      type: {class: BtPreconditionTrue, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: 781dfb8c-4bf3-4891-afcc-94ce1dd79325
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 1243
+          y: 475
+          width: 152
+          height: 48
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+    - rid: 239897359165161478
+      type: {class: BtPreconditionFalse, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: a6a5e6a4-e87d-45a0-a393-74d7a5dda14b
+        computeOrder: 4
+        position:
+          serializedVersion: 2
+          x: 1341
+          y: 547
+          width: 156
+          height: 48
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+    - rid: 239897359165161479
+      type: {class: BTPreconditionNot, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
+      data:
+        nodeCustomName: 
+        GUID: 356b2dcc-b930-46b2-87e2-5dc23a72545e
+        computeOrder: 5
+        position:
+          serializedVersion: 2
+          x: 1141
+          y: 547
+          width: 150
+          height: 48
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+    - rid: 239897359165161480
+      type: {class: CON_HasReachedTarget, ns: AIToolkitDemo, asm: Assembly-CSharp}
+      data:
+        nodeCustomName: 
+        GUID: f502122a-3a2b-4e65-8bbf-2382950d34ce
+        computeOrder: 6
+        position:
+          serializedVersion: 2
+          x: 323
+          y: 499
+          width: 184
+          height: 48
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+    - rid: 239897359165161481
+      type: {class: NOD_MoveTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
+      data:
+        nodeCustomName: 
+        GUID: bf3e6f69-b9f8-457d-ae72-c7647c4eadbe
+        computeOrder: 7
+        position:
+          serializedVersion: 2
+          x: 597.5
+          y: 499
+          width: 121
+          height: 48
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0

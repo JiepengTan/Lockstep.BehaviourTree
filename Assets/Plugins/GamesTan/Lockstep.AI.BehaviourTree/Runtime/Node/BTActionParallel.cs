@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using GraphProcessor;
 
 namespace Lockstep.AI {
-    public unsafe partial class BTActionParallel : BTAction {
+    
+    [Serializable, NodeMenuItem("BTComposite/Parallel")]
+    public unsafe partial class BTActionParallel : BTActionComposite
+    {
         public enum ECHILDREN_RELATIONSHIP {
             AND,
             OR

@@ -36,12 +36,14 @@ namespace Lockstep.AI {
 
     //--------------------------------------------------------------
     //basic precondition
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/True")]
     public class BtPreconditionTrue : BtPreconditionLeaf {
         public override bool IsTrue( /*in*/ BTWorkingData wData){
             return true;
         }
     }
 
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/False")]
     public class BtPreconditionFalse : BtPreconditionLeaf {
         public override bool IsTrue( /*in*/ BTWorkingData wData){
             return false;
@@ -49,7 +51,8 @@ namespace Lockstep.AI {
     }
 
     //---------------------------------------------------------------
-    //unary precondition
+    
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/Not")]
     public class BTPreconditionNot : BtPreconditionUnary {
         public BTPreconditionNot(){ }
 
@@ -65,6 +68,7 @@ namespace Lockstep.AI {
 
     //---------------------------------------------------------------
     //binary precondition
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/And")]
     public class BtPreconditionAnd : BtPreconditionBinary {
         public BtPreconditionAnd(){ }
         public BtPreconditionAnd(BTPrecondition lhs, BTPrecondition rhs, int uniqueKey)
@@ -78,6 +82,7 @@ namespace Lockstep.AI {
         }
     }
 
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/Or")]
     public class BtPreconditionOr : BtPreconditionBinary {
         public BtPreconditionOr(){ }
         public BtPreconditionOr(BTPrecondition lhs, BTPrecondition rhs, int uniqueKey)
@@ -91,6 +96,7 @@ namespace Lockstep.AI {
         }
     }
 
+    [Serializable,GraphProcessor.NodeMenuItem("Precondition/Xor")]
     public class BtPreconditionXor : BtPreconditionBinary {
         public BtPreconditionXor(){ }
         public BtPreconditionXor(BTPrecondition lhs, BTPrecondition rhs, int uniqueKey)

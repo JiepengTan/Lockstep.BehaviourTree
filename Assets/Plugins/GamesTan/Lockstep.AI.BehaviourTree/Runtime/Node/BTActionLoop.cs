@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace Lockstep.AI
 {
-    public unsafe partial class BTActionLoop : BTAction
+    //[Serializable, GraphProcessor.NodeMenuItem("BTComposite/Loop")]
+    public unsafe partial class BTActionLoop : BTActionComposite
     {
         public const int INFINITY = -1;
         [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
