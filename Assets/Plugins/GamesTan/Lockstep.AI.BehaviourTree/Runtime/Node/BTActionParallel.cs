@@ -106,7 +106,7 @@ namespace Lockstep.AI {
             }
 
             //clear running status
-            thisContext->StatusRunning.Init((byte) (int) BTRunningStatus.EXECUTING);
+            thisContext->StatusRunning.Init( BTRunningStatus.EXECUTING);
         }
     }
 }

@@ -9,8 +9,6 @@ namespace AIToolkitDemo {
         public AIEntity entity { get; set; }
         public Transform entityTF { get; set; }
         public Animator entityAnimator { get; set; }
-        public float gameTime { get; set; }
-        public float deltaTime { get; set; }
     }
 
     [Serializable,GraphProcessor.NodeMenuItem("Condition/HasReachedTarget")]
@@ -19,7 +17,7 @@ namespace AIToolkitDemo {
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             Vector3 targetPos =
                 TMathUtils.Vector3ZeroY(
-                    thisData.entity.GetBBValue<Vector3>(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
+                    thisData.GetValue(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
             Vector3 currentPos = TMathUtils.Vector3ZeroY(thisData.entityTF.position);
             return TMathUtils.GetDistance2D(targetPos, currentPos) < 1f;
         }
@@ -76,7 +74,7 @@ namespace AIToolkitDemo {
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             Vector3 targetPos =
                 TMathUtils.Vector3ZeroY(
-                    thisData.entity.GetBBValue<Vector3>(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
+                    thisData.GetValue(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
             Vector3 currentPos = TMathUtils.Vector3ZeroY(thisData.entityTF.position);
             float distToTarget = TMathUtils.GetDistance2D(targetPos, currentPos);
             if (distToTarget < 1f) {
@@ -114,7 +112,7 @@ namespace AIToolkitDemo {
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
             Vector3 targetPos =
                 TMathUtils.Vector3ZeroY(
-                    thisData.entity.GetBBValue<Vector3>(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
+                    thisData.GetValue(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
             Vector3 currentPos = TMathUtils.Vector3ZeroY(thisData.entityTF.position);
             if (TMathUtils.IsZero((targetPos - currentPos).sqrMagnitude)) {
                 return BTRunningStatus.FINISHED;

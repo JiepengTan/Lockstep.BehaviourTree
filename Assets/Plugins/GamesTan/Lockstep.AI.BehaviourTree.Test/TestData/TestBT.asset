@@ -85,19 +85,20 @@ MonoBehaviour:
   - position:
       serializedVersion: 2
       x: 0
-      y: 317
+      y: 176
       width: 250
       height: 396
     opened: 1
     editorType:
       serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  exposedParameters: []
+  exposedParameters:
+  - rid: 239897388287787008
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 299, y: 151, z: 0}
-  scale: {x: 1.15, y: 1.15, z: 1}
+  position: {x: 270, y: 99, z: 0}
+  scale: {x: 0.65751624, y: 0.65751624, z: 1}
   references:
     version: 2
     RefIds:
@@ -201,8 +202,8 @@ MonoBehaviour:
         computeOrder: 5
         position:
           serializedVersion: 2
-          x: 302
-          y: 377.99997
+          x: 312
+          y: 387
           width: 116
           height: 48
         expanded: 0
@@ -241,3 +242,26 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         __input: 0
+    - rid: 239897388287787008
+      type: {class: FloatParameter, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        guid: ab3b0b7f-727f-4a6a-9085-7cfc198d46ea
+        name: New Float
+        type: 
+        serializedValue:
+          serializedType: 
+          serializedName: 
+          serializedValue: 
+        input: 1
+        settings:
+          rid: 239897388287787009
+        val: 0
+    - rid: 239897388287787009
+      type: {class: FloatParameter/FloatSettings, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        isHidden: 0
+        expanded: 0
+        guid: ab3b0b7f-727f-4a6a-9085-7cfc198d46ea
+        mode: 0
+        min: 0
+        max: 1

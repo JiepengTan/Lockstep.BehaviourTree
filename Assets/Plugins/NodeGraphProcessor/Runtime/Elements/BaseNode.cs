@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using Unity.Jobs;
 using System.Linq;
+using Debug = UnityEngine.Debug;
 
 namespace GraphProcessor
 {
@@ -17,27 +19,34 @@ namespace GraphProcessor
 		public static bool __IsNeedDebugRecord;
 		public static Dictionary<string,bool> __DebugRecordNodesEvaluateState = new Dictionary<string,bool>();
 		public static Dictionary<string,int> __DebugRecordNodesUpdateState = new Dictionary<string,int>();
+		
+		[Conditional("UNITY_EDITOR")]
 		public static void __DebugStartRecordInfo()
 		{
 			__IsNeedDebugRecord = true;
 			__DebugRecordNodesEvaluateState.Clear();
 			__DebugRecordNodesUpdateState.Clear();
 		}
+		
+		[Conditional("UNITY_EDITOR")]
 		public static void __DebugStopRecordInfo()
 		{
 			__IsNeedDebugRecord = false;
 		}
 
+		[Conditional("UNITY_EDITOR")]
 		public void __DebugSetEvaluateState(bool isOn)
 		{
 			if(!__IsNeedDebugRecord) return;
 			__DebugRecordNodesEvaluateState[GUID] = isOn;
 		}
+		[Conditional("UNITY_EDITOR")]
 		public void __DebugSetUpdateState(int val)
 		{
 			if(!__IsNeedDebugRecord) return;
 			__DebugRecordNodesUpdateState[GUID] = val;
 		}
+		
 		[SerializeField]
 		internal string nodeCustomName = null; // The name of the node in case it was renamed by a user
 
