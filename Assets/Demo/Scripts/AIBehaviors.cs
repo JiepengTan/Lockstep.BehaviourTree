@@ -13,13 +13,12 @@ namespace AIToolkitDemo {
 
     [Serializable,GraphProcessor.NodeMenuItem("Condition/HasReachedTarget")]
     partial class CON_HasReachedTarget : BTConditionLeaf {
+        public float Distance = 1.5f;
         protected override bool OnEvaluate (BTWorkingData wData){
             AIEntityWorkingData thisData = wData.As<AIEntityWorkingData>();
-            Vector3 targetPos =
-                TMathUtils.Vector3ZeroY(
-                    thisData.GetValue(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
+            Vector3 targetPos = TMathUtils.Vector3ZeroY(thisData.GetValue(AIEntity.BBKEY_NEXTMOVINGPOSITION, Vector3.zero));
             Vector3 currentPos = TMathUtils.Vector3ZeroY(thisData.EntityTF.position);
-            return TMathUtils.GetDistance2D(targetPos, currentPos) < 1f;
+            return TMathUtils.GetDistance2D(targetPos, currentPos) < Distance;
         }
     }
 
@@ -78,7 +77,7 @@ namespace AIToolkitDemo {
             Vector3 currentPos = TMathUtils.Vector3ZeroY(thisData.EntityTF.position);
             float distToTarget = TMathUtils.GetDistance2D(targetPos, currentPos);
             if (distToTarget < StopDistance) {
-                thisData.EntityTF.position = targetPos;
+                //thisData.EntityTF.position = targetPos;
                 return BTRunningStatus.FINISHED;
             }
             else {

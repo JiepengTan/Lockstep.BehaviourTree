@@ -47,7 +47,6 @@ namespace AIToolkitDemo
             {
                 return;
             }
-
             _lastTriggeredAnimation = name;
             _anim.SetTrigger(name);
         }

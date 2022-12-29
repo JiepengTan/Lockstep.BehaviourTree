@@ -97,8 +97,8 @@ MonoBehaviour:
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 599, y: 123, z: 0}
-  scale: {x: 0.43232757, y: 0.43232757, z: 1}
+  position: {x: 254, y: 249, z: 0}
+  scale: {x: 0.32690176, y: 0.32690176, z: 1}
   references:
     version: 2
     RefIds:
@@ -185,15 +185,16 @@ MonoBehaviour:
         computeOrder: 3
         position:
           serializedVersion: 2
-          x: -108
-          y: 261
+          x: -63.150112
+          y: 240.99998
           width: 184
-          height: 66
+          height: 86
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
         IsInvert: 1
+        Distance: 1
     - rid: 239897614088667221
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -202,8 +203,8 @@ MonoBehaviour:
         computeOrder: 4
         position:
           serializedVersion: 2
-          x: 655.42
-          y: 258.99997
+          x: 651.5501
+          y: 241.00005
           width: 180
           height: 68
         expanded: 0
@@ -235,16 +236,16 @@ MonoBehaviour:
         computeOrder: 6
         position:
           serializedVersion: 2
-          x: 411.20007
-          y: 255.00002
-          width: 188
+          x: 411.00003
+          y: 238.99997
+          width: 178
           height: 88
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
         MoveSpeed: 1
-        StopDistance: 1.5
+        StopDistance: 1
     - rid: 239897614088667225
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -253,8 +254,8 @@ MonoBehaviour:
         computeOrder: 7
         position:
           serializedVersion: 2
-          x: 145.99997
-          y: 261
+          x: 174.99997
+          y: 241.00002
           width: 180
           height: 68
         expanded: 0
