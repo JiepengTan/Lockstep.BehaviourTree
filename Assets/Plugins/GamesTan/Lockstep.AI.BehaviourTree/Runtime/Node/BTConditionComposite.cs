@@ -3,7 +3,7 @@
 namespace Lockstep.AI
 {
     [Serializable,GraphProcessor.NodeMenuItem("Precondition/Composite")]
-    public class BTConditionComposite : BTCondition
+    public partial class BTConditionComposite : BTCondition
     {
         public bool IsAllTrue;
         public BTConditionComposite():base(-1){ }

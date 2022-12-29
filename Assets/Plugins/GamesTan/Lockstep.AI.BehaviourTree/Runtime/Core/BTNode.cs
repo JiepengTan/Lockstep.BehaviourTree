@@ -12,7 +12,7 @@ namespace Lockstep.AI
 
         protected int _uniqueKey;
 
-        private const int defaultChildCount = -1;
+        private const int DefaultChildCount = -1;
         protected List<BTNode> _children;
         protected int _maxChildCount;
 
@@ -68,7 +68,7 @@ namespace Lockstep.AI
         }
 
         public BTNode()
-            : this(defaultChildCount)
+            : this(DefaultChildCount)
         {
         }
 
@@ -82,7 +82,7 @@ namespace Lockstep.AI
         {
             if (_maxChildCount >= 0 && _children.Count >= _maxChildCount)
             {
-                TLogger.WARNING("**BT** exceeding child count");
+                Debug.LogError("**BT** exceeding child count");
                 return this;
             }
 

@@ -3,10 +3,16 @@ using System.Runtime.InteropServices;
 
 namespace Lockstep.AI
 {
+    [System.Serializable]
+    [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
+    public unsafe partial struct BTCActionLoop 
+    {
+        public int CurrentIndex;
+    }
+    
     //[Serializable, GraphProcessor.NodeMenuItem("BTComposite/Loop")]
     public unsafe partial class BTActionLoop : BTActionComposite
     {
-        public BTCActionLoop __content;
         public const int INFINITY = -1;
         //--------------------------------------------------------
         private int _loopCount;
@@ -21,6 +27,7 @@ namespace Lockstep.AI
             _loopCount = count;
             return this;
         }
+        
         //-------------------------------------------------------
         protected override bool OnEvaluate(/*in*/BTWorkingData wData)
         {

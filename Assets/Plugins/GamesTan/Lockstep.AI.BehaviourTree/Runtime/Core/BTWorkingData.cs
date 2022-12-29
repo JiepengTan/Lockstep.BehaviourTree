@@ -15,7 +15,7 @@ namespace Lockstep.AI {
         private byte* _pDatas = null;
         private int[] _dataOffset;
         private int _dataLen = 0;
-        public float deltaTime;
+        public float DeltaTime;
         
         public unsafe void* GetContext(int idx){
             var offset = _dataOffset[idx];

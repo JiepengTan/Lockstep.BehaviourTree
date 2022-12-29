@@ -1,13 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Lockstep.AI {
+    [System.Serializable]
+    [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
+    public unsafe partial struct BTCActionLeaf {
+        public int Status;
+        public bool NeedExit;
+    }
+    
     public abstract unsafe partial class BTActionLeaf : BTAction {
         private const int ACTION_READY = 0;
         private const int ACTION_RUNNING = 1;
         private const int ACTION_FINISHED = 2;
 
-        protected override int MemSize => sizeof(BTCActionLeaf);
+        protected override int MemSize => sizeof(BTCActionLeaf) + RunTimeSize;
+        protected virtual int RunTimeSize => 0; 
         public BTActionLeaf()
             : base(0){ }
 

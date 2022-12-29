@@ -1,11 +1,21 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Lockstep.AI
 {
+    [System.Serializable]
+    [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
+    public unsafe partial struct BTCActionSequence 
+    {
+        public int CurrentSelectedIndex;
+        public BTCActionSequence(int idx = -1)
+        {
+            CurrentSelectedIndex = idx;
+        }
+    }
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Sequence")]
     public unsafe partial class BTActionSequence : BTActionComposite
     {
-        public BTCActionSequence __content;
         protected override int MemSize => sizeof(BTCActionSequence);
         //-------------------------------------------------------
         private bool _continueIfErrorOccors;

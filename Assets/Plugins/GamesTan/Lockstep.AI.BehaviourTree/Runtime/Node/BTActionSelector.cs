@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Lockstep.AI {
+    [System.Serializable]
+    [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
+    public unsafe partial struct BTCActionSelector {
+        public int CurrentSelectedIndex;
+        public int LastSelectedIndex;
+
+        public BTCActionSelector(int curIdx = -1, int lastIdx = -1){
+            CurrentSelectedIndex = curIdx;
+            LastSelectedIndex = lastIdx;
+        }
+    }
     
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/PrioritizedSelector")]
     public unsafe partial class BTActionSelector : BTActionComposite
     {
         public bool IsPriority = true;
-        public BTCActionSelector __content;
         protected override int MemSize => sizeof(BTCActionSelector);
         public BTActionSelector()
             : base(-1){ }
