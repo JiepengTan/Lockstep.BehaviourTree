@@ -1,10 +1,17 @@
 ﻿namespace Lockstep.AI
 {
+    public interface IMonoBehaviourTree
+    {
+        BlackBoard BlackBoard { get; }
+        BTNode TreeRoot { get; }
+    }
+
     public class BehaviourTree<T> where T:BTWorkingData,new()
     {
         protected T _workingData;
         protected BTNode _bt;
         public T WorkingData => _workingData;
+        public BTNode Root =>_bt;
         protected object _transform;
 
 #if UNITY_EDITOR

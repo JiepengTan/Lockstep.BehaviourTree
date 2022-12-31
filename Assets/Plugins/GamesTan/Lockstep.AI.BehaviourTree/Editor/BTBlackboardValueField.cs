@@ -6,8 +6,8 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 
-namespace Lockstep.AI {
-    public class BlackboardValueField : VisualElement {
+namespace Lockstep.AI.Editor {
+    public class BTBlackboardValueField : VisualElement {
 
         SerializedProperty property;
 

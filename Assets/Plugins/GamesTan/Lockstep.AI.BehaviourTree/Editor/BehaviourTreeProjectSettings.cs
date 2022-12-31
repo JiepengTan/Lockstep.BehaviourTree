@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 
-namespace Lockstep.AI {
+namespace Lockstep.AI.Editor {
     // Create a new type of Settings Asset.
     public class BehaviourTreeProjectSettings : ScriptableObject {
 

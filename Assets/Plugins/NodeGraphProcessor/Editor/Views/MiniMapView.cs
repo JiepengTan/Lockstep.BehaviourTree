@@ -15,8 +15,9 @@ namespace GraphProcessor
 		public MiniMapView(BaseGraphView baseGraphView)
 		{
 			this.graphView = baseGraphView;
-			SetPosition(new Rect(0, 0, 100, 100));
-			size = new Vector2(100, 100);
+			var sizePixel = 100;
+			SetPosition(new Rect(0,0, sizePixel, sizePixel));
+			size = new Vector2(sizePixel, sizePixel);
 		}
 	}
 }

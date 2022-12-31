@@ -5,13 +5,22 @@ using GraphProcessor;
 using System;
 using UnityEditor;
 
-namespace Lockstep.AI
+namespace Lockstep.AI.Editor
 {
 	public class BTGraphView : BaseGraphView
 	{
 		public new class UxmlFactory : UxmlFactory<BTGraphView, GraphView.UxmlTraits> { }
 
 
+		public void ClearView()
+		{
+		}
+
+		public void PopulateView(BTSerializedBehaviourTree tree)
+		{
+		}
+
+		public void UpdateNodeStates(){}
 		public override void DoInit(EditorWindow window, BaseGraph graph)
 		{
 			Insert(0, new GridBackground());

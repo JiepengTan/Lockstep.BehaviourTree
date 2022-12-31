@@ -115,8 +115,8 @@ MonoBehaviour:
     title: "\u751F\u6D3B\u5A11\u5A46"
     content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: 526, y: 271, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: 298, y: 275, z: 0}
+  scale: {x: 1.15, y: 1.15, z: 1}
   references:
     version: 2
     RefIds:
@@ -128,8 +128,8 @@ MonoBehaviour:
         computeOrder: 1
         position:
           serializedVersion: 2
-          x: 186
-          y: 89
+          x: 194
+          y: 74
           width: 151
           height: 54
         expanded: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         __input: 0
-        IsInvert: 0
+        IsInvert: 1
         Distance: 1
     - rid: 239897614088667221
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
@@ -229,7 +229,7 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         __input: 0
-        TurnSpeed: 3
+        TurnSpeed: 3.65
     - rid: 239897614088667222
       type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -238,8 +238,8 @@ MonoBehaviour:
         computeOrder: 5
         position:
           serializedVersion: 2
-          x: 861
-          y: 239
+          x: 863
+          y: 229
           width: 112
           height: 48
         expanded: 0
@@ -254,16 +254,16 @@ MonoBehaviour:
         computeOrder: 6
         position:
           serializedVersion: 2
-          x: 379
+          x: 385
           y: 237
-          width: 196
+          width: 178
           height: 88
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
         MoveSpeed: 1
-        StopDistance: 1.09
+        StopDistance: 1
     - rid: 239897614088667225
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -280,4 +280,4 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         __input: 0
-        TurnSpeed: 3
+        TurnSpeed: 3.45

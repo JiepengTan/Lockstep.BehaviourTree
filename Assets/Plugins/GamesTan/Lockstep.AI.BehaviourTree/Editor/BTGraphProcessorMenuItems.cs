@@ -1,7 +1,7 @@
 using UnityEditor;
 using GraphProcessor;
 
-namespace Lockstep.AI
+namespace Lockstep.AI.Editor
 {
 	public class NodeGraphProcessorMenuItems : GraphProcessor.NodeGraphProcessorMenuItems
 	{

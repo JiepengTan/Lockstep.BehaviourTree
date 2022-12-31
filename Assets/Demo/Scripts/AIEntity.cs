@@ -3,7 +3,7 @@ using Lockstep.AI;
 
 namespace AIToolkitDemo
 {
-    class AIEntity : MonoBehaviour
+    class AIEntity : MonoBehaviour,IMonoBehaviourTree
     {
         //-----------------------------------------------
         public const string BBKEY_NEXTMOVINGPOSITION = "NextMovingPosition";
@@ -23,7 +23,9 @@ namespace AIToolkitDemo
         public BTGraph BTConfig;
 
         private Animator _anim;
-
+        public BlackBoard BlackBoard => _bt?.WorkingData?.Blackboard;
+        public BTNode TreeRoot => _bt?.Root;
+        
         public AIEntity Init()
         {
             _nextTimeToGenMovingTarget = 0f;

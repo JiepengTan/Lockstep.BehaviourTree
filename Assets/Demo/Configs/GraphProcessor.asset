@@ -14,88 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 239897652466810888
-  - rid: 239897652466810889
-  - rid: 239897652466810890
+  - rid: 239897652911669297
   edges: []
   groups: []
   stackNodes: []
-  pinnedElements:
-  - position:
-      serializedVersion: 2
-      x: 634
-      y: 243
-      width: 150
-      height: 200
-    opened: 1
-    editorType:
-      serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - position:
-      serializedVersion: 2
-      x: 151
-      y: 135
-      width: 150
-      height: 200
-    opened: 0
-    editorType:
-      serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
-        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pinnedElements: []
   exposedParameters: []
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: -1132, y: 34, z: 0}
-  scale: {x: 1.520875, y: 1.520875, z: 1}
+  position: {x: 199, y: 177, z: 0}
+  scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 239897652466810888
-      type: {class: CON_HasReachedTarget, ns: AIToolkitDemo, asm: Assembly-CSharp}
+    - rid: 239897652911669297
+      type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
         nodeCustomName: 
-        GUID: 8d93d8ca-be46-4a64-b3ae-825105e75273
+        GUID: 3473e642-c67b-4015-8ed7-3806e82fc810
         computeOrder: 0
         position:
           serializedVersion: 2
-          x: 935
-          y: 218
-          width: 188
-          height: 86
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-        IsInvert: 0
-        Distance: 1.5
-    - rid: 239897652466810889
-      type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Assembly-CSharp}
-      data:
-        nodeCustomName: 
-        GUID: 498f9e76-465c-4365-a1b1-1db991d15d8d
-        computeOrder: 1
-        position:
-          serializedVersion: 2
-          x: 1024
-          y: -695
-          width: 100
-          height: 100
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-    - rid: 239897652466810890
-      type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Assembly-CSharp}
-      data:
-        nodeCustomName: 
-        GUID: cf279df3-ed7a-4e86-a0ce-abe9caea98fe
-        computeOrder: 2
-        position:
-          serializedVersion: 2
-          x: 929
-          y: -620
-          width: 100
-          height: 100
+          x: 609
+          y: 229
+          width: 112
+          height: 48
         expanded: 0
         debug: 0
         nodeLock: 0

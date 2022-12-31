@@ -2,17 +2,17 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Lockstep.AI
+namespace Lockstep.AI.Editor
 {
     [CustomEditor(typeof(BTGraphBehaviour))]
-    public class BTGraphBehaviourEditor : Editor
+    public class BTGraphBehaviourEditor :UnityEditor. Editor
     {
-        Editor graphEditor;
+        UnityEditor. Editor graphEditor;
         BTGraphBehaviour behaviour => target as BTGraphBehaviour;
 
         void OnEnable()
         {
-            graphEditor = Editor.CreateEditor(behaviour.graph);
+            graphEditor = UnityEditor.Editor .CreateEditor(behaviour.graph);
         }
 
         void OnDisable()

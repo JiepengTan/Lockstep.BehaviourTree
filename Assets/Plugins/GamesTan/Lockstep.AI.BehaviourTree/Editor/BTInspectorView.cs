@@ -5,15 +5,12 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 
-namespace Lockstep.AI {
-    public class InspectorView : VisualElement {
-        public new class UxmlFactory : UxmlFactory<InspectorView, VisualElement.UxmlTraits> { }
+namespace Lockstep.AI.Editor {
+    public class BTInspectorView : VisualElement {
+        public new class UxmlFactory : UxmlFactory<BTInspectorView, VisualElement.UxmlTraits> { }
 
-        public InspectorView() {
-
-        }
-
-        internal void UpdateSelection(SerializedBehaviourTree serializer, NodeView nodeView) {
+        /*
+        internal void UpdateSelection(BTSerializedBehaviourTree serializer, NodeView nodeView) {
             Clear();
 
             if (nodeView == null) {
@@ -33,7 +30,7 @@ namespace Lockstep.AI {
             field.label = nodeProperty.managedReferenceValue.GetType().ToString();
             field.BindProperty(nodeProperty);
             Add(field);
-            
         }
+        */
     }
 }

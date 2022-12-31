@@ -6,7 +6,7 @@ using GraphProcessor;
 using UnityEditor.Callbacks;
 using System.IO;
 
-namespace Lockstep.AI
+namespace Lockstep.AI.Editor
 {
 	public class NodeGraphAssetCallbacks
 	{

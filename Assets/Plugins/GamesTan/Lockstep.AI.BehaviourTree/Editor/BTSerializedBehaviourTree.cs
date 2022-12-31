@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Lockstep.AI {
+namespace Lockstep.AI.Editor {
 
     // This is a helper class which wraps a serialized object for finding properties on the behaviour.
     // It's best to modify the behaviour tree via SerializedObjects and SerializedProperty interfaces
     // to keep the UI in sync, and undo/redo
     // It's a hodge podge mix of various functions that will evolve over time. It's not exhaustive by any means.
     [System.Serializable]
-    public class SerializedBehaviourTree {
+    public class BTSerializedBehaviourTree {
 
         // Wrapper serialized object for writing changes to the behaviour tree
         public SerializedObject serializedObject;
@@ -55,7 +55,7 @@ namespace Lockstep.AI {
         }
 
         // Start is called before the first frame update
-        public SerializedBehaviourTree(BehaviourTree tree)
+        public BTSerializedBehaviourTree(BehaviourTree tree)
         {
             serializedObject = new SerializedObject(tree);
             this.tree = tree;

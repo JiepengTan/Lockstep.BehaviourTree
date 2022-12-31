@@ -7,12 +7,12 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-namespace Lockstep.AI {
-    public class BlackboardView : VisualElement {
+namespace Lockstep.AI.Editor {
+    public class BTBlackboardView : VisualElement {
 
-        public new class UxmlFactory : UxmlFactory<BlackboardView, VisualElement.UxmlTraits> { }
+        public new class UxmlFactory : UxmlFactory<BTBlackboardView, VisualElement.UxmlTraits> { }
 
-        private SerializedBehaviourTree behaviourTree;
+        private BTSerializedBehaviourTree behaviourTree;
 
         private ListView listView;
         private TextField newKeyTextField;
@@ -20,7 +20,7 @@ namespace Lockstep.AI {
 
         private Button createButton;
 
-        internal void Bind(SerializedBehaviourTree behaviourTree) {
+        internal void Bind(BTSerializedBehaviourTree behaviourTree) {
             
             this.behaviourTree = behaviourTree;
 
@@ -72,7 +72,7 @@ namespace Lockstep.AI {
             var keyName = keyProp.FindPropertyRelative("name");
             label.BindProperty(keyName);
 
-            BlackboardValueField valueField = item.Q<BlackboardValueField>();
+            BTBlackboardValueField valueField = item.Q<BTBlackboardValueField>();
             valueField.BindProperty(keyProp);
         }
 
@@ -85,7 +85,7 @@ namespace Lockstep.AI {
             Label keyField = new Label();
             keyField.style.width = 100.0f;
 
-            BlackboardValueField valueField = new BlackboardValueField();
+            BTBlackboardValueField valueField = new BTBlackboardValueField();
             valueField.style.flexGrow = 1.0f;
 
             container.Add(keyField);

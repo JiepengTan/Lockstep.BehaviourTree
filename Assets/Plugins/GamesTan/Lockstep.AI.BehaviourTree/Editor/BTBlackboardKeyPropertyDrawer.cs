@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 
-namespace Lockstep.AI {
+namespace Lockstep.AI.Editor {
 
     [CustomPropertyDrawer(typeof(FloatVar))]
     [CustomPropertyDrawer(typeof(IntVar))]
@@ -16,7 +16,7 @@ namespace Lockstep.AI {
     [CustomPropertyDrawer(typeof(GameObjectVar))]
     [CustomPropertyDrawer(typeof(TagVar))]
     [CustomPropertyDrawer(typeof(LayerMaskVar))]
-    public class BlackboardKeyPropertyDrawer : PropertyDrawer {
+    public class BTBlackboardKeyPropertyDrawer : PropertyDrawer {
 
         [SerializeField]
         public VisualTreeAsset asset;

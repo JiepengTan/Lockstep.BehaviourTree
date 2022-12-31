@@ -11,6 +11,7 @@ namespace Lockstep.AI {
             }
         }
 
+        public BlackBoard Blackboard => _blackboard;
         private BlackBoard _blackboard;
         private byte* _pDatas = null;
         private int[] _dataOffset;
