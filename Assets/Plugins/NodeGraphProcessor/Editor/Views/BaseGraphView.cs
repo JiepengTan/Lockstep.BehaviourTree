@@ -135,20 +135,29 @@ namespace GraphProcessor
 
 		Dictionary<Type, (Type nodeType, MethodInfo initalizeNodeFromObject)> nodeTypePerCreateAssetType = new Dictionary<Type, (Type, MethodInfo)>();
 
+		public BaseGraphView()
+		{
+		}
+
 		public BaseGraphView(EditorWindow window)
+		{
+			DoInit(window);
+		}
+
+		public void DoInit(EditorWindow window)
 		{
 			serializeGraphElements = SerializeGraphElementsCallback;
 			canPasteSerializedData = CanPasteSerializedDataCallback;
 			unserializeAndPaste = UnserializeAndPasteCallback;
-            graphViewChanged = GraphViewChangedCallback;
+			graphViewChanged = GraphViewChangedCallback;
 			viewTransformChanged = ViewTransformChangedCallback;
-            elementResized = ElementResizedCallback;
+			elementResized = ElementResizedCallback;
 
-			RegisterCallback< KeyDownEvent >(KeyDownCallback);
-			RegisterCallback< DragPerformEvent >(DragPerformedCallback);
-			RegisterCallback< DragUpdatedEvent >(DragUpdatedCallback);
-			RegisterCallback< MouseDownEvent >(MouseDownCallback);
-			RegisterCallback< MouseUpEvent >(MouseUpCallback);
+			RegisterCallback<KeyDownEvent>(KeyDownCallback);
+			RegisterCallback<DragPerformEvent>(DragPerformedCallback);
+			RegisterCallback<DragUpdatedEvent>(DragUpdatedCallback);
+			RegisterCallback<MouseDownEvent>(MouseDownCallback);
+			RegisterCallback<MouseUpEvent>(MouseUpCallback);
 
 			InitializeManipulators();
 
@@ -156,7 +165,7 @@ namespace GraphProcessor
 
 			Undo.undoRedoPerformed += ReloadView;
 
-			createNodeMenu = ScriptableObject.CreateInstance< CreateNodeMenuWindow >();
+			createNodeMenu = ScriptableObject.CreateInstance<CreateNodeMenuWindow>();
 			createNodeMenu.Initialize(this, window);
 
 			this.StretchToParentSize();

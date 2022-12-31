@@ -9,7 +9,13 @@ namespace Lockstep.AI
 {
 	public class BTGraphView : BaseGraphView
 	{
+		public new class UxmlFactory : UxmlFactory<BTGraphView, GraphView.UxmlTraits> { }
 		private BaseGraph graph;
+
+		public BTGraphView()
+		{
+		}
+
 		// Nothing special to add for now
 		public BTGraphView(EditorWindow window,BaseGraph graph) : base(window)
 		{

@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/BehaviourTree/Editor/UIBuilder/BehaviourTreeEditorStyle.uss?fileID=7433441132597879392&amp;guid=8781ca2a6e79ccf4da2e234c8c123d2f&amp;type=3#BehaviourTreeEditorStyle" />
+    <Style src="project://database/Assets/Plugins/GamesTan/Lockstep.AI.BehaviourTree/Editor/UIBuilder/BehaviourTreeEditorStyle.uss?fileID=7433441132597879392&amp;guid=8781ca2a6e79ccf4da2e234c8c123d2f&amp;type=3#BehaviourTreeEditorStyle" />
     <uie:Toolbar>
         <uie:ToolbarMenu display-tooltip-when-elided="true" text="Assets " />
         <uie:ToolbarSpacer style="flex-grow: 1;" />
@@ -28,7 +28,8 @@
         </ui:VisualElement>
         <ui:VisualElement name="right-panel">
             <ui:Label text="Tree View" display-tooltip-when-elided="true" name="TitleLabel" style="background-color: rgb(37, 37, 37);" />
-            <TheKiwiCoder.BehaviourTreeView focusable="true" style="flex-grow: 1; border-top-width: 2px; border-top-color: rgb(0, 0, 0);" />
+            <Lockstep.AI.BTGraphView focusable="true" name="BTGraphView" style="display: none; visibility: hidden;" />
+            <TheKiwiCoder.BehaviourTreeView focusable="true" />
         </ui:VisualElement>
     </TheKiwiCoder.SplitView>
     <TheKiwiCoder.OverlayView name="OverlayView" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.5); visibility: hidden;">
@@ -49,7 +50,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </TheKiwiCoder.OverlayView>
-    <TheKiwiCoder.NewScriptDialogView name="NewScriptDialogView" focusable="true" style="visibility: visible; position: absolute; left: 0; top: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
+    <TheKiwiCoder.NewScriptDialogView name="NewScriptDialogView" focusable="true" style="visibility: hidden; position: absolute; left: 0; top: 0; right: 0; bottom: 0; justify-content: center; align-items: center;">
         <ui:VisualElement name="Background" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);" />
         <ui:VisualElement focusable="true" style="flex-grow: 0; background-color: rgb(56, 56, 56); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; flex-shrink: 0; width: 250px; height: 115px;">
             <ui:Label tabindex="-1" text="New Script" display-tooltip-when-elided="true" name="Title" style="font-size: 20px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; -unity-font-style: bold; justify-content: flex-end; -unity-text-align: upper-left;" />
