@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TheKiwiCoder;
+using Lockstep.AI;
 using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public class BlackboardView : VisualElement {
 
         public new class UxmlFactory : UxmlFactory<BlackboardView, VisualElement.UxmlTraits> { }

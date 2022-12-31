@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEditor.Experimental.GraphView;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     public class CreateNodeWindow : ScriptableObject, ISearchWindowProvider {
 

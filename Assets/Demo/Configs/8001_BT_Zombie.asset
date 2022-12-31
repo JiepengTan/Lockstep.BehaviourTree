@@ -84,21 +84,39 @@ MonoBehaviour:
   pinnedElements:
   - position:
       serializedVersion: 2
-      x: 0
-      y: 146
+      x: 111
+      y: 334
       width: 372
       height: 435
-    opened: 1
+    opened: 0
     editorType:
       serializedType: GraphProcessor.ExposedParameterView, com.alelievr.NodeGraphProcessor.Editor,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - position:
+      serializedVersion: 2
+      x: 158
+      y: 118
+      width: 150
+      height: 200
+    opened: 0
+    editorType:
+      serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   exposedParameters:
   - rid: 239897388287787008
   serializedParameterList: []
-  stickyNotes: []
+  stickyNotes:
+  - position:
+      serializedVersion: 2
+      x: 651
+      y: -124
+      width: 149
+      height: 139
+    title: "\u751F\u6D3B\u5A11\u5A46"
+    content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: 643, y: 260, z: 0}
-  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  position: {x: 526, y: 271, z: 0}
+  scale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
@@ -110,8 +128,8 @@ MonoBehaviour:
         computeOrder: 1
         position:
           serializedVersion: 2
-          x: 175.15001
-          y: 116.456024
+          x: 186
+          y: 89
           width: 151
           height: 54
         expanded: 0
@@ -127,8 +145,8 @@ MonoBehaviour:
         computeOrder: 2
         position:
           serializedVersion: 2
-          x: 765.64606
-          y: 115.99999
+          x: 756
+          y: 89
           width: 151
           height: 54
         expanded: 0
@@ -144,10 +162,10 @@ MonoBehaviour:
         computeOrder: 0
         position:
           serializedVersion: 2
-          x: 395.00006
-          y: -21.650002
+          x: 411
+          y: -47
           width: 180
-          height: 91
+          height: 72
         expanded: 1
         debug: 0
         nodeLock: 0
@@ -185,15 +203,15 @@ MonoBehaviour:
         computeOrder: 3
         position:
           serializedVersion: 2
-          x: -63.150112
-          y: 240.99998
+          x: -80.07371
+          y: 239.00002
           width: 184
           height: 86
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
-        IsInvert: 1
+        IsInvert: 0
         Distance: 1
     - rid: 239897614088667221
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
@@ -203,8 +221,8 @@ MonoBehaviour:
         computeOrder: 4
         position:
           serializedVersion: 2
-          x: 651.5501
-          y: 241.00005
+          x: 622
+          y: 229
           width: 180
           height: 68
         expanded: 0
@@ -220,8 +238,8 @@ MonoBehaviour:
         computeOrder: 5
         position:
           serializedVersion: 2
-          x: 845.6461
-          y: 260.99997
+          x: 861
+          y: 239
           width: 112
           height: 48
         expanded: 0
@@ -236,16 +254,16 @@ MonoBehaviour:
         computeOrder: 6
         position:
           serializedVersion: 2
-          x: 411.00003
-          y: 238.99997
-          width: 178
+          x: 379
+          y: 237
+          width: 196
           height: 88
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
         MoveSpeed: 1
-        StopDistance: 1
+        StopDistance: 1.09
     - rid: 239897614088667225
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
@@ -254,8 +272,8 @@ MonoBehaviour:
         computeOrder: 7
         position:
           serializedVersion: 2
-          x: 174.99997
-          y: 241.00002
+          x: 146.00003
+          y: 238.99997
           width: 180
           height: 68
         expanded: 0

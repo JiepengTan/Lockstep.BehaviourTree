@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     [System.Serializable]
     public class Succeed : DecoratorNode {
         protected override void OnStart() {

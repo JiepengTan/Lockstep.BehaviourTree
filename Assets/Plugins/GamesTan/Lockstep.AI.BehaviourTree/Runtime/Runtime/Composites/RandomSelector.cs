@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     [System.Serializable]
     public class RandomSelector : CompositeNode {
         protected int current;

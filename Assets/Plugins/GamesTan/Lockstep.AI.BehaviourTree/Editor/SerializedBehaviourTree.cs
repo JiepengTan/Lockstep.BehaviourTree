@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     // This is a helper class which wraps a serialized object for finding properties on the behaviour.
     // It's best to modify the behaviour tree via SerializedObjects and SerializedProperty interfaces

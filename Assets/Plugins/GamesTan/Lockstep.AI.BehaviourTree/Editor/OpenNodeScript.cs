@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public class  OpenNodeScript : MouseManipulator {
 
         double time;

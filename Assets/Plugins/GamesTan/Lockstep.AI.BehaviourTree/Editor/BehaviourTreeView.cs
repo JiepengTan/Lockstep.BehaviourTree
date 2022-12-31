@@ -7,7 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using System;
 using System.Linq;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public class BehaviourTreeView : GraphView {
         public new class UxmlFactory : UxmlFactory<BehaviourTreeView, GraphView.UxmlTraits> { }
 

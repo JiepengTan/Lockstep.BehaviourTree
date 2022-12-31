@@ -20,7 +20,7 @@ namespace Lockstep.AI
 		[OnOpenAsset(0)]
 		public static bool OnBaseGraphOpened(int instanceID, int line)
 		{
-			var asset = EditorUtility.InstanceIDToObject(instanceID) as BTGraph;
+			var asset = UnityEditor.EditorUtility.InstanceIDToObject(instanceID) as BTGraph;
 			if (asset != null)
 			{
 				EditorWindow.GetWindow<BTGraphWindow>().InitializeGraph(asset as BaseGraph);

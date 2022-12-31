@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     // The context is a shared object every node has access to.
     // Commonly used components and subsytems should be stored here

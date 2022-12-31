@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     public class NodePort : Port {
 

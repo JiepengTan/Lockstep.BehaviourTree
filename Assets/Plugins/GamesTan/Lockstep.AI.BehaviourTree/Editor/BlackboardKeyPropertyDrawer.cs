@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     [CustomPropertyDrawer(typeof(FloatVar))]
     [CustomPropertyDrawer(typeof(IntVar))]

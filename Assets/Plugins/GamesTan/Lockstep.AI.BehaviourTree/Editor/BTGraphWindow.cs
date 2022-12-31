@@ -4,15 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using GraphProcessor;
+using UnityEngine.UIElements;
 
 namespace Lockstep.AI
 {
 	public class BTGraphWindow : BaseGraphWindow
 	{
+		
+		public VisualTreeAsset behaviourTreeXml;
+		public VisualTreeAsset nodeXml;
+		public StyleSheet behaviourTreeStyle;
+		
 		BaseGraph tmpGraph;
 		BTToolbarView toolbarView;
 
 
+		public InspectorView inspectorView;
+		public BlackboardView blackboardView;
 		protected override void OnDestroy()
 		{
 			graphView?.Dispose();
@@ -21,18 +29,25 @@ namespace Lockstep.AI
 
 		protected override void InitializeWindow(BaseGraph graph)
 		{
-			titleContent = new GUIContent("All Graph");
-
+			var root = rootView;
 			if (graphView == null)
 			{
-				graphView = new BTGraphView(this,graph);
+				titleContent = new GUIContent("All Graph");
+				// Import UXML
+				var visualTree = behaviourTreeXml;
+				visualTree.CloneTree(root);
+				graphView = root.Q<BTGraphView>();
+				graphView.DoInit(this,graph);
 				graphView.Add(new MiniMapView(graphView));
 				graphView.Add(new BTToolbarView(graphView));
+				inspectorView = root.Q<InspectorView>();
+				blackboardView = root.Q<BlackboardView>();
 			}
 
-			rootView.Add(graphView);
 		}
-
+		void OnNodeSelectionChanged(NodeView node) {
+			//inspectorView.UpdateSelection(serializer, node);
+		}
 		private void OnInspectorUpdate()
 		{
 			var view =graphView as BTGraphView;
@@ -41,7 +56,6 @@ namespace Lockstep.AI
 
 		protected override void InitializeGraphView(BaseGraphView view)
 		{
-			view.OpenPinned<ExposedParameterView>();
 		}
 	}
 }

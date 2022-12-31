@@ -6,7 +6,7 @@ using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public class BlackboardValueField : VisualElement {
 
         SerializedProperty property;

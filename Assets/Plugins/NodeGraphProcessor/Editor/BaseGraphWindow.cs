@@ -12,7 +12,8 @@ namespace GraphProcessor
 	public abstract class BaseGraphWindow : EditorWindow
 	{
 		protected VisualElement		rootView;
-		protected BaseGraphView		graphView;
+
+		protected BaseGraphView graphView;
 
 		[SerializeField]
 		protected BaseGraph			graph;
@@ -100,13 +101,9 @@ namespace GraphProcessor
 			graphLoaded?.Invoke(graph);
 			this.graph = graph;
 
-			if (graphView != null)
-				rootView.Remove(graphView);
 
 			//Initialize will provide the BaseGraphView
 			InitializeWindow(graph);
-
-			graphView = rootView.Children().FirstOrDefault(e => e is BaseGraphView) as BaseGraphView;
 
 			if (graphView == null)
 			{

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public abstract class DecoratorNode : Node {
 
         [SerializeReference]

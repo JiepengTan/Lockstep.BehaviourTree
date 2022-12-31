@@ -8,7 +8,7 @@ using UnityEditor.UIElements;
 using UnityEditor.Callbacks;
 
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     public class BehaviourTreeEditorWindow : EditorWindow {
 
@@ -64,7 +64,7 @@ namespace TheKiwiCoder {
         public BehaviourTree tree;
         public SerializedBehaviourTree serializer;
 
-        [MenuItem("TheKiwiCoder/BehaviourTreeEditor ...")]
+        [MenuItem("Lockstep.AI/BehaviourTreeEditor ...")]
         public static void OpenWindow() {
             BehaviourTreeEditorWindow wnd = GetWindow<BehaviourTreeEditorWindow>();
             wnd.titleContent = new GUIContent("BehaviourTreeEditor");

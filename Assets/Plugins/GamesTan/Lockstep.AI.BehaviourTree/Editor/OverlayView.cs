@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 using UnityEditor;
 using UnityEditor.UIElements;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     public class OverlayView : VisualElement {
         public new class UxmlFactory : UxmlFactory<OverlayView, UxmlTraits> { }
 

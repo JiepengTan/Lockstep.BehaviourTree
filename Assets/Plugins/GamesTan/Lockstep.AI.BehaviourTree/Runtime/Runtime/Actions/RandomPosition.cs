@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TheKiwiCoder;
+using Lockstep.AI;
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
     [System.Serializable]
     public class RandomPosition : ActionNode {
 

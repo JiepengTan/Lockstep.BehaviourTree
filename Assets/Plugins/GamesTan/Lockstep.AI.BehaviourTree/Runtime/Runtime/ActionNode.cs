@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace TheKiwiCoder {
+namespace Lockstep.AI {
 
     [System.Serializable]
     public abstract class ActionNode : Node {

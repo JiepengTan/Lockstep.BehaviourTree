@@ -10,16 +10,12 @@ namespace Lockstep.AI
 	public class BTGraphView : BaseGraphView
 	{
 		public new class UxmlFactory : UxmlFactory<BTGraphView, GraphView.UxmlTraits> { }
-		private BaseGraph graph;
 
-		public BTGraphView()
-		{
-		}
 
-		// Nothing special to add for now
-		public BTGraphView(EditorWindow window,BaseGraph graph) : base(window)
+		public override void DoInit(EditorWindow window, BaseGraph graph)
 		{
-			this.graph = graph;
+			Insert(0, new GridBackground());
+			base.DoInit(window,graph);
 		}
 
 		public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)

@@ -135,17 +135,10 @@ namespace GraphProcessor
 
 		Dictionary<Type, (Type nodeType, MethodInfo initalizeNodeFromObject)> nodeTypePerCreateAssetType = new Dictionary<Type, (Type, MethodInfo)>();
 
-		public BaseGraphView()
-		{
-		}
 
-		public BaseGraphView(EditorWindow window)
+		public virtual void DoInit(EditorWindow window,BaseGraph graph)
 		{
-			DoInit(window);
-		}
-
-		public void DoInit(EditorWindow window)
-		{
+			this.graph = graph;
 			serializeGraphElements = SerializeGraphElementsCallback;
 			canPasteSerializedData = CanPasteSerializedDataCallback;
 			unserializeAndPaste = UnserializeAndPasteCallback;

@@ -7,7 +7,7 @@ using UnityEditor.UIElements;
 using UnityEditor.Search;
 using System.Linq;
 
-namespace TheKiwiCoder
+namespace Lockstep.AI
 {
     public static class EditorUtility
     {
@@ -73,7 +73,7 @@ namespace TheKiwiCoder
                 var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
                 if (asset) {
                     PackageManifest manifest = JsonUtility.FromJson<PackageManifest>(asset.text);
-                    if (manifest.name == "com.thekiwicoder.behaviourtreeditor") {
+                    if (manifest.name == "com.Lockstep.AI.behaviourtreeditor") {
                         return manifest;
                     }
                 }
