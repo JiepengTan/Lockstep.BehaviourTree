@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Lockstep.AI {
 
+    [System.Serializable]
     public enum EBlackboardKeyType {
-        Boolean,
         Float,
+        Boolean,
         Vector2,
         Vector3,
         Int,
@@ -18,8 +19,6 @@ namespace Lockstep.AI {
     }
     [System.Serializable]
     public class BlackboardKey {
-
-
         public string name;
         public EBlackboardKeyType type;
 

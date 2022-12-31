@@ -18,6 +18,7 @@ namespace Lockstep.AI.Editor {
         private TextField newKeyTextField;
         private EnumField newKeyEnumField;
 
+
         private Button createButton;
 
         internal void Bind(BTSerializedBehaviourTree behaviourTree) {
@@ -60,8 +61,7 @@ namespace Lockstep.AI.Editor {
                 return false;
             }
 
-            BehaviourTree tree = behaviourTree.Blackboard.serializedObject.targetObject as BehaviourTree;
-            bool keyExists = tree.blackboard.Find(newKeyTextField.text) != null;
+            bool keyExists = behaviourTree.tree.blackboardKeys.Find((a)=>a.name==newKeyTextField.text) != null;
             return !keyExists;
         }
 

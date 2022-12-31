@@ -4,30 +4,35 @@
     {
         Blackboard Blackboard { get; }
         BTNode TreeRoot { get; }
+        BehaviourTree Tree { get; }
     }
 
-    public class BehaviourTree<T> where T:BTWorkingData,new()
+    public class BehaviourTree
     {
-        protected T _workingData;
+        protected BTWorkingData _workingData;
         protected BTNode _bt;
-        public T WorkingData => _workingData;
+        public BTWorkingData WorkingData => _workingData;
+        public Blackboard blackboard => _workingData.Blackboard;
         public BTNode Root =>_bt;
         protected object _transform;
 
 #if UNITY_EDITOR
         private bool _isDebuging => _transform != null &&
                                               object.ReferenceEquals(UnityEditor.Selection.activeTransform, _transform);
+
+        public BTGraph Config;
 #else
         private bool _isDebuging => false;
 #endif
-        public T DoAwake( object config, object transform) 
+        public T DoAwake<T>( object config, object transform) where T:BTWorkingData,new()
         {
+            Config = config as BTGraph;
             _transform = transform;
             var btInfo = BTFactory.GetOrCreateInfo(config);
             _bt = btInfo.RootNode;
             _workingData = new T();
             _workingData.Init(btInfo.Offsets, btInfo.MemSize);
-            return _workingData;
+            return _workingData as T;
         }
 
         public void Reset()

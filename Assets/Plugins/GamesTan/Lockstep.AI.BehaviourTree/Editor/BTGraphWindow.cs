@@ -34,8 +34,10 @@ namespace Lockstep.AI.Editor
 		protected override void InitializeWindow(BaseGraph graph)
 		{
 			var root = rootView;
+			var config = graph as BTGraph;
 			if (graphView == null)
 			{
+				serializer = new BTSerializedBehaviourTree(config);
 				titleContent = new GUIContent("All Graph");
 				// Import UXML
 				var visualTree = behaviourTreeXml;
@@ -46,8 +48,15 @@ namespace Lockstep.AI.Editor
 				graphView.Add(new BTToolbarView(graphView));
 				inspectorView = root.Q<BTInspectorView>();
 				blackboardView = root.Q<BTBlackboardView>();
-				titleLabel = root.Q<Label>("TitleLabel");
+				blackboardView.Bind(serializer);
+				
 				versionLabel = root.Q<Label>("Version");
+				titleLabel = root.Q<Label>("TitleLabel");
+				if (titleLabel != null)
+				{
+					string path = AssetDatabase.GetAssetPath(config)??"BehaviourTree";
+					titleLabel.text = $"TreeView ({path})";
+				}
 			}
 
 		}
@@ -90,9 +99,9 @@ namespace Lockstep.AI.Editor
 
         private void OnSelectionChange() {
             if (Selection.activeGameObject) {
-                BehaviourTreeRunner runner = Selection.activeGameObject.GetComponent<BehaviourTreeRunner>();
-                if (runner) {
-                    SelectTree(runner.tree);
+                var runner = Selection.activeGameObject.GetComponent<IMonoBehaviourTree>();
+                if (runner != null && runner.Tree != null) {
+                    SelectTree(runner.Tree);
                 }
             }
         }
@@ -106,25 +115,16 @@ namespace Lockstep.AI.Editor
         public BehaviourTree tree;
         public BTSerializedBehaviourTree serializer;
         void SelectTree(BehaviourTree newTree) {
-            if (!newTree) {
+            if (newTree == null) {
                 ClearSelection();
                 return;
             }
 
             tree = newTree;
-            serializer = new BTSerializedBehaviourTree(newTree);
 
-            if (titleLabel != null) {
-                string path = AssetDatabase.GetAssetPath(serializer.tree);
-                if (path == "") {
-                    path = serializer.tree.name;
-                }
-                titleLabel.text = $"TreeView ({path})";
-            }
-
-            treeView?.PopulateView(serializer);
-            blackboardView?.Bind(serializer);
+			treeView?.PopulateView(serializer);
         }
+
 
         void ClearSelection() {
             tree = null;
@@ -139,7 +139,7 @@ namespace Lockstep.AI.Editor
                 return;
             }
 
-            if (AssetDatabase.GetAssetPath(serializer.tree) == path) {
+            if (AssetDatabase.GetAssetPath(tree.Config) == path) {
                 // Need to delay because this is called from a will delete asset callback
                 EditorApplication.delayCall += () => {
                     SelectTree(null);

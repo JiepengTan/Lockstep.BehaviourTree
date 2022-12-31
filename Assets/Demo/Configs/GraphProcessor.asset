@@ -13,34 +13,69 @@ MonoBehaviour:
   m_Name: GraphProcessor
   m_EditorClassIdentifier: 
   serializedNodes: []
-  nodes:
-  - rid: 239897652911669297
+  nodes: []
   edges: []
   groups: []
   stackNodes: []
   pinnedElements: []
   exposedParameters: []
+  blackboardKeys:
+  - rid: 239897660601925636
+  - rid: 239897660601925638
+  - rid: 239897660601925637
   serializedParameterList: []
   stickyNotes: []
   nodeInspectorReference: {fileID: 0}
-  position: {x: 199, y: 177, z: 0}
-  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  position: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 239897652911669297
-      type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Assembly-CSharp}
+    - rid: 239897660601925636
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: com.alelievr.NodeGraphProcessor.Runtime}
       data:
-        nodeCustomName: 
-        GUID: 3473e642-c67b-4015-8ed7-3806e82fc810
-        computeOrder: 0
-        position:
+        name: Astr
+        type: 7
+        floatValue: 0
+        intValue: 0
+        longValue: 0
+        booleanValue: 0
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        layerMaskValue:
           serializedVersion: 2
-          x: 609
-          y: 229
-          width: 112
-          height: 48
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
+          m_Bits: 0
+        stringValue: 
+        gameObjectValue: {fileID: 0}
+    - rid: 239897660601925637
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        name: AVec3
+        type: 3
+        floatValue: 0
+        intValue: 0
+        longValue: 0
+        booleanValue: 0
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        layerMaskValue:
+          serializedVersion: 2
+          m_Bits: 0
+        stringValue: 
+        gameObjectValue: {fileID: 0}
+    - rid: 239897660601925638
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        name: ALayerMask
+        type: 6
+        floatValue: 0
+        intValue: 0
+        longValue: 0
+        booleanValue: 0
+        vector2Value: {x: 0, y: 0}
+        vector3Value: {x: 0, y: 0, z: 0}
+        layerMaskValue:
+          serializedVersion: 2
+          m_Bits: 5
+        stringValue: 
+        gameObjectValue: {fileID: 0}

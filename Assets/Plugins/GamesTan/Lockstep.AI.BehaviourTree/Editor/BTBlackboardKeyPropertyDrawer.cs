@@ -25,8 +25,9 @@ namespace Lockstep.AI.Editor {
         SerializedProperty itemProp;
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property) {
-            tree = property.serializedObject.targetObject as BehaviourTree;
-
+            PopupField<string> dropdown = new PopupField<string>();
+            return dropdown;
+            //tree = property.serializedObject.targetObject as BehaviourTree;
             itemProp = property.FindPropertyRelative("key");
 
             string currentValue = "null";
@@ -36,7 +37,6 @@ namespace Lockstep.AI.Editor {
                 }
             }
 
-            PopupField<string> dropdown = new PopupField<string>();
             dropdown.label = property.name;
             dropdown.value = currentValue;
             dropdown.RegisterCallback<ChangeEvent<string>>((evt) => {

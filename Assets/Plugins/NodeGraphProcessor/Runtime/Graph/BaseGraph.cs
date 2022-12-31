@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
-
+using Lockstep.AI;
 namespace GraphProcessor
 {
 	public class GraphChanges
@@ -107,13 +107,16 @@ namespace GraphProcessor
 		[SerializeField]
 		public List< PinnedElement >					pinnedElements = new List< PinnedElement >();
 
+		[SerializeField, SerializeReference]
+		public List< ExposedParameter >					exposedParameters = new List< ExposedParameter >();
+		
 		/// <summary>
 		/// All exposed parameters in the graph
 		/// </summary>
 		/// <typeparam name="ExposedParameter"></typeparam>
 		/// <returns></returns>
 		[SerializeField, SerializeReference]
-		public List< ExposedParameter >					exposedParameters = new List< ExposedParameter >();
+		public List< BlackboardKey >					blackboardKeys = new List< BlackboardKey >();
 
 		[SerializeField, FormerlySerializedAs("exposedParameters")] // We keep this for upgrade
 		List< ExposedParameter >						serializedParameterList = new List<ExposedParameter>();

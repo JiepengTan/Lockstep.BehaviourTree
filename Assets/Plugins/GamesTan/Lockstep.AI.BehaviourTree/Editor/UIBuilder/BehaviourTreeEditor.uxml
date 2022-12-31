@@ -19,7 +19,7 @@
                         <ui:VisualElement style="border-top-width: 1px; border-top-color: rgb(89, 89, 89); padding-top: 1px; min-height: 80px;">
                             <ui:Label text="Create New Key..." display-tooltip-when-elided="true" style="-unity-font-style: italic;" />
                             <ui:TextField picking-mode="Ignore" label="Name" name="TextField_KeyName" />
-                            <uie:EnumField label="Type" value="Center" name="EnumField_KeyType" />
+                            <uie:EnumField label="EBlackboardKeyType" value="Center" name="EnumField_KeyType" />
                             <ui:Button text="Create" display-tooltip-when-elided="true" name="Button_KeyCreate" />
                         </ui:VisualElement>
                     </Lockstep.AI.Editor.BTBlackboardView>

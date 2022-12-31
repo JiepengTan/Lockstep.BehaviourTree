@@ -16,8 +16,8 @@ namespace AIToolkitDemo
 
         private float _nextTimeToGenMovingTarget;
         private string _lastTriggeredAnimation;
-
-        private BehaviourTree<AIEntityWorkingData> _bt;
+        public BehaviourTree Tree => _bt;
+        private BehaviourTree _bt;
         public bool IsDead;
 
         public BTGraph BTConfig;
@@ -30,11 +30,11 @@ namespace AIToolkitDemo
         {
             _nextTimeToGenMovingTarget = 0f;
             _lastTriggeredAnimation = string.Empty;
-            _bt = new BehaviourTree<AIEntityWorkingData>();
-            _bt.DoAwake(BTConfig, transform);
-            _bt.WorkingData.Entity = this;
-            _bt.WorkingData.EntityTF = transform;
-            _anim = _bt.WorkingData.EntityAnimator = GetComponent<Animator>();
+            _bt = new BehaviourTree();
+            var data = _bt.DoAwake<AIEntityWorkingData>(BTConfig, transform);
+            data.Entity = this;
+            data.EntityTF = transform;
+            _anim = data.EntityAnimator = GetComponent<Animator>();
 
             IsDead = false;
 
