@@ -115,7 +115,7 @@ MonoBehaviour:
     title: "\u751F\u6D3B\u5A11\u5A46"
     content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: 298, y: 275, z: 0}
+  position: {x: 447, y: 245, z: 0}
   scale: {x: 1.15, y: 1.15, z: 1}
   references:
     version: 2
