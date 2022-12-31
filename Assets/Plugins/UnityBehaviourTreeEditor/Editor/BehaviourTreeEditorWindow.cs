@@ -133,11 +133,12 @@ namespace TheKiwiCoder {
             });
 
             // Version label
-            var packageManifest = EditorUtility.GetPackageManifest();
-            if (packageManifest != null) {
-                versionLabel.text = $"v {packageManifest.version}";
-            }
+            //var packageManifest = EditorUtility.GetPackageManifest();
+            //if (packageManifest != null) {
+            //    versionLabel.text = $"v {packageManifest.version}";
+            //}
 
+            versionLabel.text = "1.0.3";
             treeView.OnNodeSelected -= OnNodeSelectionChanged;
             treeView.OnNodeSelected += OnNodeSelectionChanged;
 

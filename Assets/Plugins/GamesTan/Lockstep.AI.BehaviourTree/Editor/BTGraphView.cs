@@ -57,7 +57,7 @@ namespace Lockstep.AI
 			}
 		}
 		
-		public void OnStep()
+		public void UpdateRuntimeStatus()
 		{
 			var states = BaseNode.__DebugRecordNodesUpdateState;
 			foreach (var view in nodeViews)
@@ -71,7 +71,6 @@ namespace Lockstep.AI
 					view.UnHighlight();
 				}
 			}
-
 		}
 		void CreateNodeOfType(Type type, Vector2 position)
 		{
