@@ -40,7 +40,7 @@ namespace Lockstep.AI.Editor {
             });
 
             // EnumField
-            newKeyEnumField.Init(BlackboardKey.Type.Float);
+            newKeyEnumField.Init(EBlackboardKeyType.Float);
 
             // Button
             createButton.clicked -= CreateNewKey;
@@ -102,7 +102,7 @@ namespace Lockstep.AI.Editor {
         }
 
         void CreateNewKey() {
-            behaviourTree.CreateBlackboardKey(newKeyTextField.text, (BlackboardKey.Type)newKeyEnumField.value);
+            behaviourTree.CreateBlackboardKey(newKeyTextField.text, (EBlackboardKeyType)newKeyEnumField.value);
             ValidateButton();
         }
 

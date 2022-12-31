@@ -30,7 +30,7 @@ namespace Lockstep.AI.Editor {
             itemProp = property.FindPropertyRelative("key");
 
             string currentValue = "null";
-            foreach (var key in tree.blackboard.keys) {
+            foreach (var key in tree.blackboard.Keys) {
                 if (key == itemProp.managedReferenceValue) {
                     currentValue = key.name;
                 }
@@ -46,7 +46,7 @@ namespace Lockstep.AI.Editor {
 
             dropdown.RegisterCallback<MouseEnterEvent>((evt) => {
                 var choices = new List<string>();
-                foreach (var key in tree.blackboard.keys) {
+                foreach (var key in tree.blackboard.Keys) {
 
                     // Filter out keys of the same type
                     if (!Matches(key.type, fieldInfo.FieldType)) {
@@ -61,26 +61,28 @@ namespace Lockstep.AI.Editor {
             return dropdown;
         }
 
-        bool Matches(BlackboardKey.Type keyType, System.Type propertyType) {
+        bool Matches(EBlackboardKeyType keyType, System.Type propertyType) {
             switch (keyType) {
-                case BlackboardKey.Type.Float:
+                case EBlackboardKeyType.Float:
                     return propertyType == typeof(FloatVar);
-                case BlackboardKey.Type.Int:
+                case EBlackboardKeyType.Int:
                     return propertyType == typeof(IntVar);
-                case BlackboardKey.Type.Boolean:
+                case EBlackboardKeyType.Long:
+                    return propertyType == typeof(IntVar);
+                case EBlackboardKeyType.Boolean:
                     return propertyType == typeof(BoolVar);
-                case BlackboardKey.Type.String:
-                    return propertyType == typeof(StringVar);
-                case BlackboardKey.Type.Vector2:
+                case EBlackboardKeyType.Vector2:
                     return propertyType == typeof(Vector2Var);
-                case BlackboardKey.Type.Vector3:
+                case EBlackboardKeyType.Vector3:
                     return propertyType == typeof(Vector3Var);
-                case BlackboardKey.Type.GameObject:
-                    return propertyType == typeof(GameObjectVar);
-                case BlackboardKey.Type.Tag:
-                    return propertyType == typeof(TagVar);
-                case BlackboardKey.Type.LayerMask:
+                case EBlackboardKeyType.LayerMask:
                     return propertyType == typeof(LayerMaskVar);
+                case EBlackboardKeyType.GameObject:
+                    return propertyType == typeof(GameObjectVar);
+                case EBlackboardKeyType.String:
+                    return propertyType == typeof(StringVar);
+                case EBlackboardKeyType.Tag:
+                    return propertyType == typeof(TagVar);
                 default:
                     Debug.LogError($"Unhandled Key Type:{keyType}:{propertyType}");
                     return false;

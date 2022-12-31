@@ -2,7 +2,7 @@
 {
     public interface IMonoBehaviourTree
     {
-        BlackBoard BlackBoard { get; }
+        Blackboard Blackboard { get; }
         BTNode TreeRoot { get; }
     }
 
@@ -28,17 +28,6 @@
             _workingData = new T();
             _workingData.Init(btInfo.Offsets, btInfo.MemSize);
             return _workingData;
-        }
-
-
-        public T GetValue<T>(string key, T defaultValue)
-        {
-            return _workingData.GetValue<T>(key, defaultValue);
-        }
-
-        public void SetValue(string key, object defaultValue)
-        {
-            _workingData.SetValue(key, defaultValue);
         }
 
         public void Reset()

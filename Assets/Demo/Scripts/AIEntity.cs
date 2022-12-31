@@ -23,7 +23,7 @@ namespace AIToolkitDemo
         public BTGraph BTConfig;
 
         private Animator _anim;
-        public BlackBoard BlackBoard => _bt?.WorkingData?.Blackboard;
+        public Blackboard Blackboard => _bt?.WorkingData?.Blackboard;
         public BTNode TreeRoot => _bt?.Root;
         
         public AIEntity Init()
@@ -97,7 +97,7 @@ namespace AIToolkitDemo
             _anim.speed = GameTimer.instance.timeScale;
             _bt.DoUpdate(deltaTime);
             //test bb usage
-            _bt.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
+            _bt.WorkingData.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
 
             return 0;
         }

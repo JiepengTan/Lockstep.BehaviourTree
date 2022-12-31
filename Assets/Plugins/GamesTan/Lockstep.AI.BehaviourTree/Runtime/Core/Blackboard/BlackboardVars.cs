@@ -35,7 +35,21 @@ namespace Lockstep.AI {
             }
         }
     }
+    [System.Serializable]
+    public class LongVar {
 
+        [SerializeReference]
+        private BlackboardKey key;
+
+        public long Value {
+            get {
+                return key.longValue;
+            }
+            set {
+                key.longValue = value;
+            }
+        }
+    }
     [System.Serializable]
     public class BoolVar {
 

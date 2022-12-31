@@ -177,7 +177,7 @@ namespace Lockstep.AI.Editor {
             }
         }
 
-        public void CreateBlackboardKey(string keyName, BlackboardKey.Type keyType) {
+        public void CreateBlackboardKey(string keyName, EBlackboardKeyType keyType) {
             SerializedProperty keysArray = BlackboardKeys;
             keysArray.InsertArrayElementAtIndex(keysArray.arraySize);
             SerializedProperty newKey = keysArray.GetArrayElementAtIndex(keysArray.arraySize - 1);

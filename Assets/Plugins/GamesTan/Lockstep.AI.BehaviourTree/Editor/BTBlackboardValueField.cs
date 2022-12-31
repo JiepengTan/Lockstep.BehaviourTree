@@ -16,54 +16,59 @@ namespace Lockstep.AI.Editor {
             property = key;
 
             string keyName = key.FindPropertyRelative("name").stringValue;
-            BlackboardKey.Type keyType = (BlackboardKey.Type)key.FindPropertyRelative("type").enumValueIndex;
+            EBlackboardKeyType keyType = (EBlackboardKeyType)key.FindPropertyRelative("type").enumValueIndex;
 
             Clear();
 
             switch (keyType) {
-                case BlackboardKey.Type.Float:
+                case EBlackboardKeyType.Float:
                     FloatField floatField = new FloatField();
                     floatField.BindProperty(property.FindPropertyRelative("floatValue"));
                     Add(floatField);
                     break;
-                case BlackboardKey.Type.Int:
+                case EBlackboardKeyType.Int:
                     IntegerField intField = new IntegerField();
                     intField.BindProperty(property.FindPropertyRelative("intValue"));
                     Add(intField);
                     break;
-                case BlackboardKey.Type.Boolean:
+                case EBlackboardKeyType.Long:
+                    LongField longField = new LongField();
+                    longField.BindProperty(property.FindPropertyRelative("longValue"));
+                    Add(longField);
+                    break;
+                case EBlackboardKeyType.Boolean:
                     Toggle boolField = new Toggle();
                     boolField.BindProperty(property.FindPropertyRelative("booleanValue"));
                     Add(boolField);
                     break;
-                case BlackboardKey.Type.String:
+                case EBlackboardKeyType.String:
                     TextField stringField = new TextField();
                     stringField.BindProperty(property.FindPropertyRelative("stringValue"));
                     Add(stringField);
                     break;
-                case BlackboardKey.Type.Vector2:
+                case EBlackboardKeyType.Vector2:
                     Vector2Field vector2Field = new Vector2Field();
                     vector2Field.BindProperty(property.FindPropertyRelative("vector2Value"));
                     Add(vector2Field);
                     break;
-                case BlackboardKey.Type.Vector3:
+                case EBlackboardKeyType.Vector3:
                     Vector3Field vector3Field = new Vector3Field();
                     vector3Field.BindProperty(property.FindPropertyRelative("vector3Value"));
                     Add(vector3Field);
                     break;
-                case BlackboardKey.Type.GameObject:
+                case EBlackboardKeyType.GameObject:
                     ObjectField gameObjectField = new ObjectField();
                     gameObjectField.objectType = typeof(GameObject);
                     gameObjectField.allowSceneObjects = false;
                     gameObjectField.BindProperty(property.FindPropertyRelative("gameObjectValue"));
                     Add(gameObjectField);
                     break;
-                case BlackboardKey.Type.Tag:
+                case EBlackboardKeyType.Tag:
                     TagField tagField = new TagField();
                     tagField.BindProperty(property.FindPropertyRelative("stringValue"));
                     Add(tagField);
                     break;
-                case BlackboardKey.Type.LayerMask:
+                case EBlackboardKeyType.LayerMask:
                     LayerMaskField layerMaskField = new LayerMaskField();
                     layerMaskField.BindProperty(property.FindPropertyRelative("layerMaskValue"));
                     Add(layerMaskField);
