@@ -1,7 +1,8 @@
 # Lockstep.AI.BehaviourTree
 
-BehaviourTree for Lockstep Predict & Rollback
-可用于帧同步预测回滚的高性能行为树库
+BehaviourTree for Lockstep Predict & Rollback   \
+
+可用于帧同步预测回滚的高性能行为树库 
 
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/master/Documentation/images/Head.gif?raw=true" width="1276"></p> 
 
