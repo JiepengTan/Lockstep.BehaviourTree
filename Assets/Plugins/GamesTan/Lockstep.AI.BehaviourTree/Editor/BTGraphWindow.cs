@@ -23,6 +23,7 @@ namespace Lockstep.AI.Editor
 		BTBlackboardView blackboardView;
 		Label titleLabel;
 		Label versionLabel;
+		private BTSerializedBehaviourTree serializer;
 		protected BTGraphView treeView => graphView as BTGraphView;
 		
 		protected override void OnDestroy()
@@ -38,7 +39,6 @@ namespace Lockstep.AI.Editor
 			if (graphView == null)
 			{
 				serializer = new BTSerializedBehaviourTree(config);
-				titleContent = new GUIContent("All Graph");
 				// Import UXML
 				var visualTree = behaviourTreeXml;
 				visualTree.CloneTree(root);
@@ -47,6 +47,7 @@ namespace Lockstep.AI.Editor
 				graphView.Add(new MiniMapView(graphView));
 				graphView.Add(new BTToolbarView(graphView));
 				inspectorView = root.Q<BTInspectorView>();
+				
 				blackboardView = root.Q<BTBlackboardView>();
 				blackboardView.Bind(serializer);
 				
@@ -57,6 +58,7 @@ namespace Lockstep.AI.Editor
 					string path = AssetDatabase.GetAssetPath(config)??"BehaviourTree";
 					titleLabel.text = $"TreeView ({path})";
 				}
+				titleContent = new GUIContent("All Graph");
 			}
 
 		}
@@ -98,53 +100,32 @@ namespace Lockstep.AI.Editor
         }
 
         private void OnSelectionChange() {
-            if (Selection.activeGameObject) {
-                var runner = Selection.activeGameObject.GetComponent<IMonoBehaviourTree>();
-                if (runner != null && runner.Tree != null) {
-                    SelectTree(runner.Tree);
-                }
+            var runner = Selection.activeGameObject?.GetComponent<IMonoBehaviourTree>();
+            if (runner != null) {
+                SelectTree(runner);
+            }
+            else
+            {
+	            ClearSelection();
             }
         }
 
         private void OnInspectorUpdate() {
 	        if (Application.isPlaying) {
-		        treeView?.UpdateNodeStates();
+		        treeView?.UpdateRuntimeStatus();
 	        }
         }
-        [HideInInspector]
-        public BehaviourTree tree;
-        public BTSerializedBehaviourTree serializer;
-        void SelectTree(BehaviourTree newTree) {
-            if (newTree == null) {
-                ClearSelection();
-                return;
-            }
-
-            tree = newTree;
-
-			treeView?.PopulateView(serializer);
+        void SelectTree(IMonoBehaviourTree mono)
+        { 
+            blackboardView.BindProperty(mono.EditorBlackboardProperty as SerializedProperty);
         }
 
 
         void ClearSelection() {
-            tree = null;
             serializer = null;
             inspectorView.Clear();
-            treeView.ClearView();
-            blackboardView.ClearView();
-        }
-
-        void ClearIfSelected(string path) {
-            if (serializer == null) {
-                return;
-            }
-
-            if (AssetDatabase.GetAssetPath(tree.Config) == path) {
-                // Need to delay because this is called from a will delete asset callback
-                EditorApplication.delayCall += () => {
-                    SelectTree(null);
-                };
-            }
+            treeView.ClearSelection();
+            blackboardView.ClearSelection();
         }
 
         //void OnNodeSelectionChanged(NodeView node) {

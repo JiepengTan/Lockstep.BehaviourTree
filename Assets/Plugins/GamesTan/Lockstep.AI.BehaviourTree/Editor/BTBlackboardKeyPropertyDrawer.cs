@@ -31,29 +31,29 @@ namespace Lockstep.AI.Editor {
             itemProp = property.FindPropertyRelative("key");
 
             string currentValue = "null";
-            foreach (var key in tree.blackboard.Keys) {
+            foreach (var key in tree.Blackboard.Keys) {
                 if (key == itemProp.managedReferenceValue) {
-                    currentValue = key.name;
+                    currentValue = key.Name;
                 }
             }
 
             dropdown.label = property.name;
             dropdown.value = currentValue;
             dropdown.RegisterCallback<ChangeEvent<string>>((evt) => {
-                itemProp.managedReferenceValue = tree.blackboard.Find(evt.newValue);
+                itemProp.managedReferenceValue = tree.Blackboard.Find(evt.newValue);
                 bool changesApplied = itemProp.serializedObject.ApplyModifiedProperties();
             });
 
             dropdown.RegisterCallback<MouseEnterEvent>((evt) => {
                 var choices = new List<string>();
-                foreach (var key in tree.blackboard.Keys) {
+                foreach (var key in tree.Blackboard.Keys) {
 
                     // Filter out keys of the same type
-                    if (!Matches(key.type, fieldInfo.FieldType)) {
+                    if (!Matches(key.Type, fieldInfo.FieldType)) {
                         continue;
                     }
 
-                    choices.Add(key.name);
+                    choices.Add(key.Name);
                 }
                 dropdown.choices = choices;
             });

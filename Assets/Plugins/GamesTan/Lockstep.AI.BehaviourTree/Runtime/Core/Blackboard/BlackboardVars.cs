@@ -12,10 +12,10 @@ namespace Lockstep.AI {
 
         public float Value {
             get {
-                return key.floatValue;
+                return key.FloatValue;
             }
             set {
-                key.floatValue = value;
+                key.FloatValue = value;
             }
         }
     }
@@ -28,10 +28,10 @@ namespace Lockstep.AI {
 
         public int Value {
             get {
-                return key.intValue;
+                return key.IntValue;
             }
             set {
-                key.intValue = value;
+                key.IntValue = value;
             }
         }
     }
@@ -43,10 +43,10 @@ namespace Lockstep.AI {
 
         public long Value {
             get {
-                return key.longValue;
+                return key.LongValue;
             }
             set {
-                key.longValue = value;
+                key.LongValue = value;
             }
         }
     }
@@ -58,10 +58,10 @@ namespace Lockstep.AI {
 
         public bool Value {
             get {
-                return key.booleanValue;
+                return key.BooleanValue;
             }
             set {
-                key.booleanValue = value;
+                key.BooleanValue = value;
             }
         }
     }
@@ -74,10 +74,10 @@ namespace Lockstep.AI {
 
         public string Value {
             get {
-                return key.stringValue;
+                return key.StringValue;
             }
             set {
-                key.stringValue = value;
+                key.StringValue = value;
             }
         }
     }
@@ -90,10 +90,10 @@ namespace Lockstep.AI {
 
         public Vector2 Value {
             get {
-                return key.vector2Value;
+                return key.Vector2Value;
             }
             set {
-                key.vector2Value = value;
+                key.Vector2Value = value;
             }
         }
     }
@@ -106,10 +106,10 @@ namespace Lockstep.AI {
 
         public Vector3 Value {
             get {
-                return key.vector3Value;
+                return key.Vector3Value;
             }
             set {
-                key.vector3Value = value;
+                key.Vector3Value = value;
             }
         }
     }
@@ -122,10 +122,10 @@ namespace Lockstep.AI {
 
         public GameObject Value {
             get {
-                return key.gameObjectValue;
+                return key.GameObjectValue;
             }
             set {
-                key.gameObjectValue = value;
+                key.GameObjectValue = value;
             }
         }
     }
@@ -138,10 +138,10 @@ namespace Lockstep.AI {
 
         public string Value {
             get {
-                return key.stringValue;
+                return key.StringValue;
             }
             set {
-                key.stringValue = value;
+                key.StringValue = value;
             }
         }
     }
@@ -154,10 +154,10 @@ namespace Lockstep.AI {
 
         public LayerMask Value {
             get {
-                return key.layerMaskValue;
+                return key.LayerMaskValue;
             }
             set {
-                key.layerMaskValue = value;
+                key.LayerMaskValue = value;
             }
         }
     }

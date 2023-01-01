@@ -12,7 +12,7 @@ namespace Lockstep.AI.Editor {
 
         public new class UxmlFactory : UxmlFactory<BTBlackboardView, VisualElement.UxmlTraits> { }
 
-        private BTSerializedBehaviourTree behaviourTree;
+        private BTSerializedBehaviourTree serializer;
 
         private ListView listView;
         private TextField newKeyTextField;
@@ -21,9 +21,9 @@ namespace Lockstep.AI.Editor {
 
         private Button createButton;
 
-        internal void Bind(BTSerializedBehaviourTree behaviourTree) {
+        internal void Bind(BTSerializedBehaviourTree serializer) {
             
-            this.behaviourTree = behaviourTree;
+            this.serializer = serializer;
 
             listView = this.Q<ListView>("ListView_Keys");
             newKeyTextField = this.Q<TextField>("TextField_KeyName");
@@ -31,7 +31,7 @@ namespace Lockstep.AI.Editor {
             createButton = this.Q<Button>("Button_KeyCreate");
 
             // ListView
-            listView.BindProperty(behaviourTree.BlackboardKeys);
+            listView.BindProperty(serializer.BlackboardKeys);
             listView.makeItem = MakeItem;
             listView.bindItem = BindItem;
 
@@ -50,6 +50,13 @@ namespace Lockstep.AI.Editor {
             ValidateButton();
         }
 
+        public void BindProperty(SerializedProperty keys = null)
+        {
+            serializer.RebindProperties(keys);
+            listView.BindProperty(serializer.BlackboardKeys);
+            listView.Rebuild();
+        }
+  
         private void ValidateButton() {
             // Disable the create button if trying to create a non-unique key
             bool isValidKeyText = ValidateKeyText(newKeyTextField.text);
@@ -61,15 +68,15 @@ namespace Lockstep.AI.Editor {
                 return false;
             }
 
-            bool keyExists = behaviourTree.tree.blackboardKeys.Find((a)=>a.name==newKeyTextField.text) != null;
+            bool keyExists = serializer.tree.blackboardKeys.Find((a)=>a.Name==newKeyTextField.text) != null;
             return !keyExists;
         }
 
-        void BindItem(VisualElement item, int index) {
+        void BindItem(VisualElement item, int index)
+        {
             Label label = item.Q<Label>();
-            var blackboardKeys = behaviourTree.BlackboardKeys;
-            var keyProp = blackboardKeys.GetArrayElementAtIndex(index);
-            var keyName = keyProp.FindPropertyRelative("name");
+            var keyProp = serializer.BlackboardKeys.GetArrayElementAtIndex(index);
+            var keyName = keyProp.FindPropertyRelative(nameof(BlackboardKey.Name));
             label.BindProperty(keyName);
 
             BTBlackboardValueField valueField = item.Q<BTBlackboardValueField>();
@@ -83,7 +90,7 @@ namespace Lockstep.AI.Editor {
             container.style.flexDirection = FlexDirection.Row;
 
             Label keyField = new Label();
-            keyField.style.width = 100.0f;
+            keyField.style.width = 120.0f;
 
             BTBlackboardValueField valueField = new BTBlackboardValueField();
             valueField.style.flexGrow = 1.0f;
@@ -102,20 +109,16 @@ namespace Lockstep.AI.Editor {
         }
 
         void CreateNewKey() {
-            behaviourTree.CreateBlackboardKey(newKeyTextField.text, (EBlackboardKeyType)newKeyEnumField.value);
+            serializer.CreateBlackboardKey(newKeyTextField.text, (EBlackboardKeyType)newKeyEnumField.value);
             ValidateButton();
         }
 
         void DeleteKey(string keyName) {
-            behaviourTree.DeleteBlackboardKey(keyName);
+            serializer.DeleteBlackboardKey(keyName);
         }
 
-        public void ClearView() {
-            this.behaviourTree = null;
-            if (listView != null) {
-                listView.itemsSource = null;
-                listView.Rebuild();
-            }
+        public void ClearSelection() {
+            BindProperty();
         }
     }
 }

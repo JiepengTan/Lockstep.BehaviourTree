@@ -35,7 +35,7 @@
 }
 
 .Highlight {
-    background-color: rgba(0, 63, 63, 0.8);
+    background-color: rgba(60, 212, 0, 0.54);
 }
 
 ParameterNodeView #title {
@@ -242,7 +242,7 @@ ParameterNodeView #controls EnumField > VisualElement > VisualElement {
     align-content: center;
 }
 
-#collapse-button:
+#collapse-button
 {
     width: 16px;
     height: 16px;

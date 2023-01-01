@@ -24,18 +24,28 @@ namespace Lockstep.AI.Editor {
         bool batchMode = false;
 
 
-        public SerializedProperty BlackboardKeys {
-            get {
-                return serializedObject.FindProperty(sPropBlackboard);
+        public SerializedProperty BlackboardKeys;
+
+        public void RebindProperties(SerializedProperty keys =null)
+        {
+            if (keys == null)
+            {
+                RebindProperties(serializedObject.FindProperty(sPropBlackboard));
             }
+            else
+            {
+                this.BlackboardKeys = keys;
+            }
+
         }
 
-        // Start is called before the first frame update
         public BTSerializedBehaviourTree(BTGraph tree)
         {
             serializedObject = new SerializedObject(tree);
             this.tree = tree;
+            RebindProperties();
         }
+
 
         public void CreateBlackboardKey(string keyName, EBlackboardKeyType keyType) {
             SerializedProperty keysArray = BlackboardKeys;
@@ -43,8 +53,8 @@ namespace Lockstep.AI.Editor {
             SerializedProperty newKey = keysArray.GetArrayElementAtIndex(keysArray.arraySize - 1);
 
             BlackboardKey key = new BlackboardKey();
-            key.name = keyName;
-            key.type = keyType;
+            key.Name = keyName;
+            key.Type = keyType;
             newKey.managedReferenceValue = key;
 
             ApplyChanges();
@@ -55,7 +65,7 @@ namespace Lockstep.AI.Editor {
             for(int i = 0; i < keysArray.arraySize; ++i) {
                 var key = keysArray.GetArrayElementAtIndex(i);
                 BlackboardKey itemKey = key.managedReferenceValue as BlackboardKey;
-                if (itemKey.name == keyName) {
+                if (itemKey.Name == keyName) {
                     keysArray.DeleteArrayElementAtIndex(i);
                     ApplyChanges();
                     return;
@@ -69,7 +79,7 @@ namespace Lockstep.AI.Editor {
 
         public void ApplyChanges() {
             if (!batchMode) {
-                serializedObject.ApplyModifiedProperties();
+                serializedObject?.ApplyModifiedProperties();
             }
         }
 

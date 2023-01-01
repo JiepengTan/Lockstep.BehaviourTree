@@ -17,6 +17,7 @@ namespace AIToolkitDemo
         private float _nextTimeToGenMovingTarget;
         private string _lastTriggeredAnimation;
         public BehaviourTree Tree => _bt;
+        [SerializeReference]
         private BehaviourTree _bt;
         public bool IsDead;
 
@@ -24,6 +25,19 @@ namespace AIToolkitDemo
 
         private Animator _anim;
         public Blackboard Blackboard => _bt?.WorkingData?.Blackboard;
+
+        public object EditorBlackboardProperty
+        {
+            get
+            {
+#if UNITY_EDITOR
+                var obj = new UnityEditor.SerializedObject(this);
+                return obj.FindProperty("_bt._workingData._blackboard.Keys");
+#else
+            return null;
+#endif
+            }
+        }
         public BTNode TreeRoot => _bt?.Root;
         
         public AIEntity Init()
@@ -95,9 +109,8 @@ namespace AIToolkitDemo
 
             //update working data
             _anim.speed = GameTimer.instance.timeScale;
-            _bt.DoUpdate(deltaTime);
-            //test bb usage
             _bt.WorkingData.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
+            _bt.DoUpdate(deltaTime);
 
             return 0;
         }

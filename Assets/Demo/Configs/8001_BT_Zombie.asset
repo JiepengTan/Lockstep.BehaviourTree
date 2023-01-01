@@ -104,7 +104,8 @@ MonoBehaviour:
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   exposedParameters:
   - rid: 239897388287787008
-  blackboardKeys: []
+  blackboardKeys:
+  - rid: 5073097199201026384
   serializedParameterList: []
   stickyNotes:
   - position:
@@ -116,8 +117,8 @@ MonoBehaviour:
     title: "\u751F\u6D3B\u5A11\u5A46"
     content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: 447, y: 245, z: 0}
-  scale: {x: 1.15, y: 1.15, z: 1}
+  position: {x: 65, y: 113, z: 0}
+  scale: {x: 0.7561437, y: 0.7561437, z: 1}
   references:
     version: 2
     RefIds:
@@ -222,9 +223,9 @@ MonoBehaviour:
         computeOrder: 4
         position:
           serializedVersion: 2
-          x: 622
+          x: 647
           y: 229
-          width: 180
+          width: 197
           height: 68
         expanded: 0
         debug: 0
@@ -239,8 +240,8 @@ MonoBehaviour:
         computeOrder: 5
         position:
           serializedVersion: 2
-          x: 863
-          y: 229
+          x: 991.5445
+          y: 249
           width: 112
           height: 48
         expanded: 0
@@ -255,9 +256,9 @@ MonoBehaviour:
         computeOrder: 6
         position:
           serializedVersion: 2
-          x: 385
-          y: 237
-          width: 178
+          x: 395
+          y: 229
+          width: 196
           height: 88
         expanded: 0
         debug: 0
@@ -273,12 +274,28 @@ MonoBehaviour:
         computeOrder: 7
         position:
           serializedVersion: 2
-          x: 146.00003
-          y: 238.99997
-          width: 180
+          x: 146.99994
+          y: 237.00002
+          width: 198
           height: 68
         expanded: 0
         debug: 0
         nodeLock: 0
         __input: 0
         TurnSpeed: 3.45
+    - rid: 5073097199201026384
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: com.alelievr.NodeGraphProcessor.Runtime}
+      data:
+        Name: NextMovingPosition
+        Type: 3
+        FloatValue: 0
+        IntValue: 0
+        LongValue: 0
+        BooleanValue: 0
+        Vector2Value: {x: 0, y: 0}
+        Vector3Value: {x: 0, y: 0, z: 0}
+        LayerMaskValue:
+          serializedVersion: 2
+          m_Bits: 0
+        StringValue: 
+        GameObjectValue: {fileID: 0}

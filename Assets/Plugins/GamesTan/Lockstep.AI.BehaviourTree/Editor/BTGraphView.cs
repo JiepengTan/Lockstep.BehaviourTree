@@ -12,15 +12,11 @@ namespace Lockstep.AI.Editor
 		public new class UxmlFactory : UxmlFactory<BTGraphView, GraphView.UxmlTraits> { }
 
 
-		public void ClearView()
+		public override void ClearSelection()
 		{
+			base.ClearSelection();
 		}
 
-		public void PopulateView(BTSerializedBehaviourTree tree)
-		{
-		}
-
-		public void UpdateNodeStates(){}
 		public override void DoInit(EditorWindow window, BaseGraph graph)
 		{
 			Insert(0, new GridBackground());

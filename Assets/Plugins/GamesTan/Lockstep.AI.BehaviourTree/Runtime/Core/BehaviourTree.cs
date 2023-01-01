@@ -1,18 +1,21 @@
-﻿namespace Lockstep.AI
+﻿using UnityEngine;
+
+namespace Lockstep.AI
 {
     public interface IMonoBehaviourTree
     {
         Blackboard Blackboard { get; }
         BTNode TreeRoot { get; }
         BehaviourTree Tree { get; }
+        object EditorBlackboardProperty { get; }
     }
 
     public class BehaviourTree
     {
-        protected BTWorkingData _workingData;
+        [SerializeReference] protected BTWorkingData _workingData;
         protected BTNode _bt;
         public BTWorkingData WorkingData => _workingData;
-        public Blackboard blackboard => _workingData.Blackboard;
+        public Blackboard Blackboard => _workingData.Blackboard;
         public BTNode Root =>_bt;
         protected object _transform;
 
@@ -32,6 +35,7 @@
             _bt = btInfo.RootNode;
             _workingData = new T();
             _workingData.Init(btInfo.Offsets, btInfo.MemSize);
+            _workingData.Blackboard.DoInit(Config.blackboardKeys);
             return _workingData as T;
         }
 

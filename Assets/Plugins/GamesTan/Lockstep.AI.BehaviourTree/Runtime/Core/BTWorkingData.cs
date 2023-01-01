@@ -12,7 +12,7 @@ namespace Lockstep.AI {
         }
 
         public Blackboard Blackboard => _blackboard;
-        private Blackboard _blackboard;
+        [SerializeReference] private Blackboard _blackboard;
         private byte* _pDatas = null;
         private int[] _dataOffset;
         private int _dataLen = 0;
