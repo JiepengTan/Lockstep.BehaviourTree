@@ -4,9 +4,6 @@ namespace Lockstep.AI
 {
     public interface IMonoBehaviourTree
     {
-        Blackboard Blackboard { get; }
-        BTNode TreeRoot { get; }
-        BehaviourTree Tree { get; }
         object EditorBlackboardProperty { get; }
     }
 
