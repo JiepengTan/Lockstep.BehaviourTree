@@ -14,7 +14,6 @@ namespace Lockstep.AI.Editor {
         public void BindProperty(SerializedProperty key) {
 
             property = key;
-
             string keyName = key.FindPropertyRelative(nameof(BlackboardKey.Name)).stringValue;
             EBlackboardKeyType keyType = (EBlackboardKeyType)key.FindPropertyRelative(nameof(BlackboardKey.Type)).enumValueIndex;
 

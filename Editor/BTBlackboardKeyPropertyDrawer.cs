@@ -26,7 +26,6 @@ namespace Lockstep.AI.Editor {
 
         public override VisualElement CreatePropertyGUI(SerializedProperty property) {
             PopupField<string> dropdown = new PopupField<string>();
-            return dropdown;
             //tree = property.serializedObject.targetObject as BehaviourTree;
             itemProp = property.FindPropertyRelative("key");
 

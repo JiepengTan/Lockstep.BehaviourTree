@@ -14,7 +14,7 @@ namespace GraphProcessor
             public bool expanded = false;
 
             [SerializeField]
-            internal string guid = null;
+            public string guid = null;
 
             public override bool Equals(object obj)
             {

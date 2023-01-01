@@ -14,67 +14,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - rid: 239897359165161476
-  - rid: 239897359165161484
-  - rid: 239897365659779072
   - rid: 239897614088667220
   - rid: 239897614088667221
   - rid: 239897614088667222
   - rid: 239897614088667223
   - rid: 239897614088667225
+  - rid: 5073097209088311296
+  - rid: 5073097209088311297
+  - rid: 5073097209088311298
   edges:
-  - GUID: c00276d5-6c01-4b94-97b9-3f989fabf844
+  - GUID: 1565fb10-8945-48e4-bb98-1694e157b881
     owner: {fileID: 11400000}
-    inputNodeGUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
-    outputNodeGUID: f4211f21-decc-494a-a580-66bb709e2257
+    inputNodeGUID: 0403fd2f-c556-4d6d-a38b-46cf4a5034c6
+    outputNodeGUID: 3ce5ae23-e3a0-4ce6-8252-e489a1d5f9e8
     inputFieldName: __input
     outputFieldName: __output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 59cf3fa5-d6b0-4f9c-8161-ef0315df590a
+  - GUID: 85055281-f826-432b-a59d-da465510a3eb
     owner: {fileID: 11400000}
-    inputNodeGUID: cb3ae1c8-a8b4-4796-8841-1608ab780c76
-    outputNodeGUID: f4211f21-decc-494a-a580-66bb709e2257
+    inputNodeGUID: 91806361-6821-4f2b-b603-8f112efccd70
+    outputNodeGUID: 3ce5ae23-e3a0-4ce6-8252-e489a1d5f9e8
     inputFieldName: __input
     outputFieldName: __output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: fbe4adf8-79e3-42f2-b4ce-69684f3ac253
+  - GUID: 004c511e-e571-487c-b6d3-b09edb94ac31
     owner: {fileID: 11400000}
     inputNodeGUID: b0e9d168-409f-426e-9bb7-973fc86dcaf6
-    outputNodeGUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
+    outputNodeGUID: 0403fd2f-c556-4d6d-a38b-46cf4a5034c6
     inputFieldName: __input
     outputFieldName: __output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: eccd61bd-ecde-430f-8224-a5684459bd90
-    owner: {fileID: 11400000}
-    inputNodeGUID: c5547ced-5425-4bf2-88d3-de6a7dd77210
-    outputNodeGUID: cb3ae1c8-a8b4-4796-8841-1608ab780c76
-    inputFieldName: __input
-    outputFieldName: __output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: f97d665c-de28-4976-a30a-f6f6b45d6388
-    owner: {fileID: 11400000}
-    inputNodeGUID: a39f8875-9abd-470c-9642-325c5340a14d
-    outputNodeGUID: cb3ae1c8-a8b4-4796-8841-1608ab780c76
-    inputFieldName: __input
-    outputFieldName: __output
-    inputPortIdentifier: 
-    outputPortIdentifier: 
-  - GUID: a349b3f9-e04e-411f-b744-d7938e817e3f
+  - GUID: 6f023af1-3b4b-4633-9ae5-054c761fc021
     owner: {fileID: 11400000}
     inputNodeGUID: 133dc9e5-482e-419e-8435-35d5dc101791
-    outputNodeGUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
+    outputNodeGUID: 0403fd2f-c556-4d6d-a38b-46cf4a5034c6
     inputFieldName: __input
     outputFieldName: __output
     inputPortIdentifier: 
     outputPortIdentifier: 
-  - GUID: 1229e6ce-1a75-4f21-9009-d772a762dc36
+  - GUID: 2c4b5917-2af8-4238-a273-b77a1ff7b031
     owner: {fileID: 11400000}
     inputNodeGUID: 4b30005f-0c73-41de-ab03-3da1ba18050d
-    outputNodeGUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
+    outputNodeGUID: 0403fd2f-c556-4d6d-a38b-46cf4a5034c6
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: 54c049f9-78ec-4ddf-87d7-0707ebf48ac0
+    owner: {fileID: 11400000}
+    inputNodeGUID: c5547ced-5425-4bf2-88d3-de6a7dd77210
+    outputNodeGUID: 91806361-6821-4f2b-b603-8f112efccd70
+    inputFieldName: __input
+    outputFieldName: __output
+    inputPortIdentifier: 
+    outputPortIdentifier: 
+  - GUID: d8d28bdf-75a4-4488-8302-d49adafa4e3b
+    owner: {fileID: 11400000}
+    inputNodeGUID: a39f8875-9abd-470c-9642-325c5340a14d
+    outputNodeGUID: 91806361-6821-4f2b-b603-8f112efccd70
     inputFieldName: __input
     outputFieldName: __output
     inputPortIdentifier: 
@@ -102,107 +102,30 @@ MonoBehaviour:
     editorType:
       serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  exposedParameters:
-  - rid: 239897388287787008
-  blackboardKeys:
-  - rid: 5073097199201026384
+  exposedParameters: []
+  blackboardKeys: []
   serializedParameterList: []
   stickyNotes:
   - position:
       serializedVersion: 2
-      x: 651
-      y: -124
+      x: 1009.3974
+      y: -179.25504
       width: 149
       height: 139
     title: "\u751F\u6D3B\u5A11\u5A46"
     content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: 65, y: 113, z: 0}
-  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  position: {x: 393, y: 269, z: 0}
+  scale: {x: 0.57175326, y: 0.57175326, z: 1}
   references:
     version: 2
     RefIds:
-    - rid: 239897359165161476
-      type: {class: BTActionSequence, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: 284d5f23-d707-4fb2-b60f-2664c92519aa
-        computeOrder: 1
-        position:
-          serializedVersion: 2
-          x: 194
-          y: 74
-          width: 151
-          height: 54
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-        __output: 0
-    - rid: 239897359165161484
-      type: {class: BTActionSequence, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: cb3ae1c8-a8b4-4796-8841-1608ab780c76
-        computeOrder: 2
-        position:
-          serializedVersion: 2
-          x: 756
-          y: 89
-          width: 151
-          height: 54
-        expanded: 0
-        debug: 0
-        nodeLock: 0
-        __input: 0
-        __output: 0
-    - rid: 239897365659779072
-      type: {class: BTActionSelector, ns: Lockstep.AI, asm: Assembly-CSharp-firstpass}
-      data:
-        nodeCustomName: 
-        GUID: f4211f21-decc-494a-a580-66bb709e2257
-        computeOrder: 0
-        position:
-          serializedVersion: 2
-          x: 411
-          y: -47
-          width: 180
-          height: 72
-        expanded: 1
-        debug: 0
-        nodeLock: 0
-        __input: 0
-        __output: 0
-        IsPriority: 1
-    - rid: 239897388287787008
-      type: {class: FloatParameter, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
-      data:
-        guid: ab3b0b7f-727f-4a6a-9085-7cfc198d46ea
-        name: TestData1
-        type: 
-        serializedValue:
-          serializedType: 
-          serializedName: 
-          serializedValue: 
-        input: 1
-        settings:
-          rid: 239897388287787009
-        val: 0.46
-    - rid: 239897388287787009
-      type: {class: FloatParameter/FloatSettings, ns: GraphProcessor, asm: com.alelievr.NodeGraphProcessor.Runtime}
-      data:
-        isHidden: 0
-        expanded: 0
-        guid: ab3b0b7f-727f-4a6a-9085-7cfc198d46ea
-        mode: 1
-        min: 0
-        max: 1
     - rid: 239897614088667220
       type: {class: CON_HasReachedTarget, ns: AIToolkitDemo, asm: Assembly-CSharp}
       data:
         nodeCustomName: 
         GUID: b0e9d168-409f-426e-9bb7-973fc86dcaf6
-        computeOrder: 3
+        computeOrder: 2
         position:
           serializedVersion: 2
           x: -80.07371
@@ -283,19 +206,55 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         TurnSpeed: 3.45
-    - rid: 5073097199201026384
-      type: {class: BlackboardKey, ns: Lockstep.AI, asm: com.alelievr.NodeGraphProcessor.Runtime}
+    - rid: 5073097209088311296
+      type: {class: BTActionSelector, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
       data:
-        Name: NextMovingPosition
-        Type: 3
-        FloatValue: 0
-        IntValue: 0
-        LongValue: 0
-        BooleanValue: 0
-        Vector2Value: {x: 0, y: 0}
-        Vector3Value: {x: 0, y: 0, z: 0}
-        LayerMaskValue:
+        nodeCustomName: 
+        GUID: 3ce5ae23-e3a0-4ce6-8252-e489a1d5f9e8
+        computeOrder: 0
+        position:
           serializedVersion: 2
-          m_Bits: 0
-        StringValue: 
-        GameObjectValue: {fileID: 0}
+          x: 483
+          y: -163.61255
+          width: 180
+          height: 72
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0
+        IsPriority: 1
+    - rid: 5073097209088311297
+      type: {class: BTActionSequence, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
+      data:
+        nodeCustomName: 
+        GUID: 0403fd2f-c556-4d6d-a38b-46cf4a5034c6
+        computeOrder: 1
+        position:
+          serializedVersion: 2
+          x: 224.82498
+          y: 27.772486
+          width: 100
+          height: 100
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0
+    - rid: 5073097209088311298
+      type: {class: BTActionSequence, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
+      data:
+        nodeCustomName: 
+        GUID: 91806361-6821-4f2b-b603-8f112efccd70
+        computeOrder: 3
+        position:
+          serializedVersion: 2
+          x: 782.1425
+          y: 27.999992
+          width: 99
+          height: 54
+        expanded: 0
+        debug: 0
+        nodeLock: 0
+        __input: 0
+        __output: 0

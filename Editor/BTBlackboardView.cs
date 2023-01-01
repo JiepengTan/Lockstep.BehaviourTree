@@ -54,7 +54,8 @@ namespace Lockstep.AI.Editor {
         {
             serializer.RebindProperties(keys);
             listView.BindProperty(serializer.BlackboardKeys);
-            listView.Rebuild();
+            listView.makeItem = MakeItem;
+            listView.bindItem = BindItem;
         }
   
         private void ValidateButton() {

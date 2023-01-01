@@ -9,14 +9,10 @@ namespace Lockstep.AI
         [SerializeReference] public List<BlackboardKey> Keys;
         private Dictionary<string, BlackboardKey> _items;
 
-        public Blackboard()
-        {
-            _items = new Dictionary<string, BlackboardKey>();
-        }
-
         public void DoInit(List<BlackboardKey> rawData)
         {
             Keys = new List<BlackboardKey>();
+            _items = new Dictionary<string, BlackboardKey>();
             foreach (var item in rawData)
             {
                 Keys.Add(item.Clone());
