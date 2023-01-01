@@ -1,6 +1,6 @@
 # Lockstep.AI.BehaviourTree
 
-<p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/main/Documents/images/Head.gif?raw=true" width="512"></p> 
+<p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/master/Documentation/images/Head.gif?raw=true" width="1276"></p> 
 
 可用于预测回滚的高性能行为树库
 
