@@ -231,7 +231,11 @@ namespace GraphProcessor
 
 		void UpdateTitle()
 		{
-			title = (nodeTarget.GetCustomName() == null) ? nodeTarget.GetType().Name : nodeTarget.GetCustomName();
+			var titleStr = (nodeTarget.GetCustomName() == null) ? nodeTarget.GetType().Name : nodeTarget.GetCustomName();
+			titleStr = titleStr.Replace("CON_", "")
+				.Replace("NOD_", "")
+				.Replace("BTAction", "");
+			title = titleStr;
 		}
 
 		void InitializeSettings()
