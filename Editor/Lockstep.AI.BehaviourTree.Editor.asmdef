@@ -1,0 +1,18 @@
+{
+    "name": "Lockstep.AI.BehaviourTree.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Lockstep.AI.BehaviourTree"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
