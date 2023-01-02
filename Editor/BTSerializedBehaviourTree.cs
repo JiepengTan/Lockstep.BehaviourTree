@@ -62,10 +62,8 @@ namespace Lockstep.AI.Editor {
 
         public void DeleteBlackboardKey(string keyName) {
             SerializedProperty keysArray = BlackboardKeys;
-            for(int i = 0; i < keysArray.arraySize; ++i) {
-                var key = keysArray.GetArrayElementAtIndex(i);
-                BlackboardKey itemKey = key.managedReferenceValue as BlackboardKey;
-                if (itemKey.Name == keyName) {
+            for(int i = 0; i <  tree.blackboardKeys.Count; ++i) {
+                if (tree.blackboardKeys[i].Name == keyName) {
                     keysArray.DeleteArrayElementAtIndex(i);
                     ApplyChanges();
                     return;
