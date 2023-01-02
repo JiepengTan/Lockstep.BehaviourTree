@@ -19,7 +19,6 @@ namespace Lockstep.AI.Editor
 		BTToolbarView toolbarView;
 
 
-		BTInspectorView inspectorView;
 		BTBlackboardView blackboardView;
 		Label titleLabel;
 		Label versionLabel;
@@ -46,7 +45,6 @@ namespace Lockstep.AI.Editor
 				graphView.DoInit(this,graph);
 				graphView.Add(new MiniMapView(graphView));
 				graphView.Add(new BTToolbarView(graphView));
-				inspectorView = root.Q<BTInspectorView>();
 				
 				blackboardView = root.Q<BTBlackboardView>();
 				blackboardView.Bind(serializer);
@@ -94,7 +92,6 @@ namespace Lockstep.AI.Editor
                     EditorApplication.delayCall += OnSelectionChange;
                     break;
                 case PlayModeStateChange.ExitingPlayMode:
-                    inspectorView?.Clear();
                     break;
             }
         }
