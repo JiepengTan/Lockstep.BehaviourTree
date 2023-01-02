@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace AIToolkitDemo {
-    class AIEntityWorkingData : BTWorkingData {
+   public class AIEntityWorkingData : BTWorkingData {
         public AIEntity Entity { get; set; }
         public Transform EntityTF { get; set; }
         public Animator EntityAnimator { get; set; }

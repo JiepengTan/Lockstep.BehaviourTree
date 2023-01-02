@@ -3,7 +3,7 @@ using Lockstep.AI;
 
 namespace AIToolkitDemo
 {
-    class AIEntity : MonoBehaviour,IMonoBehaviourTree
+    public class AIEntity : MonoBehaviour,IMonoBehaviourTree
     {
         //-----------------------------------------------
         public const string BBKEY_NEXTMOVINGPOSITION = "NextMovingPosition";
