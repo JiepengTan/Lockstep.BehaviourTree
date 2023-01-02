@@ -122,8 +122,6 @@ namespace Lockstep.AI.Editor
 
 
         void ClearSelection() {
-            serializer = null;
-            inspectorView.Clear();
             treeView.ClearSelection();
             blackboardView.ClearSelection();
         }

@@ -76,6 +76,7 @@ namespace Lockstep.AI.Editor {
         void BindItem(VisualElement item, int index)
         {
             Label label = item.Q<Label>();
+            if(index>=serializer.BlackboardKeys.arraySize) return;
             var keyProp = serializer.BlackboardKeys.GetArrayElementAtIndex(index);
             var keyName = keyProp.FindPropertyRelative(nameof(BlackboardKey.Name));
             label.BindProperty(keyName);

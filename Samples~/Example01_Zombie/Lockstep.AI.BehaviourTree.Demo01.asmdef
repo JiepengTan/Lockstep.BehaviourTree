@@ -1,0 +1,16 @@
+{
+    "name": "Lockstep.AI.BehaviourTree.Demo01",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ced5ee7a53fb78647b1360439d2202bd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
