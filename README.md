@@ -16,7 +16,7 @@ BehaviourTree for Lockstep Predict & Rollback   \
 ## 2.如何使用
 1. 打开PackageManager 点击安装Git
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/master/Documentation/images/Tutorial001.jpeg?raw=true" width="512"></p> 
-2. 复制链接"https://github.com/JiepengTan/LockstepBehaviorTree.git" ，点击Add 按钮
+2. 复制链接"https://github.com/JiepengTan/LockstepBehaviourTree.git" ，点击Add 按钮
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/master/Documentation/images/Tutorial002.jpeg?raw=true" width="512"></p> 
 3. 可以 Import 
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviorTree/blob/master/Documentation/images/Tutorial003.jpeg?raw=true" width="512"></p> 
