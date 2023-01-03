@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Lockstep.Serialization;
 using UnityEngine;
 
 namespace Lockstep.AI
 {
+
+    
     public unsafe partial class BTNode
     {
+     
 
         protected virtual int MemSize => 0;
 

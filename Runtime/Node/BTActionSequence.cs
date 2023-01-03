@@ -13,6 +13,7 @@ namespace Lockstep.AI
             CurrentSelectedIndex = idx;
         }
     }
+
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Sequence")]
     public unsafe partial class BTActionSequence : BTActionComposite
     {

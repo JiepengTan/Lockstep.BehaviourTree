@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Lockstep.Serialization;
 
 namespace Lockstep.AI
 {
@@ -9,6 +10,7 @@ namespace Lockstep.AI
     {
         public int CurrentIndex;
     }
+
     
     //[Serializable, GraphProcessor.NodeMenuItem("BTComposite/Loop")]
     public unsafe partial class BTActionLoop : BTActionComposite

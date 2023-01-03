@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using GraphProcessor;
+using Lockstep.Serialization;
 
 namespace Lockstep.AI {
     [System.Serializable]
@@ -42,6 +43,7 @@ namespace Lockstep.AI {
         public BTCParallelStatusEval evaluationStatus;
         public BTCParallelStatusRunning StatusRunning;
     }
+
     
     [Serializable, NodeMenuItem("BTComposite/Parallel")]
     public unsafe partial class BTActionParallel : BTActionComposite
