@@ -10,13 +10,12 @@ namespace Lockstep.AI.Editor
 {
     public class CodeGenBTSerialization
     {
-
-        
         private static string fileTemplate = @"
 // auto generate by tools, DO NOT Modify it!!!
 using Lockstep.AI;
 using Lockstep.Serialization;
 ";
+
         private static string typeTemplate = @"
 namespace ##NAMESPACE
 {
@@ -36,31 +35,35 @@ namespace ##NAMESPACE
     }
 }";
 
-        private static BindingFlags BindingFlags = BindingFlags.Instance  | BindingFlags.Public | BindingFlags.DeclaredOnly ;
+        private static BindingFlags BindingFlags =
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly;
+
         public static void GenCode(CodeGenInfo info)
         {
             string prefix = "\t\t\t";
             var types = info.AllTypes.ToArray().ToList();
-            types.Sort((a,b)=>a.Name.CompareTo(b.Name));
+            types.Sort((a, b) => a.Name.CompareTo(b.Name));
             StringBuilder sb = new StringBuilder();
             foreach (var type in types)
             {
-                var clsStr= GenCodeByTemplate(type,typeTemplate);
+                var clsStr = GenCodeByTemplate(type, typeTemplate);
                 var contextTemplates = new List<CodeGenTemplateInfo>()
                 {
-                   new CodeGenTemplateInfo()
-                   {
-                       Default = prefix+"writer.Write(##NAME);",
-                       Enum = prefix+"writer.Write((int)##NAME);", // TODO deal with array list &dict
-                   },
-                   new CodeGenTemplateInfo()
-                   {
-                       Default = prefix+"##NAME = reader.Read##TYPE_NAME();",
-                       Enum = prefix+"##NAME = (##TYPE_NAME)reader.ReadInt32();",
-                   },
+                    new CodeGenTemplateInfo()
+                    {
+                        Default = prefix + "writer.Write(##NAME);",
+                        Enum = prefix + "writer.Write((int)##NAME);", // TODO deal with array list &dict
+                    },
+                    new CodeGenTemplateInfo()
+                    {
+                        Default = prefix + "##NAME = reader.Read##TYPE_NAME();",
+                        Enum = prefix + "##NAME = (##TYPE_NAME)reader.ReadInt32();",
+                    },
                 };
-                var fields = type.GetFields(BindingFlags).Select(a=> new CodeGenFieldInfo(){Name = a.Name,Type = a.FieldType}).ToList();
-                var properties = type.GetProperties(BindingFlags).Select(a=> new CodeGenFieldInfo(){Name = a.Name,Type = a.PropertyType}).ToList();
+                var fields = type.GetFields(BindingFlags)
+                    .Select(a => new CodeGenFieldInfo() { Name = a.Name, Type = a.FieldType }).ToList();
+                var properties = type.GetProperties(BindingFlags)
+                    .Select(a => new CodeGenFieldInfo() { Name = a.Name, Type = a.PropertyType }).ToList();
                 fields.AddRange(properties);
                 for (int i = 0; i < contextTemplates.Count; i++)
                 {
@@ -71,14 +74,13 @@ namespace ##NAMESPACE
                 {
                     sb.AppendLine(clsStr);
                 }
-
             }
-            var finalStr= fileTemplate;
+
+            var finalStr = fileTemplate;
             finalStr += sb.ToString();
             var path = info.OutputPath;
-            CodeGeneratorUtil. SaveFile(path, finalStr);
+            FileUtil.SaveFile(path, finalStr);
         }
-
 
 
         private static string GetFieldsCode(List<CodeGenFieldInfo> fields, CodeGenTemplateInfo template)
@@ -88,9 +90,9 @@ namespace ##NAMESPACE
             {
                 var templateStr = template.GetTemplateStr(field);
                 var str = templateStr
-                    .Replace("##NAME", field.Name)
-                    .Replace("##TYPE_NAME", field.TypeName)
-                    .Replace("##FULL_TYPE_NAME", field.FullTypeName)
+                        .Replace("##NAME", field.Name)
+                        .Replace("##TYPE_NAME", field.TypeName)
+                        .Replace("##FULL_TYPE_NAME", field.FullTypeName)
                     ;
                 sbField.AppendLine(str);
             }
@@ -98,7 +100,7 @@ namespace ##NAMESPACE
             return sbField.ToString();
         }
 
-        private static string GenCodeByTemplate(Type type,string template)
+        private static string GenCodeByTemplate(Type type, string template)
         {
             StringBuilder sb = new StringBuilder();
             var nameSpace = type.Namespace.ToString();
@@ -110,7 +112,7 @@ namespace ##NAMESPACE
                     .Replace("##FULL_TYPE_NAME", fullTypeName)
                 ;
             sb.AppendLine(str);
-            return   sb.ToString();
+            return sb.ToString();
         }
     }
 }

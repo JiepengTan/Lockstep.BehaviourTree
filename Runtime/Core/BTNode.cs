@@ -10,7 +10,7 @@ namespace Lockstep.AI
     
     public unsafe partial class BTNode
     {
-     
+        public virtual int TypeId=>-1;
 
         protected virtual int MemSize => 0;
 

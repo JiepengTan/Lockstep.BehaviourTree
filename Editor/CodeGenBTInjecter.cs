@@ -25,19 +25,23 @@ namespace ##NAMESPACE
 ##CODEREPLACE_1
         }
     }
+
+##CODEREPLACE_2
 }";
+
         public static void GenCode(CodeGenInfo info)
         {
             string prefix = "\t\t";
             var contextTemplates = new List<string>()
             {
-                prefix+"##TYPE_NAME = ##INDEX,",
-                prefix+"\tBTNodeFactory.Register((int)(EGameBTNodeType.##TYPE_NAME),()=>new ##FULL_TYPE_NAME());"
+                prefix + "##TYPE_NAME = ##INDEX,",
+                prefix + "\tBTNodeFactory.Register((int)(EGameBTNodeType.##TYPE_NAME),()=>new ##FULL_TYPE_NAME());",
+                "partial class ##TYPE_NAME {public override int TypeId=>(int)EGameBTNodeType.##TYPE_NAME;}"
             };
-            
+
             var types = info.AllTypes.ToArray().ToList();
-            types.Sort((a,b)=>a.Name.CompareTo(b.Name));
-            var finalStr= template
+            types.Sort((a, b) => a.Name.CompareTo(b.Name));
+            var finalStr = template
                 .Replace("##NAMESPACE", info.Namespace);
             for (int i = 0; i < contextTemplates.Count; i++)
             {
@@ -45,12 +49,11 @@ namespace ##NAMESPACE
             }
 
             var path = info.OutputPath;
-            CodeGeneratorUtil. SaveFile(path, finalStr);
+            FileUtil.SaveFile(path, finalStr);
         }
 
 
-
-        private static string GenCodeByTemplate(List<Type> types,string template)
+        private static string GenCodeByTemplate(List<Type> types, string template)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < types.Count; i++)
@@ -66,7 +69,8 @@ namespace ##NAMESPACE
                     ;
                 sb.AppendLine(str);
             }
-            return   sb.ToString();
+
+            return sb.ToString();
         }
     }
 }

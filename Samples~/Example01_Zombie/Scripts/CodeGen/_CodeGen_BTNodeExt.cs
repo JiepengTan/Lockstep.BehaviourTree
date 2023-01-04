@@ -23,4 +23,10 @@ namespace AIToolkitDemo
 
         }
     }
+
+partial class CON_HasReachedTarget {public override int TypeId=>(int)EGameBTNodeType.CON_HasReachedTarget;}
+partial class NOD_Attack {public override int TypeId=>(int)EGameBTNodeType.NOD_Attack;}
+partial class NOD_MoveTo {public override int TypeId=>(int)EGameBTNodeType.NOD_MoveTo;}
+partial class NOD_TurnTo {public override int TypeId=>(int)EGameBTNodeType.NOD_TurnTo;}
+
 }

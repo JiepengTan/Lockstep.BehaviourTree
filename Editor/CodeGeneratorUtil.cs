@@ -46,9 +46,48 @@ namespace Lockstep.Tools.CodeGen
         }
     }
 
-    public class CodeGeneratorUtil
+    public class FileUtil
     {
-        public static void SaveFile(string path, string finalStr)
+        public static void SaveFile(string path, byte[] finalStr,bool isNeedLog = true)
+        {
+            var dir = Path.GetDirectoryName(path);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            if (File.Exists(path))
+            {
+                var rawContent = File.ReadAllBytes(path);
+                if (finalStr.Length == rawContent.Length)
+                {
+                    bool isSame = true;
+                    for (int i = 0; i < finalStr.Length; i++)
+                    {
+                        if (finalStr[i] != rawContent[i])
+                        {
+                            isSame = false;
+                            break;
+                        }
+                    }
+                   
+                    if (isSame)
+                    {
+                        // 相同的内容跳过，避免重新的导入  
+                        return;
+                    }
+                }
+
+            }
+
+            File.WriteAllBytes(path, finalStr);
+#if UNITY_EDITOR
+            UnityEditor.AssetDatabase.ImportAsset(path);
+            if(isNeedLog) UnityEngine.Debug.Log("Output  " + path);
+#endif
+        }
+        
+        public static void SaveFile(string path, string finalStr,bool isNeedLog = true)
         {
             var dir = Path.GetDirectoryName(path);
             if (!Directory.Exists(dir))
@@ -69,7 +108,7 @@ namespace Lockstep.Tools.CodeGen
             File.WriteAllText(path, finalStr);
 #if UNITY_EDITOR
             UnityEditor.AssetDatabase.ImportAsset(path);
-            UnityEngine.Debug.Log("Output  " + path);
+            if(isNeedLog)   UnityEngine.Debug.Log("Output  " + path);
 #endif
         }
     }
