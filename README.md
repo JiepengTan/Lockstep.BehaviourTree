@@ -20,7 +20,10 @@ BehaviourTree for Lockstep Predict & Rollback   \
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviourTree/blob/master/Documentation/images/Tutorial002.jpeg?raw=true" width="512"></p> 
 3. 可以 Import 
 <p align="center"><img src="https://github.com/JiepengTan/LockstepBehaviourTree/blob/master/Documentation/images/Tutorial003.jpeg?raw=true" width="512"></p> 
- 
+
+4. 同时还需要安装下面几个依赖的库（和步骤2一样）
+- [Lockstep.Serializer](https://github.com/JiepengTan/Lockstep.Serializer)   \
+- [Lockstep.Math](https://github.com/JiepengTan/Lockstep.Math)   \
 
 ## 3.参考和引用
 
