@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lockstep.Tools.CodeGen;
 
 namespace Lockstep.AI.Editor
 {
@@ -30,8 +31,8 @@ namespace ##NAMESPACE
             string prefix = "\t\t";
             var contextTemplates = new List<string>()
             {
-                prefix+"##TYPENAME = ##INDEX,",
-                prefix+"\tBTNodeFactory.Register((int)(EGameBTNodeType.##TYPENAME),()=>new ##FULLTYPENAME());"
+                prefix+"##TYPE_NAME = ##INDEX,",
+                prefix+"\tBTNodeFactory.Register((int)(EGameBTNodeType.##TYPE_NAME),()=>new ##FULL_TYPE_NAME());"
             };
             
             var types = info.AllTypes.ToArray().ToList();
@@ -60,8 +61,8 @@ namespace ##NAMESPACE
                 var fullTypeName = type.FullName.ToString();
                 var str = template
                         .Replace("##INDEX", index)
-                        .Replace("##TYPENAME", typeName)
-                        .Replace("##FULLTYPENAME", fullTypeName)
+                        .Replace("##TYPE_NAME", typeName)
+                        .Replace("##FULL_TYPE_NAME", fullTypeName)
                     ;
                 sb.AppendLine(str);
             }

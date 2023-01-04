@@ -2,7 +2,9 @@
     "name": "Lockstep.AI.BehaviourTree.Demo01",
     "rootNamespace": "",
     "references": [
-        "GUID:ced5ee7a53fb78647b1360439d2202bd"
+        "GUID:ced5ee7a53fb78647b1360439d2202bd",
+        "GUID:2ef4ed01564cabe4ea21bc60b92ea151",
+        "GUID:b1ff32defd1f52f4aa3e78c4800b79b2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

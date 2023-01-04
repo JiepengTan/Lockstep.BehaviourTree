@@ -57,7 +57,7 @@ namespace AIToolkitDemo {
     }
 
     [Serializable,GraphProcessor.NodeMenuItem("Action/MoveTo")]
-    class NOD_MoveTo : BTActionLeaf
+    partial class NOD_MoveTo : BTActionLeaf
     {
         public float MoveSpeed = 1f;
         public float StopDistance = 1.5f;
