@@ -6,8 +6,6 @@ namespace Lockstep.AI
     public partial class BTConditionComposite : BTCondition
     {
         public bool IsAllTrue;
-        public BTConditionComposite():base(-1){ }
-
         protected override bool OnEvaluate( /*in*/ BTWorkingData wData)
         {
             var count = _children.Count;

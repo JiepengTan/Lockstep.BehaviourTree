@@ -15,14 +15,12 @@ namespace Lockstep.AI {
         private const int ACTION_RUNNING = 1;
         private const int ACTION_FINISHED = 2;
 
-        protected override int MemSize => sizeof(BTCActionLeaf) + RunTimeSize;
-        protected virtual int RunTimeSize => 0; 
-        public BTActionLeaf()
-            : base(0){ }
+        public override ushort MemSize => (ushort)(sizeof(BTCActionLeaf) + RunTimeSize);
+        protected virtual ushort RunTimeSize => 0; 
 
         protected sealed override int OnUpdate(BTWorkingData wData){
             int runningState = BTRunningStatus.FINISHED;
-            var thisContext = (BTCActionLeaf*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionLeaf*)wData.GetContext(_indexInTree);
             if (thisContext->Status == ACTION_READY) {
                 OnEnter(wData);
                 thisContext->NeedExit = true;
@@ -49,7 +47,7 @@ namespace Lockstep.AI {
         }
 
         protected sealed override void OnTransition(BTWorkingData wData){
-            var thisContext = (BTCActionLeaf*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionLeaf*)wData.GetContext(_indexInTree);
             if (thisContext->NeedExit) {
                 OnExit(wData, BTRunningStatus.TRANSITION);
             }
@@ -59,7 +57,7 @@ namespace Lockstep.AI {
         }
 
         protected void* GetUserContextData(BTWorkingData wData){
-            return ((byte*)wData.GetContext(_uniqueKey) + sizeof(BTCActionLeaf));
+            return ((byte*)wData.GetContext(_indexInTree) + sizeof(BTCActionLeaf));
         }
 
         //--------------------------------------------------------

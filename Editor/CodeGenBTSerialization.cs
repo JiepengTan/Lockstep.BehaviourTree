@@ -62,7 +62,7 @@ namespace ##NAMESPACE
                 };
                 var fields = type.GetFields(BindingFlags)
                     .Select(a => new CodeGenFieldInfo() { Name = a.Name, Type = a.FieldType }).ToList();
-                var properties = type.GetProperties(BindingFlags)
+                var properties = type.GetProperties(BindingFlags).Where(a=>a.CanRead&&a.CanWrite)
                     .Select(a => new CodeGenFieldInfo() { Name = a.Name, Type = a.PropertyType }).ToList();
                 fields.AddRange(properties);
                 for (int i = 0; i < contextTemplates.Count; i++)

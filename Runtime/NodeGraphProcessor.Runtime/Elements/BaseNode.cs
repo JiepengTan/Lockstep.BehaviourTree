@@ -78,7 +78,7 @@ namespace GraphProcessor
         public virtual bool         isLocked => nodeLock; 
 
         //id
-        public string				GUID;
+        public string				GUID = "";
 
 		public int					computeOrder = -1;
 

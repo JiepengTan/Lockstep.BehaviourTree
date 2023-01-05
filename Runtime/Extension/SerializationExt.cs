@@ -6,20 +6,18 @@ namespace Lockstep.AI
     {
         public virtual void Serialize(Serializer writer)
         {
-            writer.Write(_uniqueKey);
-            writer.Write(_maxChildCount);
+            writer.Write(_indexInTree);
         }
 
         public virtual void Deserialize(Deserializer reader)
         {
-            _uniqueKey = reader.ReadInt32();
-            _maxChildCount= reader.ReadInt32();
+            _indexInTree = reader.ReadUInt16();
         }
     }
     
     public unsafe partial class BTActionRoot
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTActionRoot;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTActionRoot;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);
@@ -34,7 +32,7 @@ namespace Lockstep.AI
     }
     public unsafe partial class BTActionLoop
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTActionLoop;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTActionLoop;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);
@@ -49,7 +47,7 @@ namespace Lockstep.AI
     }
     public unsafe partial class BTActionParallel
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTActionParallel;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTActionParallel;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);
@@ -67,7 +65,7 @@ namespace Lockstep.AI
 
     public unsafe partial class BTActionSelector
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTActionSelector;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTActionSelector;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);
@@ -82,7 +80,7 @@ namespace Lockstep.AI
     }
     public unsafe partial class BTActionSequence
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTActionSequence;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTActionSequence;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);
@@ -113,7 +111,7 @@ namespace Lockstep.AI
 
     public partial class BTConditionComposite 
     {
-        public override int TypeId=>(int)EBuiltinBTNodeType.BTConditionComposite;
+        public override ushort TypeId=>(int)EBuiltinBTNodeType.BTConditionComposite;
         public override void Serialize(Serializer writer)
         {
             base.Serialize(writer);

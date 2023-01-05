@@ -17,13 +17,7 @@ namespace Lockstep.AI
     {
         public const int INFINITY = -1;
         //--------------------------------------------------------
-        private int _loopCount;
-        //--------------------------------------------------------
-        public BTActionLoop()
-            : base(1)
-        {
-            _loopCount = INFINITY;
-        }
+        private int _loopCount= INFINITY;
         public BTActionLoop SetLoopCount(int count)
         {
             _loopCount = count;
@@ -33,7 +27,7 @@ namespace Lockstep.AI
         //-------------------------------------------------------
         protected override bool OnEvaluate(/*in*/BTWorkingData wData)
         {
-            var thisContext = (BTCActionLoop*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionLoop*)wData.GetContext(_indexInTree);
             bool checkLoopCount = (_loopCount == INFINITY || thisContext->CurrentIndex < _loopCount);
             if (checkLoopCount == false) {
                 return false;
@@ -46,7 +40,7 @@ namespace Lockstep.AI
         }
         protected override int OnUpdate(BTWorkingData wData)
         {
-            var thisContext = (BTCActionLoop*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionLoop*)wData.GetContext(_indexInTree);
             int runningStatus = BTRunningStatus.FINISHED;
             if (IsIndexValid(0)) {
                 var node = GetChild(0);
@@ -62,7 +56,7 @@ namespace Lockstep.AI
         }
         protected override void OnTransition(BTWorkingData wData)
         {
-            var thisContext = (BTCActionLoop*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionLoop*)wData.GetContext(_indexInTree);
             if (IsIndexValid(0)) {
                 var node = GetChild(0);
                 node.Transition(wData);

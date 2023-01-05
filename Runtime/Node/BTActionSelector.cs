@@ -26,12 +26,10 @@ namespace Lockstep.AI
     public unsafe partial class BTActionSelector : BTActionComposite
     {
         public bool IsPriority = true;
-        protected override int MemSize => sizeof(BTCActionSelector);
-        public BTActionSelector()
-            : base(-1){ }
+        public override ushort MemSize => (ushort)sizeof(BTCActionSelector);
 
         protected override bool OnEvaluate( /*in*/ BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
             int childCount = GetChildCount();
             var curIdx = thisContext->CurrentSelectedIndex;
             if (IsPriority)
@@ -53,7 +51,7 @@ namespace Lockstep.AI
         }
 
         protected override int OnUpdate(BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
             int runningState = BTRunningStatus.FINISHED;
             if (thisContext->CurrentSelectedIndex != thisContext->LastSelectedIndex) {
                 if (IsIndexValid(thisContext->LastSelectedIndex)) {
@@ -76,7 +74,7 @@ namespace Lockstep.AI
         }
 
         protected override void OnTransition(BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
             var node = GetChild(thisContext->LastSelectedIndex);
             if (node != null) {
                 node.Transition(wData);

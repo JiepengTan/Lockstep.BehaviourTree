@@ -26,7 +26,7 @@ namespace AIToolkitDemo {
     unsafe partial class NOD_Attack : BTActionLeaf
     {
         private const float DEFAULT_WAITING_TIME = 5f;
-        protected override int RunTimeSize => sizeof(UserContextData);
+        protected override ushort RunTimeSize => (ushort)sizeof(UserContextData);
 
         [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
         public unsafe partial struct UserContextData {

@@ -5,10 +5,10 @@ namespace AIToolkitDemo
 {
     public enum EGameBTNodeType
     {
-		CON_HasReachedTarget = 6,
-		NOD_Attack = 7,
-		NOD_MoveTo = 8,
-		NOD_TurnTo = 9,
+		CON_HasReachedTarget = 7,
+		NOD_Attack = 8,
+		NOD_MoveTo = 9,
+		NOD_TurnTo = 10,
 
     }
     
@@ -24,9 +24,9 @@ namespace AIToolkitDemo
         }
     }
 
-partial class CON_HasReachedTarget {public override int TypeId=>(int)EGameBTNodeType.CON_HasReachedTarget;}
-partial class NOD_Attack {public override int TypeId=>(int)EGameBTNodeType.NOD_Attack;}
-partial class NOD_MoveTo {public override int TypeId=>(int)EGameBTNodeType.NOD_MoveTo;}
-partial class NOD_TurnTo {public override int TypeId=>(int)EGameBTNodeType.NOD_TurnTo;}
+partial class CON_HasReachedTarget {public override ushort TypeId=>(int)EGameBTNodeType.CON_HasReachedTarget;}
+partial class NOD_Attack {public override ushort TypeId=>(int)EGameBTNodeType.NOD_Attack;}
+partial class NOD_MoveTo {public override ushort TypeId=>(int)EGameBTNodeType.NOD_MoveTo;}
+partial class NOD_TurnTo {public override ushort TypeId=>(int)EGameBTNodeType.NOD_TurnTo;}
 
 }

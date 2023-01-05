@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Lockstep.Serialization;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Lockstep.AI
@@ -10,27 +11,12 @@ namespace Lockstep.AI
     
     public unsafe partial class BTNode
     {
-        public virtual int TypeId=>-1;
-
-        protected virtual int MemSize => 0;
-
-        protected int _uniqueKey;
-
-        private const int DefaultChildCount = -1;
+        public virtual ushort TypeId=>0;
+        public virtual ushort MemSize => 0;
+        protected UInt16 _indexInTree;
         protected List<BTNode> _children;
-        protected int _maxChildCount;
-
-        public BTNode(int maxChildCount = -1)
-        {
-            if (maxChildCount != 0) _children = new List<BTNode>();
-            if (maxChildCount > 0)
-            {
-                _children.Capacity = maxChildCount;
-            }
-
-            _maxChildCount = maxChildCount;
-        }
-
+        public UInt16 IndexInTree => _indexInTree;
+        
         public int Update(BTWorkingData wData)
         {
             var state= OnUpdate(wData);
@@ -46,7 +32,7 @@ namespace Lockstep.AI
 
         public override int GetHashCode()
         {
-            return _uniqueKey;
+            return _indexInTree;
         }
 
 
@@ -72,7 +58,6 @@ namespace Lockstep.AI
         }
 
         public BTNode()
-            : this(DefaultChildCount)
         {
         }
 
@@ -84,12 +69,10 @@ namespace Lockstep.AI
         //-------------------------------------------------------------------
         public BTNode AddChild(BTNode node)
         {
-            if (_maxChildCount >= 0 && _children.Count >= _maxChildCount)
+            if (_children == null )
             {
-                Debug.LogError("**BT** exceeding child count");
-                return this;
+                _children = new List<BTNode>();
             }
-
             _children.Add(node);
             return this;
         }
@@ -122,69 +105,29 @@ namespace Lockstep.AI
             {
                 return null;
             }
-
             return _children[index];
         }
 
-        public int GetTotalNodeCount()
-        {
-            int sum = 0;
-            if (_children != null)
-            {
-                foreach (var child in _children)
-                {
-                    sum += child.GetTotalNodeCount();
-                }
-            }
 
-            return sum + 1;
-        }
 
-        public int GetTotalMemSize()
-        {
-            int sum = 0;
-            if (_children != null)
-            {
-                foreach (var child in _children)
-                {
-                    sum += child.GetTotalMemSize();
-                }
-            }
-
-            return sum + MemSize;
-        }
-
-        public int[] GetTotalOffsets()
+        public static List<BTNode> Flatten(BTNode root)
         {
             var nodes = new List<BTNode>();
-            Flatten(nodes);
-            var offsets = new int[nodes.Count];
-            for (int i = 0; i < nodes.Count; i++)
+            Queue<BTNode> expendingNodes = new Queue<BTNode>();
+            expendingNodes.Enqueue(root);
+            int idx = 0;
+            while (expendingNodes.Count > 0)
             {
-                Debug.Assert(nodes[i]._uniqueKey == i, "Error: Idx not match");
-            }
-
-            var offset = 0;
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                offsets[i] = offset;
-                offset += nodes[i].MemSize;
-            }
-
-            return offsets;
-        }
-
-        protected virtual void Flatten(List<BTNode> nodes)
-        {
-            _uniqueKey = nodes.Count;
-            nodes.Add(this);
-            if (_children != null)
-            {
-                foreach (var child in _children)
+                var node = expendingNodes.Dequeue();
+                node._indexInTree = (ushort)idx++;
+                nodes.Add(node);
+                var count = node.GetChildCount();
+                for (int i = 0; i < count; i++)
                 {
-                    child.Flatten(nodes);
+                    expendingNodes.Enqueue(node.GetChild(i));
                 }
             }
+            return nodes;
         }
     }
 }

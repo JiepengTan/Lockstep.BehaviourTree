@@ -36,7 +36,7 @@ namespace ##NAMESPACE
             {
                 prefix + "##TYPE_NAME = ##INDEX,",
                 prefix + "\tBTNodeFactory.Register((int)(EGameBTNodeType.##TYPE_NAME),()=>new ##FULL_TYPE_NAME());",
-                "partial class ##TYPE_NAME {public override int TypeId=>(int)EGameBTNodeType.##TYPE_NAME;}"
+                "partial class ##TYPE_NAME {public override ushort TypeId=>(int)EGameBTNodeType.##TYPE_NAME;}"
             };
 
             var types = info.AllTypes.ToArray().ToList();

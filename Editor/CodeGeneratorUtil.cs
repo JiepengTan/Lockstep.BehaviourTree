@@ -74,6 +74,9 @@ namespace Lockstep.Tools.CodeGen
                     if (isSame)
                     {
                         // 相同的内容跳过，避免重新的导入  
+#if UNITY_EDITOR
+                        if(isNeedLog) UnityEngine.Debug.Log("Output Skip " + path);
+#endif
                         return;
                     }
                 }

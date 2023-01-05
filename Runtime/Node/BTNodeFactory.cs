@@ -5,12 +5,12 @@ namespace Lockstep.AI
 {
     public enum EBuiltinBTNodeType
     {
-        BTActionRoot = 0,
-        BTActionSequence = 1,
-        BTActionSelector = 2,
-        BTActionParallel = 3,
-        BTActionLoop = 4,
-        BTConditionComposite = 5,
+        BTActionRoot = 1,
+        BTActionSequence = 2,
+        BTActionSelector = 3,
+        BTActionParallel = 4,
+        BTActionLoop = 5,
+        BTConditionComposite = 6,
         EnumCount
     }
     
@@ -33,9 +33,6 @@ namespace Lockstep.AI
 
         public static void Register(int typeId, NodeCreateFunc func)
         {
-#if DEBUG
-            if(_typeId2FactoryFunc.ContainsKey(typeId)) Debug.LogError("Register Factory Function more then once Id=" + typeId);
-#endif
             _typeId2FactoryFunc[typeId] = func;
         }
 

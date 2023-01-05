@@ -17,12 +17,11 @@ namespace Lockstep.AI
     [Serializable, GraphProcessor.NodeMenuItem("BTComposite/Sequence")]
     public unsafe partial class BTActionSequence : BTActionComposite
     {
-        protected override int MemSize => sizeof(BTCActionSequence);
+        public override ushort MemSize => (ushort)sizeof(BTCActionSequence);
         //-------------------------------------------------------
         private bool _continueIfErrorOccors;
         //-------------------------------------------------------
         public BTActionSequence()
-            : base(-1)
         {
             _continueIfErrorOccors = false;
         }
@@ -34,7 +33,7 @@ namespace Lockstep.AI
         //------------------------------------------------------
         protected override bool OnEvaluate(/*in*/BTWorkingData wData)
         {
-            var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSequence*)wData.GetContext(_indexInTree);
             int checkedNodeIndex = -1;
             if (IsIndexValid(thisContext->CurrentSelectedIndex)) {
                 checkedNodeIndex = thisContext->CurrentSelectedIndex;
@@ -52,7 +51,7 @@ namespace Lockstep.AI
         }
         protected override int OnUpdate(BTWorkingData wData)
         {
-            var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSequence*)wData.GetContext(_indexInTree);
             int runningStatus = BTRunningStatus.FINISHED;
             var node = GetChild(thisContext->CurrentSelectedIndex);
             runningStatus = node.Update(wData);
@@ -72,7 +71,7 @@ namespace Lockstep.AI
         }
         protected override void OnTransition(BTWorkingData wData)
         {
-            var thisContext = (BTCActionSequence*)wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionSequence*)wData.GetContext(_indexInTree);
             var node = GetChild(thisContext->CurrentSelectedIndex);
             if (node != null) {
                 node.Transition(wData);

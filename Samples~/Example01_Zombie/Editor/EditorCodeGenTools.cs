@@ -47,38 +47,23 @@ namespace AIToolkitDemo
             {
                 Debug.LogWarning($"Found multiple settings files, using the first.");
             }
+
+            int exportCount = 0;
             foreach (var guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 if(!path.StartsWith("Assets")) continue;
+                exportCount++;
                 var graph = AssetDatabase.LoadAssetAtPath<BTGraph>(path);
                 var info = BTFactory.GetOrCreateInfo(graph);
-                BTNode root = info.RootNode;
-                List<BTNode> nodes = new List<BTNode>();
-                Queue<BTNode> expendingNodes = new Queue<BTNode>();
-                expendingNodes.Enqueue(root);
-                while (expendingNodes.Count > 0)
-                {
-                    var node = expendingNodes.Dequeue();
-                    nodes.Add(node);
-                    var count = node.GetChildCount();
-                    for (int i = 0; i < count; i++)
-                    {
-                        expendingNodes.Enqueue(node.GetChild(i));
-                    }
-                }
-
-                var writer = new Serializer();
-                writer.Write(nodes.Count);
-                foreach (var node in nodes)
-                {
-                    writer.Write(node.TypeId);
-                    node.Serialize(writer);
-                }
-
-                var bytes = writer.CopyData();
+                var bytes =BTFactory.Serialize(info);
                 FileUtil.SaveFile(Path.Combine(SaveDir, graph.name + ".btbytes"), bytes);
+                var newInfo = BTFactory.Deserialize(bytes);
+                var newBytes = BTFactory.Serialize(newInfo);
+                Lockstep.Logging.Debug.Assert(newBytes.EqualsEx(bytes),"BehaviourTree Serialize Failed "); 
             }
+            Debug.Log("Export Done count= " + exportCount);
         }
+
     }
 }

@@ -14,7 +14,7 @@ namespace Lockstep.AI {
         public Blackboard Blackboard => _blackboard;
         [SerializeReference] private Blackboard _blackboard;
         private byte* _pDatas = null;
-        private int[] _dataOffset;
+        private ushort[] _dataOffset;
         private int _dataLen = 0;
         public float DeltaTime;
         
@@ -23,7 +23,7 @@ namespace Lockstep.AI {
             Debug.Assert(offset >= 0 && offset < _dataLen, " out of range");
             return _pDatas + offset;
         }
-        public void Init(int[] offsets, int totalMemSize){
+        public void Init(ushort[] offsets, int totalMemSize){
             _pDatas = NativeHelper.AllocAndZero(totalMemSize);
             _dataOffset = offsets;
             _dataLen = totalMemSize;
