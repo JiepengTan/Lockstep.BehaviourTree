@@ -12,7 +12,7 @@ namespace Lockstep.AI
         private static Dictionary<BTGraph, BTInfo> _config2Infos = new Dictionary<BTGraph, BTInfo>();
         private static Dictionary<long, BTInfo> _obj2Infos = new Dictionary<long, BTInfo>();
 
-        public static BTInfo GetOrCreateInfo(long id,byte[] bytes)
+        public static BTInfo GetOrCreateInfo(long id,byte[] bytes = null)
         {
             if (_obj2Infos.TryGetValue(id, out var info)) return info;
              info = Deserialize(bytes);
@@ -22,13 +22,19 @@ namespace Lockstep.AI
 
         public static BTInfo GetOrCreateInfo(object obj)
         {
+#if !LOCKSTEP_PURE_MODE
             var config = obj as BTGraph;
             if (_config2Infos.TryGetValue(config, out var info)) return info;
             info = CreateBtInfo(config);
             _config2Infos[config] = info;
+            info.Config = config;
             return info;
+#else
+            return null;
+#endif
         }
 
+#if !LOCKSTEP_PURE_MODE
         static BTInfo CreateBtInfo(BTGraph config)
         {
             var nodes = config.nodes.Select(a => a as BTNode).ToList();
@@ -70,6 +76,7 @@ namespace Lockstep.AI
             }
             return CreateBtInfo(root);
         }
+#endif
 
         static BTInfo CreateBtInfo(BTNode bt)
         {
@@ -84,9 +91,9 @@ namespace Lockstep.AI
             }
             return new BTInfo()
             {
-                MemSize = offset,
-                Offsets = offsets,
-                RootNode = bt,
+                TreeSize = offset,
+                TreeOffsets = offsets,
+                TreeRoot = bt,
             };
         }
         public static byte[] Serialize(BTInfo info)

@@ -5,15 +5,24 @@ using UnityEngine;
 
 namespace Lockstep.AI {
 
-    public class BTInfo {
-        public BTNode RootNode;
-        public ushort[] Offsets;
-        public int MemSize;
+    public class BTInfo
+    {
+        [Header("Config")] 
+        public object Config;
         
-        private static List<BTNode> _tempNodes = new List<BTNode>();
+        [Header("Tree")] 
+        public ushort[] TreeOffsets;
+        public int TreeSize;
+        public BTNode TreeRoot;
+        
+        [Header("Blackboard")]
+        public Dictionary<string, ushort> BlackboardOffsets;
+        public int BlackboardSize;
+        
         public void Serialize(Serializer writer)
         {
-            var root = RootNode;
+            List<BTNode> tempNodes = new List<BTNode>();
+            var root = TreeRoot;
             List<BTNode> nodes = new List<BTNode>();
             Queue<BTNode> expendingNodes = new Queue<BTNode>();
             expendingNodes.Enqueue(root);
@@ -27,23 +36,23 @@ namespace Lockstep.AI {
                     expendingNodes.Enqueue(node.GetChild(i));
                 }
             }
-            _tempNodes.Clear();
+            tempNodes.Clear();
             for (int i = 0; i < nodes.Count; i++)
             {
-                _tempNodes.Add(null);
+                tempNodes.Add(null);
             }
             foreach (var node in nodes)
             {
-                _tempNodes[node.IndexInTree] = node;
+                tempNodes[node.IndexInTree] = node;
             }
             writer.Write(nodes.Count);
-            foreach (var node in _tempNodes)
+            foreach (var node in tempNodes)
             {
                 writer.Write(node.TypeId);
                 node.Serialize(writer);
             }
             
-            foreach (var node in _tempNodes)
+            foreach (var node in tempNodes)
             {
                 var count = node.GetChildCount();
                 writer.Write((byte)count);
@@ -53,37 +62,38 @@ namespace Lockstep.AI {
                 }
             }
             
-            writer.Write(MemSize);
-            writer.Write(Offsets);
+            writer.Write(TreeSize);
+            writer.Write(TreeOffsets);
         }
 
 
         public void Deserialize(Deserializer reader)
         {
+            List<BTNode> tempNodes = new List<BTNode>();
             var count = reader.ReadInt32();
-            _tempNodes.Clear();
+            tempNodes.Clear();
             for (int i = 0; i < count; i++)
             {
-                _tempNodes.Add(null);
+                tempNodes.Add(null);
             }
             for (int i = 0; i < count; i++)
             {
                 var type = reader.ReadUInt16();
                 var node = BTNodeFactory.CreateNode(type);
                 node.Deserialize(reader);
-                _tempNodes[node.IndexInTree] = node;
+                tempNodes[node.IndexInTree] = node;
             }
-            foreach (var node in _tempNodes)
+            foreach (var node in tempNodes)
             {
                 var num = reader.ReadByte();
                 for (int i = 0; i < num; i++)
                 {
-                    node.AddChild(_tempNodes[reader.ReadUInt16()]);
+                    node.AddChild(tempNodes[reader.ReadUInt16()]);
                 }
             }
-            RootNode = _tempNodes[0];
-            MemSize = reader.ReadInt32();
-            Offsets = reader.ReadArray(Offsets);
+            TreeRoot = tempNodes[0];
+            TreeSize = reader.ReadInt32();
+            TreeOffsets = reader.ReadArray(TreeOffsets);
         }
     }
 }

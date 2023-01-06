@@ -20,7 +20,9 @@ namespace Lockstep.AI
         public int Update(BTWorkingData wData)
         {
             var state= OnUpdate(wData);
+#if !LOCKSTEP_PURE_MODE
             __DebugSetUpdateState(state);
+#endif
             return state;
         }
 
@@ -48,7 +50,9 @@ namespace Lockstep.AI
         public virtual bool Evaluate( /*in*/ BTWorkingData wData)
         {
             var result= OnEvaluate(wData);
+#if !LOCKSTEP_PURE_MODE
             __DebugSetEvaluateState(result);
+#endif
             return result;
         }
 
@@ -80,7 +84,9 @@ namespace Lockstep.AI
         public void SortChildren()
         {
             if(_children == null) return;
+#if !LOCKSTEP_PURE_MODE
             _children.Sort((a,b)=>a.position.xMin .CompareTo(b.position.xMin)  );
+#endif
         }
 
         public void CleanChildren()

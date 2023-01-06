@@ -9,11 +9,9 @@ namespace Lockstep.AI
 
     public class BehaviourTree
     {
-        [SerializeReference] protected BTWorkingData _workingData;
+        [SerializeReference] 
+        public BTWorkingData WorkingData;
         protected BTNode _bt;
-        public BTWorkingData WorkingData => _workingData;
-        public Blackboard Blackboard => _workingData.Blackboard;
-        public BTNode Root =>_bt;
         protected object _transform;
 
 #if UNITY_EDITOR
@@ -24,44 +22,62 @@ namespace Lockstep.AI
 #else
         private bool _isDebuging => false;
 #endif
-        public T DoAwake<T>( object config, object transform) where T:BTWorkingData,new()
+        public T DoAwake<T>(object transform,int id,byte[] bytes ) where T : BTWorkingData, new()
         {
+            var btInfo = BTFactory.GetOrCreateInfo(id,bytes);
+            return Init<T>(transform, btInfo);
+        }
+
+        public T DoAwake<T>(object transform,object config ) where T:BTWorkingData,new()
+        {
+#if !LOCKSTEP_PURE_MODE
             Config = config as BTGraph;
-            _transform = transform;
             var btInfo = BTFactory.GetOrCreateInfo(config);
-            _bt = btInfo.RootNode;
-            _workingData = new T();
-            _workingData.Init(btInfo.Offsets, btInfo.MemSize);
-            _workingData.Blackboard.DoInit(Config.blackboardKeys);
-            return _workingData as T;
+            return Init<T>(transform, btInfo);
+#else
+            return default(T);
+#endif
+        }
+
+        private T Init<T>(object transform, BTInfo btInfo) where T : BTWorkingData, new()
+        {
+            _transform = transform;
+            _bt = btInfo.TreeRoot;
+            WorkingData = new T();
+            WorkingData.Awake(btInfo);
+            return WorkingData as T;
         }
 
         public void Reset()
         {
-            _bt.Transition(_workingData);
+            _bt.Transition(WorkingData);
         }
 
         public void DoUpdate(float deltaTime)
         {
             WorkingData.DeltaTime = deltaTime;
+#if !LOCKSTEP_PURE_MODE
             if (_isDebuging)
             {
                 BTNode.__DebugStartRecordInfo();
             }
+#endif
 
-            if (_bt.Evaluate(_workingData))
+            if (_bt.Evaluate(WorkingData))
             {
-                _bt.Update(_workingData);
+                _bt.Update(WorkingData);
             }
             else
             {
-                _bt.Transition(_workingData);
+                _bt.Transition(WorkingData);
             }
 
+#if !LOCKSTEP_PURE_MODE
             if (_isDebuging)
             {
                 BTNode.__DebugStopRecordInfo();
             }
+#endif
         }
     }
 }

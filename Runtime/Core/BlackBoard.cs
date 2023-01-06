@@ -1,15 +1,25 @@
-﻿using System.Collections.Generic;
+﻿//#define LOCKSTEP_PURE_MODE
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Lockstep.AI
 {
-    public partial class Blackboard
+    public unsafe partial class Blackboard
+    {
+
+        public void DoInit(List<BlackboardKey> rawData)
+        {
+            _DoInit(rawData);
+        }
+
+        partial void _DoInit(List<BlackboardKey> rawData);
+    }
+
+    public unsafe partial  class Blackboard
     {
         [SerializeReference] public List<BlackboardKey> Keys;
         private Dictionary<string, BlackboardKey> _items;
-
-        public void DoInit(List<BlackboardKey> rawData)
+        partial void _DoInit(List<BlackboardKey> rawData)
         {
             Keys = new List<BlackboardKey>();
             _items = new Dictionary<string, BlackboardKey>();
@@ -23,6 +33,28 @@ namespace Lockstep.AI
                 _items[item.Name] = item;
             }
         }
+        
+        public bool HasValue(string key) => _items.ContainsKey(key);
+        
+        public void SetValue(string key, int value) => ForceGetValue(key,EBlackboardKeyType.Int).IntValue = value;
+        public int GetValue(string key, int defaultValue) {if (TryGetValue(key, out var value)) return value.IntValue; value.IntValue = defaultValue; return defaultValue; }
+        
+        public void SetValue(string key, long value) => ForceGetValue(key,EBlackboardKeyType.Long).LongValue = value;
+        public long GetValue(string key, long defaultValue) {if (TryGetValue(key, out var value)) return value.LongValue; value.LongValue = defaultValue; return defaultValue; }
+
+        public void SetValue(string key, bool value) => ForceGetValue(key,EBlackboardKeyType.Boolean).BooleanValue = value;
+        public bool GetValue(string key, bool defaultValue) {if (TryGetValue(key, out var value)) return value.BooleanValue; value.BooleanValue = defaultValue; return defaultValue; }
+        
+        public void SetValue(string key, float value) => ForceGetValue(key,EBlackboardKeyType.Float).FloatValue = value;
+        public float GetValue(string key, float defaultValue) {if (TryGetValue(key, out var value)) return value.FloatValue; value.FloatValue = defaultValue; return defaultValue; }
+        
+        public void SetValue(string key, Vector2 value) => ForceGetValue(key,EBlackboardKeyType.Vector2).Vector2Value = value;
+        public Vector2 GetValue(string key, Vector2 defaultValue) {if (TryGetValue(key, out var value)) return value.Vector2Value; value.Vector2Value = defaultValue; return defaultValue; }
+        
+        public void SetValue(string key, Vector3 value) => ForceGetValue(key,EBlackboardKeyType.Vector3).Vector3Value = value;
+        public Vector3 GetValue(string key, Vector3 defaultValue) {if (TryGetValue(key, out var value)) return value.Vector3Value; value.Vector3Value = defaultValue; return defaultValue; }
+
+
 
         private bool TryGetValue(string key,out BlackboardKey item)
         {
@@ -51,7 +83,6 @@ namespace Lockstep.AI
             return item;
         }
 
-        public bool HasValue(string key) => _items.ContainsKey(key);
         public BlackboardKey GetValue(string key)
         {
             if (_items.TryGetValue(key, out var item))
@@ -85,37 +116,6 @@ namespace Lockstep.AI
                 return true;
             }
         }
-
-        public BlackboardKey Find(string keyName)
-        {
-            return Keys.Find((key) => { return key.Name == keyName; });
-        }
-        
-        public void SetValue(string key, int value) => ForceGetValue(key,EBlackboardKeyType.Int).IntValue = value;
-        public int GetValue(string key, int defaultValue) {if (TryGetValue(key, out var value)) return value.IntValue; value.IntValue = defaultValue; return defaultValue; }
-        
-        public void SetValue(string key, long value) => ForceGetValue(key,EBlackboardKeyType.Long).LongValue = value;
-        public long GetValue(string key, long defaultValue) {if (TryGetValue(key, out var value)) return value.LongValue; value.LongValue = defaultValue; return defaultValue; }
-
-        public void SetValue(string key, bool value) => ForceGetValue(key,EBlackboardKeyType.Boolean).BooleanValue = value;
-        public bool GetValue(string key, bool defaultValue) {if (TryGetValue(key, out var value)) return value.BooleanValue; value.BooleanValue = defaultValue; return defaultValue; }
-        
-        public void SetValue(string key, float value) => ForceGetValue(key,EBlackboardKeyType.Float).FloatValue = value;
-        public float GetValue(string key, float defaultValue) {if (TryGetValue(key, out var value)) return value.FloatValue; value.FloatValue = defaultValue; return defaultValue; }
-        
-        public void SetValue(string key, Vector2 value) => ForceGetValue(key,EBlackboardKeyType.Vector2).Vector2Value = value;
-        public Vector2 GetValue(string key, Vector2 defaultValue) {if (TryGetValue(key, out var value)) return value.Vector2Value; value.Vector2Value = defaultValue; return defaultValue; }
-        
-        public void SetValue(string key, Vector3 value) => ForceGetValue(key,EBlackboardKeyType.Vector3).Vector3Value = value;
-        public Vector3 GetValue(string key, Vector3 defaultValue) {if (TryGetValue(key, out var value)) return value.Vector3Value; value.Vector3Value = defaultValue; return defaultValue; }
-        public void SetValue(string key, string value) => ForceGetValue(key,EBlackboardKeyType.String).StringValue = value;
-        public string GetValue(string key, string defaultValue) {if (TryGetValue(key, out var value)) return value.StringValue; value.StringValue = defaultValue; return defaultValue; }
-
-        public void SetValue(string key, GameObject value) => ForceGetValue(key,EBlackboardKeyType.GameObject).GameObjectValue = value;
-        public GameObject GetValue(string key, GameObject defaultValue) {if (TryGetValue(key, out var value)) return value.GameObjectValue; value.GameObjectValue = defaultValue; return defaultValue; }
-        
-        public void SetValue(string key, LayerMask value) => ForceGetValue(key,EBlackboardKeyType.LayerMask).LayerMaskValue = value;
-        public LayerMask GetValue(string key, LayerMask defaultValue) {if (TryGetValue(key, out var value)) return value.LayerMaskValue; value.LayerMaskValue = defaultValue; return defaultValue; }
 
     }
 }

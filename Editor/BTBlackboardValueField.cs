@@ -39,11 +39,6 @@ namespace Lockstep.AI.Editor {
                     boolField.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.BooleanValue)));
                     Add(boolField);
                     break;
-                case EBlackboardKeyType.String:
-                    TextField stringField = new TextField();
-                    stringField.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.StringValue)));
-                    Add(stringField);
-                    break;
                 case EBlackboardKeyType.Vector2:
                     Vector2Field vector2Field = new Vector2Field();
                     vector2Field.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.Vector2Value)));
@@ -54,23 +49,7 @@ namespace Lockstep.AI.Editor {
                     vector3Field.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.Vector3Value)));
                     Add(vector3Field);
                     break;
-                case EBlackboardKeyType.GameObject:
-                    ObjectField gameObjectField = new ObjectField();
-                    gameObjectField.objectType = typeof(GameObject);
-                    gameObjectField.allowSceneObjects = false;
-                    gameObjectField.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.GameObjectValue)));
-                    Add(gameObjectField);
-                    break;
-                case EBlackboardKeyType.Tag:
-                    TagField tagField = new TagField();
-                    tagField.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.StringValue)));
-                    Add(tagField);
-                    break;
-                case EBlackboardKeyType.LayerMask:
-                    LayerMaskField layerMaskField = new LayerMaskField();
-                    layerMaskField.BindProperty(property.FindPropertyRelative(nameof(BlackboardKey.LayerMaskValue)));
-                    Add(layerMaskField);
-                    break;
+               
                 default:
                     Debug.LogError($"Unhandled type '{keyType}' for key {keyName}");
                     break;

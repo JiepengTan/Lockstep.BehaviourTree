@@ -30,9 +30,9 @@ namespace AIToolkitDemo
         {
             get
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && !LOCKSTEP_PURE_MODE
                 var obj = new UnityEditor.SerializedObject(this);
-                return obj.FindProperty("_bt._workingData._blackboard.Keys");
+                return obj.FindProperty("_bt.WorkingData._blackboard.Keys");
 #else
             return null;
 #endif
