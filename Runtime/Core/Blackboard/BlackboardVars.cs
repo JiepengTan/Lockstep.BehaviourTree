@@ -66,21 +66,6 @@ namespace Lockstep.AI {
         }
     }
 
-    [System.Serializable]
-    public class StringVar {
-
-        [SerializeReference]
-        private BlackboardKey key;
-
-        public string Value {
-            get {
-                return key.StringValue;
-            }
-            set {
-                key.StringValue = value;
-            }
-        }
-    }
 
     [System.Serializable]
     public class Vector2Var {
@@ -114,51 +99,4 @@ namespace Lockstep.AI {
         }
     }
 
-    [System.Serializable]
-    public class GameObjectVar {
-
-        [SerializeReference]
-        private BlackboardKey key;
-
-        public GameObject Value {
-            get {
-                return key.GameObjectValue;
-            }
-            set {
-                key.GameObjectValue = value;
-            }
-        }
-    }
-
-    [System.Serializable]
-    public class TagVar {
-
-        [SerializeReference]
-        private BlackboardKey key;
-
-        public string Value {
-            get {
-                return key.StringValue;
-            }
-            set {
-                key.StringValue = value;
-            }
-        }
-    }
-
-    [System.Serializable]
-    public class LayerMaskVar {
-
-        [SerializeReference]
-        private BlackboardKey key;
-
-        public LayerMask Value {
-            get {
-                return key.LayerMaskValue;
-            }
-            set {
-                key.LayerMaskValue = value;
-            }
-        }
-    }
 }

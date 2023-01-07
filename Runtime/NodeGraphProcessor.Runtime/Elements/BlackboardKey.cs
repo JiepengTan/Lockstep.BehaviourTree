@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,6 @@ namespace Lockstep.AI {
         Vector3,
         Int,
         Long,
-        LayerMask,
-        String, // ref type
-        Tag, // ref type
-        GameObject,// ref type
     }
     [System.Serializable]
     public class BlackboardKey {
@@ -29,10 +26,25 @@ namespace Lockstep.AI {
         public bool BooleanValue;
         public Vector2 Vector2Value;
         public Vector3 Vector3Value;
-        public LayerMask LayerMaskValue;
-        public string StringValue;
-        public GameObject GameObjectValue;
-        
+
+        public unsafe int MemSize
+        {
+            get
+            {
+                switch (Type)
+                {
+                  case EBlackboardKeyType.Boolean: return sizeof(bool);
+                  case EBlackboardKeyType.Float: return sizeof(float);
+                  case EBlackboardKeyType.Vector2: return sizeof(Vector2);
+                  case EBlackboardKeyType.Vector3: return sizeof(Vector3);
+                  case EBlackboardKeyType.Int: return sizeof(int);
+                  case EBlackboardKeyType.Long: return sizeof(long);
+                }
+
+                throw new Exception("Known Types" + Type);
+            }
+        }
+
         public BlackboardKey Clone()
         {
             return new BlackboardKey()
@@ -45,9 +57,6 @@ namespace Lockstep.AI {
                 Vector3Value =  Vector3Value,
                 IntValue =  IntValue,
                 LongValue =  LongValue,
-                LayerMaskValue =  LayerMaskValue,
-                StringValue =  StringValue,
-                GameObjectValue =  GameObjectValue,
             };
         }
 
@@ -61,10 +70,6 @@ namespace Lockstep.AI {
                 case EBlackboardKeyType.Vector3: Vector3Value = (Vector3)val ; break;
                 case EBlackboardKeyType.Int: IntValue = (int)val ; break;
                 case EBlackboardKeyType.Long: LongValue = (long)val ; break;
-                case EBlackboardKeyType.LayerMask: LayerMaskValue = (LayerMask)val ; break;
-                case EBlackboardKeyType.String: StringValue = (string)val ; break;
-                case EBlackboardKeyType.GameObject: GameObjectValue = (GameObject)val ; break;
-                case EBlackboardKeyType.Tag: StringValue = (string)val ; break;
             }
         }
 

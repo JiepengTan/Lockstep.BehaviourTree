@@ -7,6 +7,7 @@ namespace AIToolkitDemo
         void Awake()
         {
             UnityAITookit.Init();
+            BTNodeFactoryInjector.Inject();
         }
         void Start()
         {

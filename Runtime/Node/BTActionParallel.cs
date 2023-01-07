@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using GraphProcessor;
+using Lockstep.Serialization;
 
 namespace Lockstep.AI {
     [System.Serializable]
@@ -42,11 +43,12 @@ namespace Lockstep.AI {
         public BTCParallelStatusEval evaluationStatus;
         public BTCParallelStatusRunning StatusRunning;
     }
+
     
     [Serializable, NodeMenuItem("BTComposite/Parallel")]
     public unsafe partial class BTActionParallel : BTActionComposite
     {
-        protected override int MemSize => sizeof(BTCActionParallel);
+        public override ushort MemSize => (ushort)sizeof(BTCActionParallel);
         public enum ECHILDREN_RELATIONSHIP {
             AND,
             OR
@@ -59,8 +61,7 @@ namespace Lockstep.AI {
         private ECHILDREN_RELATIONSHIP _runningStatusRelationship;
 
         //-------------------------------------------------------
-        public BTActionParallel()
-            : base(-1){
+        public BTActionParallel(){
             _evaluationRelationship = ECHILDREN_RELATIONSHIP.AND;
             _runningStatusRelationship = ECHILDREN_RELATIONSHIP.OR;
         }
@@ -77,7 +78,7 @@ namespace Lockstep.AI {
 
         //------------------------------------------------------
         protected override bool OnEvaluate( /*in*/ BTWorkingData wData){
-            var thisContext = (BTCActionParallel*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionParallel*) wData.GetContext(_indexInTree);
             thisContext->evaluationStatus.Init(false);
             bool finalResult = false;
             for (int i = 0; i < GetChildCount(); ++i) {
@@ -100,7 +101,7 @@ namespace Lockstep.AI {
         }
 
         protected override int OnUpdate(BTWorkingData wData){
-            var thisContext = (BTCActionParallel*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionParallel*) wData.GetContext(_indexInTree);
             //first time initialization
 
             bool hasFinished = false;
@@ -137,7 +138,7 @@ namespace Lockstep.AI {
         }
 
         protected override void OnTransition(BTWorkingData wData){
-            var thisContext = (BTCActionParallel*) wData.GetContext(_uniqueKey);
+            var thisContext = (BTCActionParallel*) wData.GetContext(_indexInTree);
             for (int i = 0; i < GetChildCount(); ++i) {
                 var node = GetChild(i);
                 node.Transition(wData);

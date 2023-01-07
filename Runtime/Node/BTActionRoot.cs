@@ -1,35 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Lockstep.Serialization;
 
 namespace Lockstep.AI
 {
+    
+
+
     [System.Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
-    public unsafe partial struct BTCActionSelector
-    {
+    public unsafe partial struct BTCActionRoot {
         public int CurrentSelectedIndex;
         public int LastSelectedIndex;
 
-        public BTCActionSelector(int curIdx = -1, int lastIdx = -1)
-        {
+        public BTCActionRoot(int curIdx = -1, int lastIdx = -1){
             CurrentSelectedIndex = curIdx;
             LastSelectedIndex = lastIdx;
         }
     }
-
-
-
-
-    [Serializable, GraphProcessor.NodeMenuItem("BTComposite/PrioritizedSelector")]
-    public unsafe partial class BTActionSelector : BTActionComposite
+    
+    [Serializable, GraphProcessor.NodeMenuItem("BTComposite/BTActionRoot")]
+    public unsafe partial class BTActionRoot : BTAction
     {
         public bool IsPriority = true;
-        public override ushort MemSize => (ushort)sizeof(BTCActionSelector);
+        public override ushort MemSize => (ushort)sizeof(BTCActionRoot);
 
         protected override bool OnEvaluate( /*in*/ BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
+            var thisContext = (BTCActionRoot*) wData.GetContext(_indexInTree);
             int childCount = GetChildCount();
             var curIdx = thisContext->CurrentSelectedIndex;
             if (IsPriority)
@@ -51,7 +47,7 @@ namespace Lockstep.AI
         }
 
         protected override int OnUpdate(BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
+            var thisContext = (BTCActionRoot*) wData.GetContext(_indexInTree);
             int runningState = BTRunningStatus.FINISHED;
             if (thisContext->CurrentSelectedIndex != thisContext->LastSelectedIndex) {
                 if (IsIndexValid(thisContext->LastSelectedIndex)) {
@@ -74,7 +70,7 @@ namespace Lockstep.AI
         }
 
         protected override void OnTransition(BTWorkingData wData){
-            var thisContext = (BTCActionSelector*) wData.GetContext(_indexInTree);
+            var thisContext = (BTCActionRoot*) wData.GetContext(_indexInTree);
             var node = GetChild(thisContext->LastSelectedIndex);
             if (node != null) {
                 node.Transition(wData);

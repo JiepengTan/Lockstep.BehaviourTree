@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace AIToolkitDemo {
-    class AIEntityWorkingData : BTWorkingData {
+   public class AIEntityWorkingData : BTWorkingData {
         public AIEntity Entity { get; set; }
         public Transform EntityTF { get; set; }
         public Animator EntityAnimator { get; set; }
@@ -26,7 +26,7 @@ namespace AIToolkitDemo {
     unsafe partial class NOD_Attack : BTActionLeaf
     {
         private const float DEFAULT_WAITING_TIME = 5f;
-        protected override int RunTimeSize => sizeof(UserContextData);
+        protected override ushort RunTimeSize => (ushort)sizeof(UserContextData);
 
         [StructLayout(LayoutKind.Sequential, Pack = NativeHelper.STRUCT_PACK)]
         public unsafe partial struct UserContextData {
@@ -57,7 +57,7 @@ namespace AIToolkitDemo {
     }
 
     [Serializable,GraphProcessor.NodeMenuItem("Action/MoveTo")]
-    class NOD_MoveTo : BTActionLeaf
+    partial class NOD_MoveTo : BTActionLeaf
     {
         public float MoveSpeed = 1f;
         public float StopDistance = 1.5f;

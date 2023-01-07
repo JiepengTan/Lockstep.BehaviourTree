@@ -168,6 +168,9 @@ namespace GraphProcessor
 
         protected virtual void OnEnable()
         {
+#if LOCKSTEP_PURE_MODE
+	        return;
+#endif
 			if (isEnabled)
 				OnDisable();
 
@@ -212,6 +215,9 @@ namespace GraphProcessor
 
 		protected virtual void OnDisable()
 		{
+#if LOCKSTEP_PURE_MODE
+			return;
+#endif
 			isEnabled = false;
 			foreach (var node in nodes)
 				node.DisableInternal();

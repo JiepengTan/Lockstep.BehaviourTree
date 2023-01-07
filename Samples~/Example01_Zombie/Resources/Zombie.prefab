@@ -83,7 +83,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb46886962787ab4baad3990d4a92050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tree:
+    rid: -2
+  IsDead: 0
+  IsBytes: 1
   BTConfig: {fileID: 11400000, guid: fd1baf5d2677c6445a751ee6f81f3e86, type: 2}
+  ConfigPath: Configs/8001_BT_Zombie
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &183362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,8 +1802,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183404}
-  m_LocalRotation: {x: 0.0000000018626449, y: -0.0000000012951205, z: -2.3283064e-10,
-    w: 1}
+  m_LocalRotation: {x: 0.0000000018626449, y: -0.0000000012951205, z: -2.3283064e-10, w: 1}
   m_LocalPosition: {x: -0.037750624, y: 0.0000000011920929, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2399,8 +2408,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183442}
-  m_LocalRotation: {x: -2.7755582e-17, y: 0.0000000037252907, z: 0.0000000074505815,
-    w: 1}
+  m_LocalRotation: {x: -2.7755582e-17, y: 0.0000000037252907, z: 0.0000000074505815, w: 1}
   m_LocalPosition: {x: -0.18827407, y: 0.000000038146972, z: 0.000000009536743}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
   m_ConstrainProportionsScale: 0

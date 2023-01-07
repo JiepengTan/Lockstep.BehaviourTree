@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using Lockstep.AI;
+using UnityEngine.Serialization;
 
 namespace AIToolkitDemo
 {
-    class AIEntity : MonoBehaviour,IMonoBehaviourTree
+    public class AIEntity : MonoBehaviour, IMonoBehaviourTree
     {
         //-----------------------------------------------
-        public const string BBKEY_NEXTMOVINGPOSITION = "NextMovingPosition";
+        public const string BBKEY_NEXTMOVINGPOSITION = "TargetPos";
 
         //-----------------------------------------------
         private AIBehaviorRequest _currentRequest;
@@ -16,15 +17,15 @@ namespace AIToolkitDemo
 
         private float _nextTimeToGenMovingTarget;
         private string _lastTriggeredAnimation;
-        public BehaviourTree Tree => _bt;
-        [SerializeReference]
-        private BehaviourTree _bt;
+        [SerializeReference] public BehaviourTree Tree;
         public bool IsDead;
 
+#if !LOCKSTEP_PURE_MODE
         public BTGraph BTConfig;
+#endif
+        public string ConfigPath;
 
         private Animator _anim;
-        public Blackboard Blackboard => _bt?.WorkingData?.Blackboard;
 
         public object EditorBlackboardProperty
         {
@@ -32,20 +33,33 @@ namespace AIToolkitDemo
             {
 #if UNITY_EDITOR
                 var obj = new UnityEditor.SerializedObject(this);
-                return obj.FindProperty("_bt._workingData._blackboard.Keys");
+                return obj.FindProperty("Tree.WorkingData.Blackboard.Keys");
 #else
             return null;
 #endif
             }
         }
-        public BTNode TreeRoot => _bt?.Root;
-        
+
         public AIEntity Init()
         {
             _nextTimeToGenMovingTarget = 0f;
             _lastTriggeredAnimation = string.Empty;
-            _bt = new BehaviourTree();
-            var data = _bt.DoAwake<AIEntityWorkingData>(BTConfig, transform);
+            Tree = new BehaviourTree();
+            AIEntityWorkingData data = null;
+#if LOCKSTEP_PURE_MODE
+            {
+                var bytesConfig = Resources.Load<TextAsset>(ConfigPath);
+                var bytes = bytesConfig.bytes;
+                var id = int.Parse(bytesConfig.name.Split("_")[0]);
+                data = Tree.DoAwake<AIEntityWorkingData>(transform, id, bytes);
+            }
+#else
+            {
+                data = Tree.DoAwake<AIEntityWorkingData>(transform,BTConfig );
+            }
+#endif
+
+
             data.Entity = this;
             data.EntityTF = transform;
             _anim = data.EntityAnimator = GetComponent<Animator>();
@@ -63,6 +77,7 @@ namespace AIToolkitDemo
             {
                 return;
             }
+
             _lastTriggeredAnimation = name;
             _anim.SetTrigger(name);
         }
@@ -84,7 +99,7 @@ namespace AIToolkitDemo
             if (_nextRequest != _currentRequest)
             {
                 //reset bev tree
-                _bt.Reset();
+                Tree.Reset();
                 //assign to current
                 _currentRequest = _nextRequest;
 
@@ -109,8 +124,8 @@ namespace AIToolkitDemo
 
             //update working data
             _anim.speed = GameTimer.instance.timeScale;
-            _bt.WorkingData.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
-            _bt.DoUpdate(deltaTime);
+            Tree.WorkingData.SetValue(BBKEY_NEXTMOVINGPOSITION, _currentRequest.nextMovingTarget);
+            Tree.DoUpdate(deltaTime);
 
             return 0;
         }
