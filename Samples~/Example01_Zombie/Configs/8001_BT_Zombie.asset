@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedNodes: []
   nodes:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
+  - rid: 0
+  - rid: 1
+  - rid: 2
+  - rid: 3
+  - rid: 4
+  - rid: 5
+  - rid: 6
+  - rid: 7
   edges:
   - GUID: a032725d-274f-4c19-8f32-f788bf9ffb83
     owner: {fileID: 11400000}
@@ -103,7 +103,9 @@ MonoBehaviour:
       serializedType: GraphProcessor.ProcessorView, com.alelievr.NodeGraphProcessor.Editor,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   exposedParameters: []
-  blackboardKeys: []
+  blackboardKeys:
+  - rid: 5073097343960875008
+  - rid: 5073097343960875009
   serializedParameterList: []
   stickyNotes:
   - position:
@@ -115,11 +117,12 @@ MonoBehaviour:
     title: "\u751F\u6D3B\u5A11\u5A46"
     content: "\u7279\u6B8A\u7684\u4E16\u754C"
   nodeInspectorReference: {fileID: 0}
-  position: {x: -163, y: 443, z: 0}
-  scale: {x: 0.7561437, y: 0.7561437, z: 1}
+  position: {x: 3, y: 378, z: 0}
+  scale: {x: 0.8695652, y: 0.8695652, z: 1}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: BTActionRoot, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
       data:
         nodeCustomName: 
@@ -136,7 +139,7 @@ MonoBehaviour:
         nodeLock: 0
         __output: 0
         IsPriority: 1
-    00000001:
+    - rid: 1
       type: {class: BTActionSequence, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
       data:
         nodeCustomName: 
@@ -153,7 +156,7 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         __output: 0
-    00000002:
+    - rid: 2
       type: {class: BTActionSequence, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
       data:
         nodeCustomName: 
@@ -170,7 +173,7 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         __output: 0
-    00000003:
+    - rid: 3
       type: {class: CON_HasReachedTarget, ns: AIToolkitDemo, asm: Lockstep.AI.BehaviourTree.Demo01}
       data:
         nodeCustomName: 
@@ -188,7 +191,7 @@ MonoBehaviour:
         __input: 0
         IsInvert: 1
         Distance: 1.5
-    00000004:
+    - rid: 4
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Lockstep.AI.BehaviourTree.Demo01}
       data:
         nodeCustomName: 
@@ -205,7 +208,7 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         TurnSpeed: 3
-    00000005:
+    - rid: 5
       type: {class: NOD_MoveTo, ns: AIToolkitDemo, asm: Lockstep.AI.BehaviourTree.Demo01}
       data:
         nodeCustomName: 
@@ -223,7 +226,7 @@ MonoBehaviour:
         __input: 0
         MoveSpeed: 1
         StopDistance: 1.5
-    00000006:
+    - rid: 6
       type: {class: NOD_TurnTo, ns: AIToolkitDemo, asm: Lockstep.AI.BehaviourTree.Demo01}
       data:
         nodeCustomName: 
@@ -240,7 +243,7 @@ MonoBehaviour:
         nodeLock: 0
         __input: 0
         TurnSpeed: 3
-    00000007:
+    - rid: 7
       type: {class: NOD_Attack, ns: AIToolkitDemo, asm: Lockstep.AI.BehaviourTree.Demo01}
       data:
         nodeCustomName: 
@@ -256,3 +259,25 @@ MonoBehaviour:
         debug: 0
         nodeLock: 0
         __input: 0
+    - rid: 5073097343960875008
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
+      data:
+        Name: TargetPos
+        Type: 3
+        FloatValue: 0
+        IntValue: 0
+        LongValue: 0
+        BooleanValue: 0
+        Vector2Value: {x: 0, y: 0}
+        Vector3Value: {x: 0, y: 0, z: 0}
+    - rid: 5073097343960875009
+      type: {class: BlackboardKey, ns: Lockstep.AI, asm: Lockstep.AI.BehaviourTree}
+      data:
+        Name: MoveSpd
+        Type: 0
+        FloatValue: 0
+        IntValue: 0
+        LongValue: 0
+        BooleanValue: 0
+        Vector2Value: {x: 0, y: 0}
+        Vector3Value: {x: 0, y: 0, z: 0}

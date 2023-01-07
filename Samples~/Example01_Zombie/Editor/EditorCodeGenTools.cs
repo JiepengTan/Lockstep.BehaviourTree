@@ -41,7 +41,7 @@ namespace AIToolkitDemo
         [MenuItem("Tools/BehaviourTree/ExportTxt")]
         public static void Export()
         {
-            string SaveDir = "Assets/Samples/Lockstep.BehaviourTree/0.1.0/Zombie example/Configs/ExportBT";
+            string SaveDir = "Assets/Samples/Lockstep.BehaviourTree/0.1.0/Zombie example/Resources/Configs";
             var guids = AssetDatabase.FindAssets($"t:{nameof(BTGraph)}");
             if (guids.Length > 1)
             {
@@ -57,7 +57,7 @@ namespace AIToolkitDemo
                 var graph = AssetDatabase.LoadAssetAtPath<BTGraph>(path);
                 var info = BTFactory.GetOrCreateInfo(graph);
                 var bytes =BTFactory.Serialize(info);
-                FileUtil.SaveFile(Path.Combine(SaveDir, graph.name + ".btbytes"), bytes);
+                FileUtil.SaveFile(Path.Combine(SaveDir, graph.name + ".json"), bytes);
                 var newInfo = BTFactory.Deserialize(bytes);
                 var newBytes = BTFactory.Serialize(newInfo);
                 Lockstep.Logging.Debug.Assert(newBytes.EqualsEx(bytes),"BehaviourTree Serialize Failed "); 

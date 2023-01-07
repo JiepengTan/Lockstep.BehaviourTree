@@ -74,7 +74,18 @@ namespace Lockstep.AI
             {
                 node.SortChildren();
             }
-            return CreateBtInfo(root);
+            var info = CreateBtInfo(root);
+            var keys = config.blackboardKeys;
+            ushort offset = 0;
+            info.BlackboardOffsets.Clear();
+            foreach (var key in keys)
+            {
+                info.BlackboardOffsets[key.Name] = offset;
+                offset += (ushort)key.MemSize;
+            }
+
+            info.BlackboardSize = offset;
+            return info;
         }
 #endif
 

@@ -66,9 +66,10 @@ namespace Lockstep.AI
         public void Awake(BTInfo info)
         {
             _info = info;
-            _treePtr = NativeHelper.AllocAndZero(info.BlackboardSize + info.TreeSize);
+            _treePtr = NativeHelper.AllocAndZero(info.TreeSize+info.BlackboardSize);
             _treeOffset = info.TreeOffsets;
             _treeSize = info.TreeSize;
+            _bbPtr = _treePtr + info.TreeSize;
             _Awake();
         }
 

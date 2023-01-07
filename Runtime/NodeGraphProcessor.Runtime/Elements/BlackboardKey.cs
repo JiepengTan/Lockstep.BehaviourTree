@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,25 @@ namespace Lockstep.AI {
         public bool BooleanValue;
         public Vector2 Vector2Value;
         public Vector3 Vector3Value;
-        
+
+        public unsafe int MemSize
+        {
+            get
+            {
+                switch (Type)
+                {
+                  case EBlackboardKeyType.Boolean: return sizeof(bool);
+                  case EBlackboardKeyType.Float: return sizeof(float);
+                  case EBlackboardKeyType.Vector2: return sizeof(Vector2);
+                  case EBlackboardKeyType.Vector3: return sizeof(Vector3);
+                  case EBlackboardKeyType.Int: return sizeof(int);
+                  case EBlackboardKeyType.Long: return sizeof(long);
+                }
+
+                throw new Exception("Known Types" + Type);
+            }
+        }
+
         public BlackboardKey Clone()
         {
             return new BlackboardKey()

@@ -12,12 +12,12 @@ namespace Lockstep.AI {
         
         [Header("Tree")] 
         public ushort[] TreeOffsets;
-        public int TreeSize;
+        public ushort TreeSize;
         public BTNode TreeRoot;
         
         [Header("Blackboard")]
-        public Dictionary<string, ushort> BlackboardOffsets;
-        public int BlackboardSize;
+        public Dictionary<string, ushort> BlackboardOffsets = new Dictionary<string, ushort>();
+        public ushort BlackboardSize;
         
         public void Serialize(Serializer writer)
         {
@@ -64,6 +64,15 @@ namespace Lockstep.AI {
             
             writer.Write(TreeSize);
             writer.Write(TreeOffsets);
+
+            writer.Write(BlackboardSize);
+            var keyCount = this.BlackboardOffsets.Count;
+            writer.Write((byte)keyCount);
+            foreach (var pair in BlackboardOffsets)
+            {
+                writer.Write(pair.Key);
+                writer.Write(pair.Value);
+            }
         }
 
 
@@ -92,8 +101,19 @@ namespace Lockstep.AI {
                 }
             }
             TreeRoot = tempNodes[0];
-            TreeSize = reader.ReadInt32();
+            TreeSize = reader.ReadUInt16();
             TreeOffsets = reader.ReadArray(TreeOffsets);
+
+            // dict
+            BlackboardSize = reader.ReadUInt16();
+            var keyCount = reader.ReadByte();
+            BlackboardOffsets.Clear();
+            for (int i = 0; i < keyCount; i++)
+            {
+                var key = reader.ReadString();
+                var val = reader.ReadUInt16();
+                BlackboardOffsets[key] = val;
+            }
         }
     }
 }
