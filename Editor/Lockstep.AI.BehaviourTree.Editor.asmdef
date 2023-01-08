@@ -2,7 +2,9 @@
     "name": "Lockstep.AI.BehaviourTree.Editor",
     "rootNamespace": "",
     "references": [
-        "Lockstep.AI.BehaviourTree"
+        "Lockstep.AI.BehaviourTree",
+        "Lockstep.Serializer",
+        "Lockstep.Debug"
     ],
     "includePlatforms": [
         "Editor"
