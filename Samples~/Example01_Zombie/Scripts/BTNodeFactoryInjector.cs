@@ -2,8 +2,6 @@
 
 namespace AIToolkitDemo
 {
-
-
     public partial class BTNodeFactoryInjector
     {
 #if UNITY_EDITOR
